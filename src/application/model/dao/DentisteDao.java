@@ -2,7 +2,6 @@ package application.model.dao;
 
 import application.DbConnection.DbConnection;
 import application.model.entity.Dentiste;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
