@@ -8,8 +8,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="JavaFX 11 lib" level="application" />
     <orderEntry type="library" name="mariadb-java-client-2.4.4" level="application" />
+    <orderEntry type="library" name="lib" level="application" />
+    <orderEntry type="library" name="controlsfx-11.1.0" level="application" />
+    <orderEntry type="library" name="jfoenix-9.0.10" level="application" />
   </component>
 </module>
