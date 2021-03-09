@@ -1,4 +1,4 @@
-package sample.data.dao;
+package application.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

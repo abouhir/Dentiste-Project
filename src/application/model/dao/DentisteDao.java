@@ -1,8 +1,7 @@
-package sample.data.dao;
+package application.model.dao;
 
-import sample.data.DbConnection.DbConnection;
-import sample.data.model.Client;
-import sample.data.model.Dentiste;
+import application.DbConnection.DbConnection;
+import application.model.entity.Dentiste;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

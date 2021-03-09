@@ -1,4 +1,4 @@
-package sample.data.model; /***********************************************************************
+package application.model.entity; /***********************************************************************
  * Module:  Certificat.java
  * Author:  W0L1D
  * Purpose: Defines the Class Certificat

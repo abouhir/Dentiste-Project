@@ -1,4 +1,4 @@
-package sample.data.DbConnection;
+package application.DbConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

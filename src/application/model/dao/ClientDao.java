@@ -1,7 +1,7 @@
-package sample.data.dao;
+package application.model.dao;
 
-import sample.data.DbConnection.DbConnection;
-import sample.data.model.Client;
+import application.DbConnection.DbConnection;
+import application.model.entity.Client;
 
 import java.sql.*;
 import java.util.Optional;

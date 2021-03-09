@@ -1,4 +1,4 @@
-package sample.data.dao;
+package application.model.dao;
 
 public interface IDaoQuery<T> {
 

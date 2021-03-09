@@ -1,4 +1,4 @@
-package sample.data.model;
+package application.model.entity;
 /***********************************************************************
  * Module:  Traitement.java
  * Author:  W0L1D

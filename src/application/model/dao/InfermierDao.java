@@ -1,7 +1,7 @@
-package sample.data.dao;
+package application.model.dao;
 
-import sample.data.DbConnection.DbConnection;
-import sample.data.model.Infermier;
+import application.DbConnection.DbConnection;
+import application.model.entity.Infermier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

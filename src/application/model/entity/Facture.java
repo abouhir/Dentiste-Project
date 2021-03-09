@@ -1,4 +1,4 @@
-package sample.data.model; /***********************************************************************
+package application.model.entity; /***********************************************************************
  * Module:  Facture.java
  * Author:  W0L1D
  * Purpose: Defines the Class Facture

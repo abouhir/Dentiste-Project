@@ -1,17 +1,20 @@
-package sample.data.model;
+package application.model.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /***********************************************************************
- * Module:  Dentiste.java
+ * Module:  Client.java
  * Author:  W0L1D
- * Purpose: Defines the Class Dentiste
+ * Purpose: Defines the Class Client
  ***********************************************************************/
 
+public class Client extends Person {
 
-public class Dentiste extends User {
-    public Dentiste(ResultSet person) throws SQLException {
-        super(person);
+
+    public Client(ResultSet rst) throws SQLException {
+        super(rst);
     }
+
+
 }
