@@ -4,16 +4,14 @@ import sample.data.DbConnection.DbConnection;
 import sample.data.model.Client;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.Vector;
 
 public class ClientDao implements IDao<Client>, IDaoQuery {
-    private PreparedStatement preStmInsert;
-    private PreparedStatement preStmUpdate;
-    private PreparedStatement preStmDelete;
-    private PreparedStatement stmSelectAll;
+    private final PreparedStatement preStmInsert;
+    private final PreparedStatement preStmUpdate;
+    private final PreparedStatement preStmDelete;
+    private final PreparedStatement stmSelectAll;
 
 
     private Connection conn;
@@ -29,13 +27,6 @@ public class ClientDao implements IDao<Client>, IDaoQuery {
         preStmInsert = conn.prepareStatement(INSERT_CLIENT);
         preStmUpdate = conn.prepareStatement(UPDATE_CLIENT);
         preStmDelete = conn.prepareStatement(DELETE_CLIENT);
-
-
-
-
-        clients = new Vector<>();
-
-
     }
 
 
@@ -50,7 +41,7 @@ public class ClientDao implements IDao<Client>, IDaoQuery {
     public Vector<Client> selectAll() {
         Vector<Client> clients = new Vector<>();
 
-        try(ResultSet rst = stmSelectAll.executeQuery(SELECT_ALL_CLIENTS)) {
+        try(ResultSet rst = stmSelectAll.executeQuery()) {
             while (rst.next())
                 clients.add(new Client(rst));
         } catch (SQLException throwable) {
