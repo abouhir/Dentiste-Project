@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
+   <left>
+      <AnchorPane prefHeight="559.0" prefWidth="350.0" style="-fx-background-color: #00BFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="dentist" fitHeight="200.0" fitWidth="300.0" layoutX="25.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/dentist.png" />
+               </image>
+            </ImageView>
+
+         </children></AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="530.0" prefWidth="551.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTextField fx:id="textLogin" focusColor="DODGERBLUE" layoutX="71.0" layoutY="205.0" prefHeight="26.0" prefWidth="256.0" promptText="Nom d'utilisateur">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXTextField>
+            <Text layoutX="65.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authentification">
+               <font>
+                  <Font name="SansSerif Bold" size="36.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="btnAuth" layoutX="66.0" layoutY="373.0" onAction="#btnauthOnAction" prefHeight="26.0" prefWidth="267.0" style="-fx-background-color: #1E90FF;" text="Authentifier" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXPasswordField fx:id="textPwd" focusColor="DODGERBLUE" layoutX="70.0" layoutY="290.0" prefHeight="26.0" prefWidth="258.0" promptText="Mot de passe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <Label layoutX="71.0" layoutY="177.0" text="Nom d'utilisateur">
+               <font>
+                  <Font name="SansSerif Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="72.0" layoutY="265.0" text="Mot de passe">
+               <font>
+                  <Font name="SansSerif Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnOb" layoutX="65.0" layoutY="415.0" onAction="#btnobOnAction" prefHeight="26.0" prefWidth="267.0" style="-fx-background-color: #1E90FF;" text="Refresh" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="33.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="pwdImg" fitHeight="40.0" fitWidth="27.0" layoutX="36.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/password.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="90.0" fitWidth="200.0" layoutX="154.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/users.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sendImg" fitHeight="21.0" fitWidth="34.0" layoutX="136.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/send.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="refImg" fitHeight="21.0" fitWidth="34.0" layoutX="137.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/refresh.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="usernameImg" fitHeight="32.0" fitWidth="40.0" layoutX="29.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/username.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/close.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="minus" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Vue/src/Icons/minus.png" />
+               </image>
+            </ImageView>
+
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

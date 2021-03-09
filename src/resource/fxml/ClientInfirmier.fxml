@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="687.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInfirmier">
+   <children>
+      <Label layoutX="70.0" layoutY="23.0" text="Operation sur les Clients  ">
+         <font>
+            <Font name="Algerian" size="48.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="14.0" layoutY="115.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #4CAF50;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="288.0" layoutY="115.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #f44336;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="555.0" layoutY="115.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #008CBA;" text="Rendez-vous" textFill="#f8f8f8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <TableView layoutX="7.0" layoutY="204.0" prefHeight="483.0" prefWidth="802.0" stylesheets="@../../../../Vue/src/sample/style.css">
+        <columns>
+          <TableColumn prefWidth="169.60000002384186" text="Cin" />
+          <TableColumn prefWidth="152.0" text="Nom" />
+            <TableColumn prefWidth="194.39999389648438" text="Prenom" />
+            <TableColumn prefWidth="282.4000244140625" text="Télephone" />
+        </columns>
+      </TableView>
+      <JFXTextField focusColor="DODGERBLUE" layoutX="229.0" layoutY="167.0" prefHeight="26.0" prefWidth="309.0" promptText="Recherche(CIN)">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <ImageView fitHeight="26.0" fitWidth="49.0" layoutX="515.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Vue/src/Icons/search.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
