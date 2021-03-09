@@ -90,11 +90,7 @@ public class ClientDao implements IDao<Client>, IDaoQuery {
     @Override
     public boolean update(Client o) {
         try {
-            preStmUpdate.setString(1, o.getFullName());
-            preStmUpdate.setString(2, o.getCin());
-            preStmUpdate.setString(3, o.getTele());
-            preStmUpdate.setString(4, o.getAddress());
-            preStmUpdate.setString(5, o.getEmail());
+            assignParams(preStmUpdate, o);
             preStmUpdate.setLong(6, o.getId());
             preStmUpdate.execute();
             return true;
@@ -107,16 +103,21 @@ public class ClientDao implements IDao<Client>, IDaoQuery {
     @Override
     public boolean insert(Client o) {
         try {
-            preStmInsert.setString(1, o.getFullName());
-            preStmInsert.setString(2, o.getCin());
-            preStmInsert.setString(3, o.getTele());
-            preStmInsert.setString(4, o.getAddress());
-            preStmInsert.setString(5, o.getEmail());
+            assignParams(preStmInsert, o);
             preStmInsert.execute();
             return true;
         } catch (SQLException throwable) {
             return false;
         }
+    }
+
+    @Override
+    public void assignParams(PreparedStatement preStm, Client o) throws SQLException {
+        preStmInsert.setString(1, o.getFullName());
+        preStmInsert.setString(2, o.getCin());
+        preStmInsert.setString(3, o.getTele());
+        preStmInsert.setString(4, o.getAddress());
+        preStmInsert.setString(5, o.getEmail());
     }
 
 
