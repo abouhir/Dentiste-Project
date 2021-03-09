@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@../../../../Vue/src/sample/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInfirmier">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@../../../../Vue/src/sample/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerInfirmier">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="142.0" styleClass="vbox" stylesheets="@../../../../Vue/src/sample/style.css" BorderPane.alignment="CENTER">
          <children>
