@@ -14,13 +14,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@../../../../Vue/src/sample/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInfirmier">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@../../../../Vue/src/sample/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerInfirmier">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="142.0" styleClass="vbox" stylesheets="@../../../../Vue/src/sample/style.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="imgInf" fitHeight="102.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/nurse.png" />
+                  <Image url="@../Icons/nurse.png" />
                </image>
             </ImageView>
             <JFXButton fx:id="btnAccueile" alignment="CENTER" contentDisplay="TOP" graphicTextGap="15.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#btnAccueileOnAction" prefHeight="82.0" prefWidth="370.0" text="Accueile" textFill="WHITE" textOverrun="CLIP">
@@ -30,7 +30,7 @@
                <graphic>
                   <ImageView fx:id="imgHome" fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Vue/src/Icons/home.png" />
+                        <Image url="@../Icons/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -42,7 +42,7 @@
                <graphic>
                   <ImageView fx:id="imgAdd" fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Vue/src/Icons/add.png" />
+                        <Image url="@../Icons/add.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -57,7 +57,7 @@
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Vue/src/Icons/logout.png" />
+                        <Image url="@../Icons/logout.png" />
                      </image>
                   </ImageView>
                </graphic>
