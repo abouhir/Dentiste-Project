@@ -19,7 +19,7 @@
                         <Font name="Algerian" size="24.0" />
                     </font>
                 </Label>
-                <HBox layoutX="288.0" layoutY="69.0" prefHeight="122.0" prefWidth="251.0" styleClass="hbox" stylesheets="@../../../../Vue/src/sample/style.css">
+                <HBox layoutX="288.0" layoutY="69.0" prefHeight="122.0" prefWidth="251.0" styleClass="hbox" stylesheets="@/resource/css/style.css">
                     <children>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                             <children>
