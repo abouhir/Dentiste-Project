@@ -36,18 +36,15 @@ public class ControllerDashboard implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accueile.fxml"));
-//       // AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
-//        try {
-//            AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
-//            content.getChildren().clear();
-//            content.getChildren().add(registerPane);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
     }
-
+    public void btnAccueileOnAction(ActionEvent event) throws IOException {
+        content.getChildren().clear();
+        try {
+            content.getChildren().add(FXMLLoader.load(getClass().getResource("/resource/fxml/Accueile.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void btnclientOnAction(ActionEvent event) throws IOException {
         content.getChildren().clear();
         try {
@@ -57,11 +54,4 @@ public class ControllerDashboard implements Initializable {
         }
 
     }
-    public void btnAccueileOnAction(ActionEvent event) throws IOException {
-        content.getChildren().clear();
-        try {
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("/resource/fxml/Accueile.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-}
+    }

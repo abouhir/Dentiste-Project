@@ -48,7 +48,7 @@
       </JFXTextField>
       <ImageView fitHeight="26.0" fitWidth="49.0" layoutX="515.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Vue/src/Icons/search.png" />
+            <Image url="@/resource/Icons/search.png" />
          </image>
       </ImageView>
    </children>
