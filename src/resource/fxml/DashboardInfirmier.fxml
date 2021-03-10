@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@../../../../Vue/src/sample/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerInfirmier">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@../../../../Vue/src/sample/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerDashboard">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="142.0" styleClass="vbox" stylesheets="@../../../../Vue/src/sample/style.css" BorderPane.alignment="CENTER">
          <children>
@@ -76,54 +76,7 @@
    </left>
    <center>
       <AnchorPane fx:id="content" prefHeight="687.0" prefWidth="779.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="274.0" text="Rendez-vous ">
-               <font>
-                  <Font name="Algerian" size="24.0" />
-               </font>
-            </Label>
-            <HBox layoutX="288.0" layoutY="69.0" prefHeight="122.0" prefWidth="251.0" styleClass="hbox" stylesheets="@../../../../Vue/src/sample/style.css">
-               <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="67.0" prefWidth="213.0" text="10" textFill="MEDIUMSEAGREEN" textOverrun="CLIP">
-                           <font>
-                              <Font name="Arial" size="72.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="NW_RESIZE" />
-                           </cursor>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="102.0" text="Préalable">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="80.0" />
-                     </HBox.margin>
-                  </VBox>
-               </children>
-               <opaqueInsets>
-                  <Insets left="40.0" />
-               </opaqueInsets>
-            </HBox>
-            <TableView fx:id="tableRendez" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0">
-              <columns>
-                <TableColumn fx:id="coloneCin" prefWidth="142.39998483657837" text="CIN" />
-                <TableColumn fx:id="coloneNom" prefWidth="156.79998779296875" text="Nom" />
-                  <TableColumn fx:id="colonePrenom" minWidth="0.0" prefWidth="239.19998168945312" text="Prenom" />
-                  <TableColumn fx:id="coloneDate" minWidth="-Infinity" prefWidth="269.59991455078125" text="Heure Rendez-vous" />
-              </columns>
-            </TableView>
-         </children>
+
       </AnchorPane>
    </center>
 </BorderPane>
