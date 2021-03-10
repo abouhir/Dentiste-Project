@@ -30,17 +30,21 @@ public class ControllerDashboard implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        content.getChildren().clear();
-//        content.getChildren().add(new FXMLLoader(getClass().getResource("Accueile.fxml")));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accueile.fxml"));
-       // AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
+        content.getChildren().clear();
         try {
-            AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
-            content.getChildren().clear();
-            content.getChildren().add(registerPane);
-        } catch (Exception e) {
+            content.getChildren().add(FXMLLoader.load(getClass().getResource("Accueile.fxml")));
+        } catch (IOException e) {
             e.printStackTrace();
         }
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accueile.fxml"));
+//       // AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
+//        try {
+//            AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
+//            content.getChildren().clear();
+//            content.getChildren().add(registerPane);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
     }
 
