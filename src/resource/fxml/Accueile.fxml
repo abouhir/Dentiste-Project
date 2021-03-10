@@ -52,7 +52,7 @@
                         <Insets left="40.0" />
                     </opaqueInsets>
                 </HBox>
-                <TableView fx:id="tableRendez" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0" stylesheets="@../../../../Vue/src/sample/style.css">
+                <TableView fx:id="tableRendez" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0" stylesheets="@/resource/css/style.css">
                     <columns>
                         <TableColumn fx:id="coloneCin" prefWidth="100.0" text="CIN" />
                         <TableColumn fx:id="coloneNom" prefWidth="157.60005950927734" text="Nom" />
