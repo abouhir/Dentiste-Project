@@ -32,7 +32,7 @@ public class ControllerDashboard implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         content.getChildren().clear();
         try {
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("Accueile.fxml")));
+            content.getChildren().add(FXMLLoader.load(getClass().getResource("/resource/fxml/Accueile.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class ControllerDashboard implements Initializable {
     }
 
     public void btnclientOnAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accueile.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resource/fxml/Accueile.fxml"));
         AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
         try {
             content.getChildren().clear();
@@ -60,7 +60,7 @@ public class ControllerDashboard implements Initializable {
 
     }
     public void btnAccueileOnAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperationClientDocument.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resource/fxml/OperationClientDocument.fxml"));
         AnchorPane registerPane = (AnchorPane) fxmlLoader.load();
         try {
             content.getChildren().clear();
