@@ -2,21 +2,16 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="948.0" stylesheets="@/resource/css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerDashboard">
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="142.0" styleClass="vbox" stylesheets="@/resource/css/style.css" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="142.0" style="-fx-background-color: #00BFFF;" styleClass="vbox" stylesheets="@/resource/css/style.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="imgInf" fitHeight="102.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <image>

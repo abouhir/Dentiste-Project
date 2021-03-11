@@ -6,13 +6,9 @@
     -fx-background-color: #1E90FF;
     -fx-background-radius: 30px 0px 30px 0px ;
 }
-.vbox{
-    -fx-background-color: #00BFFF;
-    -fx-effect: dropshadow(three-pass-box,black , 10, 0, 5, 10);
-}
 .hbox{
     -fx-background-radius: 30px 0px 30px 0px ;
-    -fx-background-color: #FFFAF0;
+    -fx-background-color: #00BFFF;
     -fx-effect: dropshadow(three-pass-box,black , 10, 0, 5, 10);
 }
 .table-view .column-header,
