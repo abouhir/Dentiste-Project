@@ -85,14 +85,14 @@
                   <Image url="@../Icons/username.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" onMouseClicked="#btncloseOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/close.png" />
                </image>
             </ImageView>
             <ImageView fx:id="minus" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/minus.png" />
+                  <Image url="@../Icons/minus.png" />
                </image>
             </ImageView>
 

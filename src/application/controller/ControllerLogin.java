@@ -58,7 +58,7 @@ public class ControllerLogin implements Initializable {
     }
 
     public void btncloseOnAction(ActionEvent event){
-        Stage stage=(Stage) close.getScene().getWindow();
-        stage.close();
+
+       // System.exit(0);
     }
 }
