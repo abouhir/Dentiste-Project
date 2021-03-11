@@ -17,7 +17,7 @@
          <children>
             <ImageView fx:id="dentist" fitHeight="200.0" fitWidth="300.0" layoutX="25.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/dentist.png" />
+                  <Image url="@../Icons/dentist.png" />
                </image>
             </ImageView>
 
@@ -62,32 +62,32 @@
             <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="33.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="pwdImg" fitHeight="40.0" fitWidth="27.0" layoutX="36.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/password.png" />
+                  <Image url="@../Icons/password.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="200.0" layoutX="154.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/users.png" />
+                  <Image url="@../Icons/users.png" />
                </image>
             </ImageView>
             <ImageView fx:id="sendImg" fitHeight="21.0" fitWidth="34.0" layoutX="136.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/send.png" />
+                  <Image url="@../Icons/send.png" />
                </image>
             </ImageView>
             <ImageView fx:id="refImg" fitHeight="21.0" fitWidth="34.0" layoutX="137.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/refresh.png" />
+                  <Image url="@../Icons/refresh.png" />
                </image>
             </ImageView>
             <ImageView fx:id="usernameImg" fitHeight="32.0" fitWidth="40.0" layoutX="29.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/username.png" />
+                  <Image url="@../Icons/username.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" onMouseClicked="#btncloseOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Vue/src/Icons/close.png" />
+                  <Image url="@../Icons/close.png" />
                </image>
             </ImageView>
             <ImageView fx:id="minus" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">

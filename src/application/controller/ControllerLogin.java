@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.File;
@@ -32,7 +33,10 @@ public class ControllerLogin implements Initializable {
     private JFXButton btnOb;
 
     @FXML
-    private ImageView dentist;
+    private ImageView close;
+
+    @FXML
+    private ImageView minus;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,5 +55,10 @@ public class ControllerLogin implements Initializable {
     public void btnobOnAction(ActionEvent event){
         textLogin.setText("");
         textPwd.setText("");
+    }
+
+    public void btncloseOnAction(ActionEvent event){
+        Stage stage=(Stage) close.getScene().getWindow();
+        stage.close();
     }
 }
