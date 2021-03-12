@@ -90,7 +90,7 @@
                   <Image url="@../Icons/close.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgMinus" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" onMouseClicked="#btnminusOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="reduce" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" onMouseClicked="#btnminusOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/minus.png" />
                </image>

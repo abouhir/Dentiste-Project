@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="687.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerOperationClient">
    <children>
       <Label layoutX="70.0" layoutY="23.0" text="Operation sur les Clients  ">
@@ -33,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="7.0" layoutY="204.0" prefHeight="483.0" prefWidth="802.0" stylesheets="@/resource/css/style.css">
+      <TableView layoutX="7.0" layoutY="204.0" prefHeight="483.0" prefWidth="802.0" stylesheets="@../css/style.css">
         <columns>
           <TableColumn prefWidth="169.60000002384186" text="Cin" />
           <TableColumn prefWidth="152.0" text="Nom" />
@@ -46,9 +45,19 @@
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <ImageView fitHeight="26.0" fitWidth="49.0" layoutX="515.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="515.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/resource/Icons/search.png" />
+            <Image url="@../Icons/search.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="773.0" layoutY="14.0" onMouseClicked="#btncloseOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/close.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="reduce" fitHeight="32.0" fitWidth="40.0" layoutX="736.0" layoutY="11.0" onMouseClicked="#btnreduceOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/minus.png" />
          </image>
       </ImageView>
    </children>

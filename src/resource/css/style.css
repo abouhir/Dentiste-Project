@@ -24,8 +24,8 @@
     -fx-cell-size: 50;
 
     -fx-alignment: center-left;
-    -fx-background-color: #FFC0CB;
-    -fx-text-fill:white;
+    -fx-background-color: white;
+    -fx-text-fill:black;
     -fx-alignment: CENTER;
 
 }

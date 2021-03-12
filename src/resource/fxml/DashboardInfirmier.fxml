@@ -48,7 +48,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="82.0" prefWidth="400.0" text="Déconnection" textFill="WHITE" textOverrun="CLIP">
+            <JFXButton fx:id="btnDeconnecter" alignment="CENTER" contentDisplay="TOP" graphicTextGap="15.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#btndeconnecterOnAction" prefHeight="82.0" prefWidth="400.0" text="Déconnection" textFill="WHITE" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -19,7 +21,7 @@
                         <Font name="Algerian" size="24.0" />
                     </font>
                 </Label>
-                <HBox layoutX="288.0" layoutY="69.0" prefHeight="122.0" prefWidth="251.0" styleClass="hbox" stylesheets="@/resource/css/style.css">
+                <HBox layoutX="288.0" layoutY="69.0" prefHeight="122.0" prefWidth="251.0" styleClass="hbox" stylesheets="@../css/style.css">
                     <children>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                             <children>
@@ -52,7 +54,7 @@
                         <Insets left="40.0" />
                     </opaqueInsets>
                 </HBox>
-                <TableView fx:id="tableRendez" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0" stylesheets="@/resource/css/style.css">
+                <TableView fx:id="tableRendez" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0" stylesheets="@../css/style.css">
                     <columns>
                         <TableColumn fx:id="coloneCin" prefWidth="100.0" text="CIN" />
                         <TableColumn fx:id="coloneNom" prefWidth="157.60005950927734" text="Nom" />
@@ -60,6 +62,16 @@
                         <TableColumn fx:id="coloneDate" minWidth="-Infinity" prefWidth="269.59991455078125" text="Heure Rendez-vous" />
                     </columns>
                 </TableView>
+      <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="773.0" layoutY="14.0" onMouseClicked="#btncloseOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/close.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="reduce" fitHeight="32.0" fitWidth="40.0" layoutX="736.0" layoutY="11.0" onMouseClicked="#btnreduceOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/minus.png" />
+         </image>
+      </ImageView>
             </children>
 
 
