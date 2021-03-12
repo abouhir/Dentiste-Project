@@ -54,7 +54,7 @@
                   <Font name="SansSerif Bold" size="16.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnOb" layoutX="65.0" layoutY="415.0" onAction="#btnobOnAction" prefHeight="26.0" prefWidth="267.0" style="-fx-background-color: #1E90FF;" text="Refresh" textFill="WHITE">
+            <JFXButton fx:id="btnRefresh" layoutX="65.0" layoutY="415.0" onAction="#btnrefreshOnAction" prefHeight="26.0" prefWidth="267.0" style="-fx-background-color: #1E90FF;" text="Refresh" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -85,12 +85,12 @@
                   <Image url="@../Icons/username.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="392.0" layoutY="12.0" onMousePressed="#btncloseOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/close.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="minus" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgMinus" fitHeight="32.0" fitWidth="40.0" layoutX="353.0" layoutY="8.0" onMouseClicked="#btnminusOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/minus.png" />
                </image>

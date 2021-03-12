@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,13 +31,13 @@ public class ControllerLogin implements Initializable {
     private JFXPasswordField textPwd;
 
     @FXML
-    private JFXButton btnOb;
+    private JFXButton btnRefresh;
 
     @FXML
     private ImageView close;
 
     @FXML
-    private ImageView minus;
+    private ImageView imgMinus;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,19 +47,22 @@ public class ControllerLogin implements Initializable {
     }
 
     public void btnauthOnAction(ActionEvent event ){
-        Alert c = new Alert(Alert.AlertType.INFORMATION);
+        Alert c = new Alert(Alert.AlertType.ERROR);
         c.setContentText("Nom d'utilisateur ou Mot de passe Incorrecte");
         c.initStyle(StageStyle.UTILITY);
         c.showAndWait();
 
     }
-    public void btnobOnAction(ActionEvent event){
+    public void btnrefreshOnAction(ActionEvent event){
         textLogin.setText("");
         textPwd.setText("");
     }
 
-    public void btncloseOnAction(ActionEvent event){
-
-       // System.exit(0);
+    public void btncloseOnMouseEvent(MouseEvent event){
+        System.exit(0);
+    }
+    public void btnminusOnMouseEvent(MouseEvent event){
+        Stage stage =(Stage)imgMinus.getScene().getWindow();
+        stage.toBack();
     }
 }
