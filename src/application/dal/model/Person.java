@@ -1,4 +1,4 @@
-package application.model.entity;
+package application.dal.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,4 +75,13 @@ public class Person {
    public void setEmail(String email) {
       this.email = email;
    }
+
+    public boolean containsInProps(String key) {
+      return getAddress().contains(key)
+              || getCin().contains(key)
+              || getEmail().contains(key)
+              || getTele().contains(key)
+              || getId().toString().contains(key)
+              || getFullName().contains(key);
+    }
 }

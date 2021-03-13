@@ -1,4 +1,4 @@
-package application.model.entity; /***********************************************************************
+package application.dal.model; /***********************************************************************
  * Module:  Certificat.java
  * Author:  W0L1D
  * Purpose: Defines the Class Certificat

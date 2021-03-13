@@ -1,7 +1,8 @@
-package application.model.dao;
+package application.dal.dao;
 
 import application.DbConnection.DbConnection;
-import application.model.entity.Dentiste;
+import application.dal.model.Dentiste;
+import application.dal.model.Ordonnance;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,63 +10,63 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Vector;
 
-public class DentisteDao implements IDao<Dentiste>, IDaoQuery {
-
+public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     private final PreparedStatement preStmInsert;
     private final PreparedStatement preStmUpdate;
     private final PreparedStatement preStmDelete;
     private final PreparedStatement stmSelectAll;
 
 
-    private Connection conn;
-
-    Vector<Dentiste> dentistes;
+    private Vector<Ordonnance> ordonnances;
 
 
-    public DentisteDao() throws SQLException {
 
-        conn = DbConnection.getConnection();
+    public OrdonnanceDao() throws SQLException {
+        Connection conn = DbConnection.getConnection();
 
-        stmSelectAll = conn.prepareStatement(SELECT_ALL_DENTISTS);
-        preStmInsert = conn.prepareStatement(INSERT_DENTISTS);
-        preStmUpdate = conn.prepareStatement(UPDATE_DENTISTS);
-        preStmDelete = conn.prepareStatement(DELETE_DENTISTS);
+        stmSelectAll = conn.prepareStatement(SELECT_ALL_ORDONNANCES);
+        preStmInsert = conn.prepareStatement(INSERT_ORDONNANCES);
+        preStmUpdate = conn.prepareStatement(UPDATE_ORDONNANCES);
+        preStmDelete = conn.prepareStatement(DELETE_ORDONNANCES);
+
 
     }
 
+
     @Override
-    public Vector<Dentiste> findAll() {
-        if (dentistes == null)
+    public Vector<Ordonnance> findAll() {
+        if (ordonnances == null)
             refresh();
-        return dentistes;
+        return ordonnances;
     }
 
     @Override
-    public Vector<Dentiste> selectAll() {
-        Vector<Dentiste> dentistes = new Vector<>();
+    public Vector<Ordonnance> selectAll() {
+        Vector<Ordonnance> ordonnances = new Vector<>();
 
         try(ResultSet rst = stmSelectAll.executeQuery()) {
             while (rst.next())
-                dentistes.add(new Dentiste(rst));
+                ordonnances.add(new Ordonnance(rst));
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        return dentistes;
+        return ordonnances;
     }
 
     @Override
     public void refresh() {
-        if (dentistes != null)
-            dentistes.clear();
-        dentistes = selectAll();
+        if (ordonnances != null)
+            ordonnances.clear();
+        ordonnances = selectAll();
     }
 
     @Override
-    public Dentiste find(long id) {
-        Optional<Dentiste> c = dentistes.stream()
-                .filter(dentiste -> dentiste.getId() == id)
+    public Ordonnance find(long id) {
+        Optional<Ordonnance> c = ordonnances.stream()
+                .filter(ordonnance -> ordonnance.getId() == id)
                 .findFirst();
         return (c.orElse(null));
+
     }
 
     @Override
@@ -73,6 +74,7 @@ public class DentisteDao implements IDao<Dentiste>, IDaoQuery {
         try {
             preStmDelete.setLong(1, id);
             preStmDelete.execute();
+            refresh();
             return true;
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -81,23 +83,26 @@ public class DentisteDao implements IDao<Dentiste>, IDaoQuery {
     }
 
     @Override
-    public boolean update(Dentiste o) {
+    public boolean update(Ordonnance o) {
         try {
             assignParams(preStmUpdate, o);
-            preStmUpdate.setLong(8, o.getId());
+            preStmUpdate.setLong(3, o.getId());
             preStmUpdate.execute();
+            refresh();
             return true;
         } catch (SQLException throwable) {
             throwable.printStackTrace();
             return false;
         }
+
     }
 
     @Override
-    public boolean insert(Dentiste o) {
+    public boolean insert(Ordonnance o) {
         try {
             assignParams(preStmInsert, o);
             preStmInsert.execute();
+            refresh();
             return true;
         } catch (SQLException throwable) {
             return false;
@@ -105,13 +110,10 @@ public class DentisteDao implements IDao<Dentiste>, IDaoQuery {
     }
 
     @Override
-    public void assignParams(PreparedStatement preStm, Dentiste o) throws SQLException {
-        preStm.setString(1, o.getFullName());
-        preStm.setString(2, o.getCin());
-        preStm.setString(3, o.getTele());
-        preStm.setString(4, o.getAddress());
-        preStm.setString(5, o.getEmail());
-        preStm.setString(6, o.getUsernm());
-        preStm.setString(7, o.getPasswd());
+    public void assignParams(PreparedStatement preStm, Ordonnance o) throws SQLException {
+        preStmInsert.setLong(1, o.getCliId());
+        preStmInsert.setLong(2, o.getVisId());
     }
+
+
 }
