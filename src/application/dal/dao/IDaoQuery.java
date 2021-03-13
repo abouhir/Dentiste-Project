@@ -3,6 +3,16 @@ package application.dal.dao;
 public interface IDaoQuery {
 
     /*
+    *
+    *   User login Check
+    *
+     */
+
+    String SELECT_USER = "SELECT * FROM ? WHERE usernm = ? and passwd = ?";
+
+
+
+    /*
      *   Client needed Queries
      *
      */
