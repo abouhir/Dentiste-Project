@@ -26,7 +26,7 @@
          </children>
       </AnchorPane>
    </top>
-   <center>
+   <bottom>
       <AnchorPane prefHeight="462.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="66.0" layoutY="61.0" text="Nom et Prenom : ">
@@ -54,42 +54,67 @@
                     <Font name="System Bold Italic" size="16.0" />
                 </font>
             </Label>
-            <JFXTextField layoutX="208.0" layoutY="61.0" prefHeight="26.0" prefWidth="238.0" promptText="Nom et Prenom">
+            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="61.0" prefHeight="26.0" prefWidth="238.0" promptText="Nom et Prenom">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="208.0" layoutY="115.0" prefHeight="26.0" prefWidth="238.0" promptText="Cin">
+            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="115.0" prefHeight="26.0" prefWidth="238.0" promptText="Cin">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="208.0" layoutY="166.0" prefHeight="26.0" prefWidth="238.0" promptText="Téléphone">
+            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="166.0" prefHeight="26.0" prefWidth="238.0" promptText="Téléphone">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="238.0" promptText="Adresse">
+            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="238.0" promptText="Adresse">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
+            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXButton layoutX="206.0" layoutY="359.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #4CAF50;" text="Ajouter" textFill="WHITE">
+            <JFXButton layoutX="202.0" layoutY="341.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #4CAF50;" text="Ajouter" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="206.0" layoutY="399.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
+            <JFXButton layoutX="202.0" layoutY="386.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXButton>
+            <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="452.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/username.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="452.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/cin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="452.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/tele.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="452.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/adresse.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="452.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/mail.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-   </center>
+   </bottom>
 </BorderPane>
