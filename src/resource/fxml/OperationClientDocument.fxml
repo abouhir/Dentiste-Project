@@ -17,17 +17,17 @@
             <Font name="Algerian" size="48.0" />
          </font>
       </Label>
-      <JFXButton layoutX="14.0" layoutY="115.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #4CAF50;" text="Ajouter" textFill="WHITE">
+      <JFXButton layoutX="6.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #4CAF50;" text="Ajouter" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="288.0" layoutY="115.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #f44336;" text="Modifier" textFill="WHITE">
+      <JFXButton layoutX="209.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #ffcc00;" text="Modifier" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="555.0" layoutY="115.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #008CBA;" text="Rendez-vous" textFill="#f8f8f8">
+      <JFXButton layoutX="614.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #008CBA;" text="Rendez-vous" textFill="#f8f8f8">
          <font>
             <Font size="18.0" />
          </font>
@@ -60,5 +60,10 @@
             <Image url="@../Icons/minus.png" />
          </image>
       </ImageView>
+      <JFXButton layoutX="412.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #f44336 #f44336;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
