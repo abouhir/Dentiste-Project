@@ -22,9 +22,7 @@ public class MedicsDao extends DefaultDao<Medicament> {
 
     private Vector<Medicament> medics;
 
-    public MedicsDao() throws SQLException {
-        Connection conn = DbConnection.getConnection();
-
+    public MedicsDao(Connection conn) throws SQLException {
 
         preStmSelectAll = conn.prepareStatement(SELECT_ALL_MEDICS);
         preStmInsert = conn.prepareStatement(INSERT_MEDICS);
@@ -66,7 +64,7 @@ public class MedicsDao extends DefaultDao<Medicament> {
 
     @Override
     public Medicament find(long id) {
-        Optional<Medicament> c = medics.stream()
+        Optional<Medicament> c = findAll().stream()
                 .filter(medicament -> medicament.getId() == id)
                 .findFirst();
         return (c.orElse(null));
@@ -74,7 +72,7 @@ public class MedicsDao extends DefaultDao<Medicament> {
 
     @Override
     public Medicament find(String name) {
-        Optional<Medicament> c = medics.stream()
+        Optional<Medicament> c = findAll().stream()
                 .filter(medicament -> medicament.getNom().equals(name))
                 .findFirst();
         return (c.orElse(null));

@@ -2,6 +2,7 @@ package application.dal.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Vector;
 
 /***********************************************************************
@@ -17,17 +18,25 @@ public class Ordonnance {
    private Long id;
    private Long cliId;
    private Long visId;
+   private Date date;
    private Vector<String> medics;
 
 
 
     public Ordonnance(ResultSet rst) throws SQLException {
-        setId(rst.getLong(1));
-        setCliId(rst.getLong(2));
-        setVisId(rst.getLong(3));
-
+        setId(rst.getLong("id"));
+        setCliId(rst.getLong("Cli_id"));
+        setVisId(rst.getLong("Vis_id"));
+        setDate(rst.getDate("ord_date"));
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Long getCliId() {
         return cliId;

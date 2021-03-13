@@ -22,9 +22,7 @@ public class DentisteDao extends DefaultDao<Dentiste> {
     Vector<Dentiste> dentistes;
 
 
-    public DentisteDao() throws SQLException {
-
-        Connection conn = DbConnection.getConnection();
+    public DentisteDao(Connection conn) throws SQLException {
 
         stmSelectAll = conn.prepareStatement(SELECT_ALL_DENTISTS);
         preStmInsert = conn.prepareStatement(INSERT_DENTISTS);
@@ -62,7 +60,7 @@ public class DentisteDao extends DefaultDao<Dentiste> {
 
     @Override
     public Dentiste find(long id) {
-        Optional<Dentiste> c = dentistes.stream()
+        Optional<Dentiste> c = findAll().stream()
                 .filter(dentiste -> dentiste.getId() == id)
                 .findFirst();
         return (c.orElse(null));

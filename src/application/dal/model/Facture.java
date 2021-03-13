@@ -1,4 +1,9 @@
-package application.dal.model; /***********************************************************************
+package application.dal.model;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/***********************************************************************
  * Module:  Facture.java
  * Author:  W0L1D
  * Purpose: Defines the Class Facture
@@ -7,19 +12,35 @@ package application.dal.model; /************************************************
 
 
 public class Facture {
-   private Long id;
-   private Double prixTotale;
+
+    private Double prixTotale;
+    private long cliId;
+    private long visId;
 
 
-   public Long getId() {
-      return id;
-   }
+    public Facture(ResultSet rst) throws SQLException {
+        setCliId(rst.getLong("Cli_id"));
+        setVisId(rst.getLong("vis_id"));
+        setPrixTotale(rst.getDouble("prixTotale"));
+    }
 
-   public void setId(Long id) {
-      this.id = id;
-   }
+    public long getCliId() {
+        return cliId;
+    }
 
-   public Double getPrixTotale() {
+    public void setCliId(long cliId) {
+        this.cliId = cliId;
+    }
+
+    public long getVisId() {
+        return visId;
+    }
+
+    public void setVisId(long visId) {
+        this.visId = visId;
+    }
+
+    public Double getPrixTotale() {
       return prixTotale;
    }
 

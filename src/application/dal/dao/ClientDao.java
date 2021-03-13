@@ -20,9 +20,7 @@ public class ClientDao extends DefaultDao<Client> {
 
 
 
-    public ClientDao() throws SQLException {
-        Connection conn = DbConnection.getConnection();
-
+    public ClientDao(Connection conn) throws SQLException {
         stmSelectAll = conn.prepareStatement(SELECT_ALL_CLIENTS);
         preStmInsert = conn.prepareStatement(INSERT_CLIENT);
         preStmUpdate = conn.prepareStatement(UPDATE_CLIENT);
@@ -59,7 +57,7 @@ public class ClientDao extends DefaultDao<Client> {
 
     @Override
     public Client find(long id) {
-        Optional<Client> c = clients.stream()
+        Optional<Client> c = findAll().stream()
                 .filter(client -> client.getId() == id)
                 .findFirst();
         return (c.orElse(null));

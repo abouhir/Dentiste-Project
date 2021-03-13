@@ -1,5 +1,11 @@
 package application.dal.model;
 
+import application.DbConnection.DbConnection;
+import application.dal.dao.OrdonnanceDao;
+import application.main.Main;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /***********************************************************************
@@ -11,54 +17,44 @@ import java.util.Date;
 
 public class Visite {
    private long id;
+   private long cliId;
+   private long dentId;
    private Date dateVisite;
    private String trait;
    private String remarque;
 
-   private Facture facture;
-   private Ordonnance ordonnance;
-   private Certificate certif;
 
-   public Visite(long id, Date dateVisite, String trait, String remarque) {
+   public Visite(long id, long cliId, long dentId, Date dateVisite, String trait, String remarque) {
       this.id = id;
+      this.cliId = cliId;
+      this.dentId = dentId;
       this.dateVisite = dateVisite;
       this.trait = trait;
       this.remarque = remarque;
    }
 
-   public Visite(long id, Date dateVisite, String trait, String remarque,
-                 Facture facture, Ordonnance ordonnance, Certificate certif) {
-      this.id = id;
-      this.dateVisite = dateVisite;
-      this.trait = trait;
-      this.remarque = remarque;
-      this.facture = facture;
-      this.ordonnance = ordonnance;
-      this.certif = certif;
+   public Visite(ResultSet rst) throws SQLException {
+      OrdonnanceDao ordDao = Main.getDaos().getOrdDao();
+      setId(rst.getLong("id"));
+      setDateVisite(rst.getDate("Vis_date"));
+      setTrait(rst.getString("vst_traitement"));
+      setRemarque(rst.getString("vst_remarque"));
    }
 
-   public Facture getFacture() {
-      return facture;
+   public long getCliId() {
+      return cliId;
    }
 
-   public void setFacture(Facture facture) {
-      this.facture = facture;
+   public void setCliId(long cliId) {
+      this.cliId = cliId;
    }
 
-   public Ordonnance getOrdonnance() {
-      return ordonnance;
+   public long getDentId() {
+      return dentId;
    }
 
-   public void setOrdonnance(Ordonnance ordonnance) {
-      this.ordonnance = ordonnance;
-   }
-
-   public Certificate getCertif() {
-      return certif;
-   }
-
-   public void setCertif(Certificate certif) {
-      this.certif = certif;
+   public void setDentId(long dentId) {
+      this.dentId = dentId;
    }
 
    public String getTrait() {

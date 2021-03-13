@@ -13,9 +13,7 @@ public class DefaultDao<T> implements IDao<T>, IDaoQuery {
     }
 
     @Override
-    public void refresh() {
-
-    }
+    public void refresh() {}
 
     @Override
     public Vector<T> selectAll() {
@@ -53,7 +51,5 @@ public class DefaultDao<T> implements IDao<T>, IDaoQuery {
     }
 
     @Override
-    public void assignParams(PreparedStatement preStm, T o) throws SQLException {
-
-    }
+    public void assignParams(PreparedStatement preStm, T o) throws SQLException {}
 }

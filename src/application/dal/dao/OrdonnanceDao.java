@@ -21,9 +21,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
 
 
-    public OrdonnanceDao() throws SQLException {
-        Connection conn = DbConnection.getConnection();
-
+    public OrdonnanceDao(Connection conn) throws SQLException {
         stmSelectAll = conn.prepareStatement(SELECT_ALL_ORDONNANCES);
         preStmInsert = conn.prepareStatement(INSERT_ORDONNANCES);
         preStmUpdate = conn.prepareStatement(UPDATE_ORDONNANCES);
@@ -31,6 +29,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
 
     }
+
 
 
     @Override
@@ -62,7 +61,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
     @Override
     public Ordonnance find(long id) {
-        Optional<Ordonnance> c = ordonnances.stream()
+        Optional<Ordonnance> c = findAll().stream()
                 .filter(ordonnance -> ordonnance.getId() == id)
                 .findFirst();
         return (c.orElse(null));

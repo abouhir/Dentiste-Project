@@ -13,9 +13,7 @@ public class UserDao extends DefaultDao<User> {
 
     PreparedStatement preStmCheckLogin;
 
-    public UserDao() throws SQLException {
-        Connection conn = DbConnection.getConnection();
-
+    public UserDao(Connection conn) throws SQLException {
         preStmCheckLogin = conn.prepareStatement(SELECT_USER);
     }
 

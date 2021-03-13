@@ -24,9 +24,7 @@ public class InfermierDao extends DefaultDao<Infermier> {
     Vector<Infermier> infermiers;
 
 
-    public InfermierDao() throws SQLException {
-
-        Connection conn = DbConnection.getConnection();
+    public InfermierDao(Connection conn) throws SQLException {
 
         stmSelectAll = conn.prepareStatement(SELECT_ALL_INFERMIERS);
         preStmInsert = conn.prepareStatement(INSERT_INFERMIERS);
@@ -64,7 +62,7 @@ public class InfermierDao extends DefaultDao<Infermier> {
 
     @Override
     public Infermier find(long id) {
-        Optional<Infermier> c = infermiers.stream()
+        Optional<Infermier> c = findAll().stream()
                 .filter(infermier -> infermier.getId() == id)
                 .findFirst();
         return (c.orElse(null));
