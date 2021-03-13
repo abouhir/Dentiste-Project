@@ -10,7 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +43,12 @@ public class ControllerAccueile implements Initializable {
 
     @FXML
     private AnchorPane content;
-    String str="Accueile";
+
+    @FXML
+    private ImageView close;
+
+    @FXML
+    private ImageView reduce;
 
     ObservableList<Model> list;
 
@@ -60,5 +68,19 @@ public class ControllerAccueile implements Initializable {
         coloneDate.setCellValueFactory(new PropertyValueFactory<Model, String>("Date"));
         tableRendez.setItems(list);
 
+    }
+
+    public void btncloseOnMouseEvent(MouseEvent event){
+        close();
+    }
+    public void btnreduceOnMouseEvent(MouseEvent event){ reduce(); }
+
+    public void close(){
+        Stage stage =(Stage)close.getScene().getWindow();
+        stage.close();
+    }
+    public void reduce(){
+        Stage stage =(Stage)reduce.getScene().getWindow();
+        stage.toBack();
     }
 }

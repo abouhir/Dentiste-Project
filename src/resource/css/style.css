@@ -1,0 +1,87 @@
+.drop{
+    -fx-border-radius: 30px 30px 30px 30px ;
+    -fx-background-color: blue;
+}
+.anchor{
+    -fx-background-color: #1E90FF;
+    -fx-background-radius: 30px 0px 30px 0px ;
+}
+.hbox{
+    -fx-background-radius: 30px 0px 30px 0px ;
+    -fx-background-color: #00BFFF;
+    -fx-effect: dropshadow(three-pass-box,black , 10, 0, 5, 10);
+}
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color:  #1E90FF;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+.table-view .cell{
+    -fx-cell-size: 50;
+
+    -fx-alignment: center-left;
+    -fx-background-color: white;
+    -fx-text-fill:black;
+    -fx-alignment: CENTER;
+
+}
+.table-row-cell:selected {
+    -fx-background-color: whitesmoke;
+    -fx-text-background-color: green;
+
+
+}
+
+/* scroll bar starts here */
+
+/* The increment and decrement button CSS class of scrollbar */
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+
+}
+
+/* The main scrollbar **track** CSS class  */
+/*.table-view .scroll-bar:horizontal .track,*/
+/*.table-view .scroll-bar:vertical .track{*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-border-color:derive( Black,80%);*/
+
+/*    -fx-background-radius: 2em;*/
+/*    -fx-border-radius:2em;*/
+/*}*/
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #00BFFF,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
+
+/* chart properties */
+
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-legend-visible: false;
+}
+.chart-plot-background {
+    -fx-background-color:transparent;
+}
+.table-view .table-row-cell:selected{
+    -fx-text-fill: white;
+    -fx-background-color: black;
+   -fx-border-color: red;
+
+}
+
+.chart-pie {
+    -fx-border-color: derive(-fx-pie-color, 1%);
+    -fx-border-width: 0px;
+}
