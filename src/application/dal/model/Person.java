@@ -25,7 +25,25 @@ public class Person {
       setTele(person.getString(4));
       setAddress(person.getString(5));
       setEmail(person.getString(6));
+   }
 
+
+   public Person(Long id, String fullName, String cin, String tele, String address, String email) {
+      this.id = id;
+      this.fullName = fullName;
+      this.cin = cin;
+      this.tele = tele;
+      this.address = address;
+      this.email = email;
+   }
+
+
+   public Person(String fullName, String cin, String tele, String address, String email) {
+      this.fullName = fullName;
+      this.cin = cin;
+      this.tele = tele;
+      this.address = address;
+      this.email = email;
    }
 
    public Long getId() {
