@@ -3,13 +3,13 @@ package application.dal.dao;
 import application.DbConnection.DbConnection;
 import application.dal.model.Dentiste;
 import application.dal.model.Infermier;
-
+import application.dal.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao implements IDaoQuery {
+public class UserDao extends DefaultDao<User> {
 
     PreparedStatement preStmCheckLogin;
 

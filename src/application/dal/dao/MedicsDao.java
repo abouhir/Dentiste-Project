@@ -3,8 +3,6 @@ package application.dal.dao;
 import application.DbConnection.DbConnection;
 import application.dal.model.Dentiste;
 import application.dal.model.Medicament;
-import application.dal.model.Medicament;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +10,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Vector;
 
-public class MedicsDao implements IDao<Medicament>, IDaoQuery{
+public class MedicsDao extends DefaultDao<Medicament> {
 
     private final PreparedStatement preStmInsert;
     private final PreparedStatement preStmUpdate;
@@ -71,6 +69,7 @@ public class MedicsDao implements IDao<Medicament>, IDaoQuery{
         return null;
     }
 
+    @Override
     public Medicament find(String name) {
         Optional<Medicament> c = medics.stream()
                 .filter(medicament -> medicament.getNom().equals(name))

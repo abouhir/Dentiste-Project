@@ -2,12 +2,14 @@ package application.dal.dao;
 
 import application.DbConnection.DbConnection;
 import application.dal.model.Client;
+import application.dal.model.Dentiste;
 
 import java.sql.*;
 import java.util.Optional;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
-public class ClientDao implements IDao<Client>, IDaoQuery {
+public class ClientDao extends DefaultDao<Client> {
     private final PreparedStatement preStmInsert;
     private final PreparedStatement preStmUpdate;
     private final PreparedStatement preStmDelete;
@@ -62,6 +64,13 @@ public class ClientDao implements IDao<Client>, IDaoQuery {
                 .findFirst();
         return (c.orElse(null));
 
+    }
+
+    @Override
+    public Vector<Client> findThatContains(String key) {
+        return findAll().stream()
+                .filter(c -> c.containsInProps(key))
+                .collect(Collectors.toCollection(Vector::new));
     }
 
     @Override

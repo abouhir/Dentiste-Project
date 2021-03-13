@@ -1,6 +1,7 @@
 package application.dal.dao;
 
 import application.DbConnection.DbConnection;
+import application.dal.model.Dentiste;
 import application.dal.model.Ordonnance;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Vector;
 
-public class OrdonnanceDao implements IDao<Ordonnance>, IDaoQuery{
+public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     private final PreparedStatement preStmInsert;
     private final PreparedStatement preStmUpdate;
     private final PreparedStatement preStmDelete;

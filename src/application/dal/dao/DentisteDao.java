@@ -1,6 +1,7 @@
 package application.dal.dao;
 
 import application.DbConnection.DbConnection;
+import application.dal.model.Client;
 import application.dal.model.Dentiste;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
-public class DentisteDao implements IDao<Dentiste>, IDaoQuery {
+public class DentisteDao extends DefaultDao<Dentiste> {
 
     private final PreparedStatement preStmInsert;
     private final PreparedStatement preStmUpdate;
@@ -64,6 +66,13 @@ public class DentisteDao implements IDao<Dentiste>, IDaoQuery {
                 .filter(dentiste -> dentiste.getId() == id)
                 .findFirst();
         return (c.orElse(null));
+    }
+
+    @Override
+    public Vector<Dentiste> findThatContains(String key) {
+        return findAll().stream()
+                .filter(c -> c.containsInProps(key))
+                .collect(Collectors.toCollection(Vector::new));
     }
 
     @Override
