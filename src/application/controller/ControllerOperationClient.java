@@ -36,11 +36,11 @@ public class ControllerOperationClient implements Initializable {
     public void btnreduceOnMouseEvent(MouseEvent event){reduce();}
 
 
-    public void switchStage(String name) throws IOException {
+    public void switchStage(String name ) throws IOException {
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(name));
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 948, 687));
+        primaryStage.setScene(new Scene(root, 600, 607));
         primaryStage.show();
     }
     public void close(){
