@@ -9,9 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
-public class ControllerAjouterClient implements Initializable {
+public class ControllerModifierClient implements Initializable {
 
     @FXML
     private JFXButton btnAnnuler;
@@ -20,7 +18,6 @@ public class ControllerAjouterClient implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
 
 
     public void btnannulerOnAction(ActionEvent event){

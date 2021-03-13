@@ -22,7 +22,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="209.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #ffcc00;" text="Modifier" textFill="WHITE">
+      <JFXButton layoutX="209.0" layoutY="115.0" onAction="#modifierOnAction" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #ffcc00;" text="Modifier" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -60,7 +60,7 @@
             <Image url="@../Icons/minus.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="412.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #f44336 #f44336;" text="Supprimer" textFill="WHITE">
+      <JFXButton layoutX="412.0" layoutY="115.0" onAction="#supprimerOnAction" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #f44336 #f44336;" text="Supprimer" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

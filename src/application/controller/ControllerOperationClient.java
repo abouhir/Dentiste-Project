@@ -30,6 +30,15 @@ public class ControllerOperationClient implements Initializable {
         switchStage("/resource/fxml/AjouterClientDocument.fxml");
     }
 
+    public void modifierOnAction(ActionEvent event) throws IOException {
+        switchStage("/resource/fxml/ModifierClientDcument.fxml");
+    }
+
+    public void supprimerOnAction(ActionEvent event) throws IOException {
+        switchStage("/resource/fxml/SupprimerClientDocument.fxml");
+    }
+
+
     public void btncloseOnMouseEvent(MouseEvent event){
         close();
     }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CntrollerModifierClient" >
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerModifierClient">
     <top>
         <AnchorPane prefHeight="145.0" prefWidth="600.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
             <children>
@@ -69,12 +69,12 @@
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="238.0" promptText="Adresse">
+                <JFXTextField fx:id="txtAdresse" focusColor="DODGERBLUE" layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="238.0" promptText="Adresse">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
+                <JFXTextField fx:id="txtEmail" focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -84,7 +84,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton layoutX="202.0" layoutY="386.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
+                <JFXButton fx:id="btnAnnuler" layoutX="202.0" layoutY="386.0" onAction="#btnannulerOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
