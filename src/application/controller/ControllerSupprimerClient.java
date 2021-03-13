@@ -44,6 +44,9 @@ public class ControllerSupprimerClient implements Initializable {
     public void btnannulerOnAction(ActionEvent event){
         close();
     }
+    public void btnsupprimerOnAction(){
+
+    }
 
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
