@@ -82,9 +82,9 @@ public interface IDaoQuery {
     String SELECT_ALL_MEDICS = "SELECT * FROM medicament;";
     String UPDATE_MEDICS =
             "UPDATE medicament SET medic_name = ?, medic_description = ?, " +
-                    "WHERE medic_name = ?" ;
+                    "WHERE id = ?" ;
     String INSERT_MEDICS =
             "INSERT INTO medicament VALUES (?, ?)";
-    String DELETE_MEDICS = "DELETE FROM medicament WHERE medic_name = ?";
+    String DELETE_MEDICS = "DELETE FROM medicament WHERE id = ?";
 
 }

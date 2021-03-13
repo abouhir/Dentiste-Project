@@ -66,7 +66,10 @@ public class MedicsDao extends DefaultDao<Medicament> {
 
     @Override
     public Medicament find(long id) {
-        return null;
+        Optional<Medicament> c = medics.stream()
+                .filter(medicament -> medicament.getId() == id)
+                .findFirst();
+        return (c.orElse(null));
     }
 
     @Override
@@ -75,6 +78,20 @@ public class MedicsDao extends DefaultDao<Medicament> {
                 .filter(medicament -> medicament.getNom().equals(name))
                 .findFirst();
         return (c.orElse(null));
+    }
+
+    public Vector<Medicament> findByOrd(long ordID) {
+        Vector<Medicament> medics = new Vector<>();
+        try {
+            preStmSelectByOrd.setLong(1, ordID);
+            ResultSet rst = preStmSelectByOrd.executeQuery();
+            while (rst.next())
+                medics.add(new Medicament(rst));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return medics;
     }
 
 
