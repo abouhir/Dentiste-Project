@@ -23,6 +23,9 @@ public class ControllerModifierClient implements Initializable {
     public void btnannulerOnAction(ActionEvent event){
         close();
     }
+    public void btnmodifierOnAction(){
+
+    }
 
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();

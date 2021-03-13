@@ -54,27 +54,27 @@
                     <Font name="System Bold Italic" size="16.0" />
                 </font>
             </Label>
-            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="61.0" prefHeight="26.0" prefWidth="238.0" promptText="Nom et Prenom">
+            <JFXTextField fx:id="txtFullName" focusColor="DODGERBLUE" layoutX="208.0" layoutY="61.0" prefHeight="26.0" prefWidth="238.0" promptText="Nom et Prenom">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="115.0" prefHeight="26.0" prefWidth="238.0" promptText="Cin">
+            <JFXTextField fx:id="txtCin" focusColor="DODGERBLUE" layoutX="208.0" layoutY="115.0" prefHeight="26.0" prefWidth="238.0" promptText="Cin">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="166.0" prefHeight="26.0" prefWidth="238.0" promptText="Téléphone">
+            <JFXTextField fx:id="txtTele" focusColor="DODGERBLUE" layoutX="208.0" layoutY="166.0" prefHeight="26.0" prefWidth="238.0" promptText="Téléphone">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="238.0" promptText="Adresse">
+            <JFXTextField fx:id="txtAdresse" focusColor="DODGERBLUE" layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="238.0" promptText="Adresse">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
+            <JFXTextField fx:id="txtEmail" focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
                <font>
                   <Font size="14.0" />
                </font>
