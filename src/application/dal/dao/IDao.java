@@ -1,4 +1,4 @@
-package application.model.dao;
+package application.dal.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -6,9 +6,8 @@ import java.util.Vector;
 
 public interface IDao<T> {
 
-
-
     public Vector<T> findAll();
+
     public void refresh();
 
     public Vector<T> selectAll();

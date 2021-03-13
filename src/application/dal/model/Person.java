@@ -1,4 +1,4 @@
-package application.model.entity;
+package application.dal.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
