@@ -12,13 +12,23 @@ import java.sql.SQLException;
 
 public class Medicament {
 
-   private String nom;
-   private String description;
+    private long id;
+    private String nom;
+    private String description;
 
     public Medicament(ResultSet rst) throws SQLException {
-        setNom(rst.getString(1));
-        setDescription(rst.getString(2));
+        setId(rst.getLong(1));
+        setNom(rst.getString(2));
+        setDescription(rst.getString(3));
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDescription() {
