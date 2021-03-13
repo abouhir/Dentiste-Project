@@ -84,7 +84,7 @@ public interface IDaoQuery {
             "UPDATE medicament SET medic_name = ?, medic_description = ?, " +
                     "WHERE id = ?" ;
     String INSERT_MEDICS =
-            "INSERT INTO medicament VALUES (?, ?)";
+            "INSERT INTO medicament VALUES (null, ?, ?)";
     String DELETE_MEDICS = "DELETE FROM medicament WHERE id = ?";
 
 }

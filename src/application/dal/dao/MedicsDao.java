@@ -110,16 +110,33 @@ public class MedicsDao extends DefaultDao<Medicament> {
 
     @Override
     public boolean update(Medicament o) {
-        return false;
+        try {
+            assignParams(preStmUpdate, o);
+            preStmUpdate.setLong(3, o.getId());
+            preStmUpdate.execute();
+            refresh();
+            return true;
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean insert(Medicament o) {
-        return false;
+        try {
+            assignParams(preStmInsert, o);
+            preStmInsert.execute();
+            refresh();
+            return true;
+        } catch (SQLException throwable) {
+            return false;
+        }
     }
 
     @Override
     public void assignParams(PreparedStatement preStm, Medicament o) throws SQLException {
-
+        preStm.setString(1, o.getNom());
+        preStm.setString(2, o.getDescription());
     }
 }
