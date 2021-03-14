@@ -17,9 +17,9 @@ public class Medicament {
     private String description;
 
     public Medicament(ResultSet rst) throws SQLException {
-        setId(rst.getLong(1));
-        setNom(rst.getString(2));
-        setDescription(rst.getString(3));
+        setId(rst.getLong("medic_id"));
+        setNom(rst.getString("medic_nom"));
+        setDescription(rst.getString("medic_description"));
 
     }
 

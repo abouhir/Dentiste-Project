@@ -7,32 +7,32 @@ import java.util.Date;
 /***********************************************************************
  * Module:  Certificat.java
  * Author:  W0L1D
- * Purpose: Defines the Class Certificat
+ * Purpose: Defines the Class Certificate
  ***********************************************************************/
 
 
 public class Certificate {
 
-   private long cliId;
+   private long id;
    private long visId;
    private String description;
    private int duree;
    private Date date;
 
     public Certificate(ResultSet rst) throws SQLException {
-       setCliId(rst.getLong("Cli_id"));
-       setVisId(rst.getLong("Vis_id"));
+       setId(rst.getLong("cert_id"));
+       setVisId(rst.getLong("fvst_id"));
        setDate(rst.getDate("cert_date"));
        setDescription(rst.getString("cert_description"));
        setDuree(rst.getInt("cert_duree"));
     }
 
-   public long getCliId() {
-      return cliId;
+   public long getId() {
+      return id;
    }
 
-   public void setCliId(long cliId) {
-      this.cliId = cliId;
+   public void setId(long id) {
+      this.id = id;
    }
 
    public long getVisId() {

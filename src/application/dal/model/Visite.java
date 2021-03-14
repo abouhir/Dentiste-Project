@@ -34,9 +34,8 @@ public class Visite {
    }
 
    public Visite(ResultSet rst) throws SQLException {
-      OrdonnanceDao ordDao = Main.getDaos().getOrdDao();
-      setId(rst.getLong("id"));
-      setDateVisite(rst.getDate("Vis_date"));
+      setId(rst.getLong("vst_id"));
+      setDateVisite(rst.getDate("vst_date"));
       setTrait(rst.getString("vst_traitement"));
       setRemarque(rst.getString("vst_remarque"));
    }
