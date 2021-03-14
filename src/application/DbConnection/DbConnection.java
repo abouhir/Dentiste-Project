@@ -17,15 +17,19 @@ public class DbConnection {
     private UserDao userDao;
     private OrdonnanceDao ordDao;
 
-    public DbConnection() throws SQLException {
+    public DbConnection() {
         cnx = getConnection();
-        clientDao = new ClientDao(cnx);
-        dentistDao = new DentisteDao(cnx);
-        infermierDao = new InfermierDao(cnx);
-        medicsDao = new MedicsDao(cnx);
-        visiteDao = new VisiteDao(cnx);
-        userDao = new UserDao(cnx);
-        ordDao = new OrdonnanceDao(cnx);
+        try {
+            clientDao = new ClientDao(cnx);
+            dentistDao = new DentisteDao(cnx);
+            infermierDao = new InfermierDao(cnx);
+            medicsDao = new MedicsDao(cnx);
+            visiteDao = new VisiteDao(cnx);
+            userDao = new UserDao(cnx);
+            ordDao = new OrdonnanceDao(cnx);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public ClientDao getClientDao() {

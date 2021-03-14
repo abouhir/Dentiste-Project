@@ -105,7 +105,8 @@ public class ClientDao extends DefaultDao<Client> {
             preStmInsert.executeUpdate();
             refresh();
             return true;
-        } catch (SQLException throwable) {
+        } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }

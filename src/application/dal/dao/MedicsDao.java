@@ -128,6 +128,7 @@ public class MedicsDao extends DefaultDao<Medicament> {
             refresh();
             return true;
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
             return false;
         }
     }

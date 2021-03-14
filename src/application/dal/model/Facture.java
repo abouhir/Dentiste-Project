@@ -13,23 +13,23 @@ import java.sql.SQLException;
 
 public class Facture {
 
-    private Double prixTotale;
-    private long cliId;
+    private long id;
     private long visId;
+    private Double prixTotale;
 
 
     public Facture(ResultSet rst) throws SQLException {
-        setCliId(rst.getLong("Cli_id"));
-        setVisId(rst.getLong("vis_id"));
-        setPrixTotale(rst.getDouble("prixTotale"));
+        setId(rst.getLong("fact_id"));
+        setVisId(rst.getLong("fvst_id"));
+        setPrixTotale(rst.getDouble("fact_prixTotale"));
     }
 
-    public long getCliId() {
-        return cliId;
+    public long getId() {
+        return id;
     }
 
-    public void setCliId(long cliId) {
-        this.cliId = cliId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getVisId() {

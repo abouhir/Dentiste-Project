@@ -16,7 +16,6 @@ import java.util.Vector;
 public class Ordonnance {
 
    private Long id;
-   private Long cliId;
    private Long visId;
    private Date date;
    private Vector<String> medics;
@@ -24,9 +23,8 @@ public class Ordonnance {
 
 
     public Ordonnance(ResultSet rst) throws SQLException {
-        setId(rst.getLong("id"));
-        setCliId(rst.getLong("Cli_id"));
-        setVisId(rst.getLong("Vis_id"));
+        setId(rst.getLong("ord_id"));
+        setVisId(rst.getLong("fvst_id"));
         setDate(rst.getDate("ord_date"));
     }
 
@@ -38,13 +36,6 @@ public class Ordonnance {
         this.date = date;
     }
 
-    public Long getCliId() {
-        return cliId;
-    }
-
-    public void setCliId(Long cliId) {
-        this.cliId = cliId;
-    }
 
     public Long getVisId() {
         return visId;

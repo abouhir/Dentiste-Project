@@ -107,6 +107,7 @@ public class InfermierDao extends DefaultDao<Infermier> {
             preStmInsert.execute();
             return true;
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
             return false;
         }
     }

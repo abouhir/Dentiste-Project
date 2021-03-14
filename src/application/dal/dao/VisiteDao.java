@@ -107,6 +107,7 @@ public class VisiteDao extends DefaultDao<Visite> {
             refresh();
             return true;
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
             return false;
         }
     }
