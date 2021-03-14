@@ -1,6 +1,7 @@
 package application.main;
 
 import application.DbConnection.DbConnection;
+import application.dal.model.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +21,12 @@ public class Main extends Application {
         primaryStage.show();
 
         daos = new DbConnection();
+
+        boolean check = daos.getClientDao().insert(new Client(0l, "efsef", "dsfsdf", "dsfsdf", "dsfsdf", "dsfsdf"));
+        if (check) {
+            System.out.println("545774784797 successfuly");
+        } else
+            System.out.println("565464564sd6fv4s6d4fv4x6");
     }
 
 

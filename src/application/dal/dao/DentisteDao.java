@@ -108,6 +108,7 @@ public class DentisteDao extends DefaultDao<Dentiste> {
             refresh();
             return true;
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
             return false;
         }
     }

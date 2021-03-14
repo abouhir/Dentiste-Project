@@ -104,6 +104,8 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
             refresh();
             return true;
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
+
             return false;
         }
     }
