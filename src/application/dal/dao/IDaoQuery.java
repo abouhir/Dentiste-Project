@@ -7,7 +7,6 @@ public interface IDaoQuery {
     *   User login Check
     *
      */
-
     String SELECT_USER_DENTIST = "SELECT * FROM dentiste WHERE dent_usernm = ? and dent_passwd = ?";
     String SELECT_USER_INFERMIER = "SELECT * FROM infermier WHERE inf_usernm = ? and inf_passwd = ?";
 
@@ -15,7 +14,6 @@ public interface IDaoQuery {
 
     /*
      *   Client needed Queries
-     *
      */
     String SELECT_ALL_CLIENTS = "SELECT * FROM client;";
     String UPDATE_CLIENT =
@@ -30,7 +28,6 @@ public interface IDaoQuery {
 
     /*
     *   Infermier needed Queries
-    *
      */
     String SELECT_ALL_INFERMIERS = "SELECT * FROM infermier;";
     String UPDATE_INFERMIERS =
@@ -45,7 +42,6 @@ public interface IDaoQuery {
 
     /*
      *   Dentist needed Queries
-     *
      */
     String SELECT_ALL_DENTISTS = "SELECT * FROM dentiste;";
     String UPDATE_DENTISTS =
@@ -61,7 +57,6 @@ public interface IDaoQuery {
 
     /*
      *   Ordonnance needed Queries
-     *
      */
     String SELECT_ALL_ORDONNANCES = "SELECT * FROM ordonnance;";
     String UPDATE_ORDONNANCES =
@@ -76,7 +71,6 @@ public interface IDaoQuery {
 
     /*
      *   Medicaments needed Queries
-     *
      */
     String SELECT_MEDICS_BY_ORDONNANCE = "SELECT m.* FROM medicament m, contenir c WHERE c.ford_id = ?";
 
@@ -92,7 +86,6 @@ public interface IDaoQuery {
 
     /*
      *   Visite needed Queries
-     *
      */
     String SELECT_ALL_VISITES = "SELECT * FROM visite";
     String UPDATE_VISITES =
@@ -104,5 +97,22 @@ public interface IDaoQuery {
             "(id, vst_date, cli_id, den_id, vst_traitement, vst_remarque)" +
             " VALUES (null, null, ?, ?, ?, ?)";
     String DELETE_VISITES = "DELETE FROM visite WHERE id = ?";
+
+
+
+
+    /*
+     *   Medicaments needed Queries
+     */
+    String SELECT_ALL_RDV = "SELECT * FROM rendezvous";
+    String SELECT_ALL_BY_CLI = "SELECT * FROM rendezvous WHERE fcli_id = ?";
+    String UPDATE_RDV =
+            "UPDATE rendezvous SET finf_id = ?, fcli_id = ?, " +
+                    "rdv_date = ?, rdv_createdAt = current_timestamp" +
+                    "WHERE rdv_id = ?" ;
+    String INSERT_RDV =
+            "INSERT INTO rendezvous VALUES (null, ?, ?, ?, null)";
+    String DELETE_RDV = "DELETE FROM medicament WHERE rdv_id = ?";
+
 
 }
