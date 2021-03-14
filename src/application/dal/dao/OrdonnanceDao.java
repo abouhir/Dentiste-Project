@@ -85,7 +85,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     public boolean update(Ordonnance o) {
         try {
             assignParams(preStmUpdate, o);
-            preStmUpdate.setLong(3, o.getId());
+            preStmUpdate.setLong(2, o.getId());
             preStmUpdate.execute();
             refresh();
             return true;
@@ -112,8 +112,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
     @Override
     public void assignParams(PreparedStatement preStm, Ordonnance o) throws SQLException {
-        preStmInsert.setLong(1, o.getCliId());
-        preStmInsert.setLong(2, o.getVisId());
+        preStmInsert.setLong(1, o.getVisId());
     }
 
 
