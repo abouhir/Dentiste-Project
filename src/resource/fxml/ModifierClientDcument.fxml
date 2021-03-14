@@ -74,7 +74,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField fx:id="txtEmail" focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
+                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
                     <font>
                         <Font size="14.0" />
                     </font>

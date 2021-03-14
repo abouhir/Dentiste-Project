@@ -102,7 +102,7 @@ public class ClientDao extends DefaultDao<Client> {
     public boolean insert(Client o) {
         try {
             assignParams(preStmInsert, o);
-            preStmInsert.execute();
+            preStmInsert.executeUpdate();
             refresh();
             return true;
         } catch (SQLException throwable) {
