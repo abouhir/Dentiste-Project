@@ -57,14 +57,16 @@ public class ControllerLogin implements Initializable {
     }
 
     public void btnauthOnAction(ActionEvent event ) throws IOException, SQLException {
-        dentist = Main.getDaos().getUserDao().checkDentistLogin(txtLogin.getText()+"",txtPwd.getText()+"");
-        if(dentist!=null) {
-            switchStage();
-            close();
-        }
-        else{
-            System.out.println("error");
-        }
+        //dentist = Main.getDaos().getUserDao().checkDentistLogin(txtLogin.getText()+"",txtPwd.getText()+"");
+        switchStage();
+         close();
+        //       if(dentist!=null) {
+//            switchStage();
+//            close();
+//        }
+//        else{
+//            System.out.println("error");
+//        }
     }
     public void btnrefreshOnAction(ActionEvent event){
         txtLogin.setText("");

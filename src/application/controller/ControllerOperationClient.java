@@ -50,7 +50,7 @@ public class ControllerOperationClient implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource(name));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 600, 607));
-        primaryStage.show();
+        primaryStage.showAndWait();
     }
     public void close(){
         Stage stage =(Stage)close.getScene().getWindow();
