@@ -9,7 +9,11 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,7 +23,8 @@ import java.util.ResourceBundle;
 
 public class ControllerAjouterClient implements Initializable {
     private Client client;
-   // private DbConnection cnx = new DbConnection();
+    private  Alert message;
+    private boolean b;
 
     @FXML
     private JFXButton btnAnnuler;
@@ -55,15 +60,14 @@ public class ControllerAjouterClient implements Initializable {
         close();
     }
     public void btnajouterOnAction(){
-        System.out.println("click");
-        client =new Client(null,txtFullName+"",txtCin+"",txtTele+"",txtAdresse+"",txtEmail+"");
-        boolean b= Main.getDaos().getClientDao().insert(client);
+        client =new Client(3L,txtFullName.getText()+"",txtCin.getText()+"",txtTele.getText()+"",txtAdresse.getText()+"",txtEmail.getText()+"");
+        b= Main.getDaos().getClientDao().insert(client);
         if(b){
-            System.out.println("ajouter");
+            message("/resource/Icons/success.png","SUCCESS","Le Cient "+txtFullName.getText()+" Est Ajouter");
+            close();
         }
         else{
-            System.out.println(" not ajouter");
-
+            message("/resource/Icons/failed.png","ERROR","Le Cient "+txtFullName.getText()+" n\'est pas  Ajouter");
         }
 
     }
@@ -71,5 +75,15 @@ public class ControllerAjouterClient implements Initializable {
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
         stage.close();
+    }
+    public void  message(String img,String alertType,String msg){
+        message = new Alert(Alert.AlertType.INFORMATION);
+        Stage stage = (Stage) message.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(this.getClass().getResource(img).toString()));
+        message.setGraphic(new ImageView(this.getClass().getResource(img).toString()));
+        message.setTitle(alertType);
+        message.setHeaderText(null);
+        message.setContentText(msg);
+        message.showAndWait();
     }
 }

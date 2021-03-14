@@ -8,7 +8,7 @@ public interface IDaoQuery {
     *
      */
 
-    String SELECT_USER = "SELECT * FROM ? WHERE usernm = ? and passwd = ?";
+    String SELECT_USER = "SELECT * FROM ? WHERE usernm = '?' and passwd = '?'";
 
 
 
