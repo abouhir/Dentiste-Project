@@ -14,4 +14,5 @@ public class Dentiste extends User {
     public Dentiste(ResultSet person) throws SQLException {
         super(person);
     }
+
 }

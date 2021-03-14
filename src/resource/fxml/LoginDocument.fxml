@@ -15,7 +15,7 @@
    <left>
       <AnchorPane prefHeight="559.0" prefWidth="350.0" style="-fx-background-color: #00BFFF;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="dentist" fitHeight="200.0" fitWidth="300.0" layoutX="25.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView  fitHeight="200.0" fitWidth="300.0" layoutX="25.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/dentist.png" />
                </image>
@@ -26,7 +26,7 @@
    <right>
       <AnchorPane prefHeight="530.0" prefWidth="551.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="textLogin" focusColor="DODGERBLUE" layoutX="71.0" layoutY="205.0" prefHeight="26.0" prefWidth="256.0" promptText="Nom d'utilisateur">
+            <JFXTextField fx:id="txtLogin" focusColor="DODGERBLUE" layoutX="71.0" layoutY="205.0" prefHeight="26.0" prefWidth="256.0" promptText="Nom d'utilisateur">
                <font>
                   <Font size="14.0" />
                </font></JFXTextField>
@@ -39,7 +39,7 @@
                <font>
                   <Font size="14.0" />
                </font></JFXButton>
-            <JFXPasswordField fx:id="textPwd" focusColor="DODGERBLUE" layoutX="70.0" layoutY="290.0" prefHeight="26.0" prefWidth="258.0" promptText="Mot de passe">
+            <JFXPasswordField fx:id="txtPwd" focusColor="DODGERBLUE" layoutX="70.0" layoutY="290.0" prefHeight="26.0" prefWidth="258.0" promptText="Mot de passe">
                <font>
                   <Font size="14.0" />
                </font>

@@ -1,5 +1,8 @@
 package application.controller;
 
+import application.dal.model.Dentiste;
+import application.dal.model.User;
+import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -10,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,18 +22,23 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
 public class ControllerLogin implements Initializable {
+    private Alert message;
+    private User user;
+    private Dentiste dentist;
     @FXML
-    private JFXTextField textLogin;
+    private JFXTextField txtLogin;
 
     @FXML
     private JFXButton btnAuth;
 
     @FXML
-    private JFXPasswordField textPwd;
+    private JFXPasswordField txtPwd;
 
     @FXML
     private JFXButton btnRefresh;
@@ -46,18 +56,19 @@ public class ControllerLogin implements Initializable {
 
     }
 
-    public void btnauthOnAction(ActionEvent event ) throws IOException {
+    public void btnauthOnAction(ActionEvent event ) throws IOException, SQLException {
+        dentist = Main.getDaos().getUserDao().checkDentistLogin(txtLogin.getText()+"",txtPwd.getText()+"");
+        if(dentist!=null) {
             switchStage();
             close();
-//        Alert c = new Alert(Alert.AlertType.ERROR);
-//        c.setContentText("Nom d'utilisateur ou Mot de passe Incorrecte");
-//        c.initStyle(StageStyle.UTILITY);
-//        c.showAndWait();
-
+        }
+        else{
+            System.out.println("error");
+        }
     }
     public void btnrefreshOnAction(ActionEvent event){
-        textLogin.setText("");
-        textPwd.setText("");
+        txtLogin.setText("");
+        txtPwd.setText("");
     }
 
     public void btncloseOnMouseEvent(MouseEvent event){
@@ -80,5 +91,15 @@ public class ControllerLogin implements Initializable {
     public void reduce(){
         Stage stage =(Stage)reduce.getScene().getWindow();
         stage.toBack();
+    }
+    public void  message(String img,String alertType,String msg){
+        message = new Alert(Alert.AlertType.INFORMATION);
+        Stage stage = (Stage) message.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(this.getClass().getResource(img).toString()));
+        message.setGraphic(new ImageView(this.getClass().getResource(img).toString()));
+        message.setTitle(alertType);
+        message.setHeaderText(null);
+        message.setContentText(msg);
+        message.showAndWait();
     }
 }
