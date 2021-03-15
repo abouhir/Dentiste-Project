@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.dal.model.Dentiste;
+import application.dal.model.Infermier;
 import application.dal.model.User;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
@@ -31,6 +32,8 @@ public class ControllerLogin implements Initializable {
     private Alert message;
     private User user;
     private Dentiste dentist;
+    private Infermier infermier;
+
     @FXML
     private JFXTextField txtLogin;
 
@@ -57,16 +60,19 @@ public class ControllerLogin implements Initializable {
     }
 
     public void btnauthOnAction(ActionEvent event ) throws IOException, SQLException {
-        //dentist = Main.getDaos().getUserDao().checkDentistLogin(txtLogin.getText()+"",txtPwd.getText()+"");
-        switchStage();
-         close();
-        //       if(dentist!=null) {
-//            switchStage();
-//            close();
-//        }
-//        else{
-//            System.out.println("error");
-//        }
+        dentist = Main.getDaos().getUserDao().checkDentistLogin(txtLogin.getText()+"",txtPwd.getText()+"");
+        infermier=Main.getDaos().getUserDao().checkInfermierLogin(txtLogin.getText()+"",txtPwd.getText()+"");
+        if(dentist!=null) {
+            switchStage();
+            close();
+        }
+        else if(infermier!=null){
+            switchStage();
+            close();
+        }
+        else{
+            message("/resource/Icons/failed.png","ERROR","Nom d\'utilisateur ou mot de passe incoreccte");
+        }
     }
     public void btnrefreshOnAction(ActionEvent event){
         txtLogin.setText("");

@@ -51,7 +51,7 @@ public class ControllerOperations implements Initializable {
         close();
     }
     public void btnajouterOnAction(){
-        client =new Client(3L,txtFullName.getText()+"",txtCin.getText()+"",txtTele.getText()+"",txtAdresse.getText()+"",txtEmail.getText()+"");
+        client =new Client(null,txtFullName.getText()+"",txtCin.getText()+"",txtTele.getText()+"",txtAdresse.getText()+"",txtEmail.getText()+"");
         b= Main.getDaos().getClientDao().insert(client);
         if(b){
             message("/resource/Icons/success.png","SUCCESS","Le Cient "+txtFullName.getText()+" Est Ajouter");

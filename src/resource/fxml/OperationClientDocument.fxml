@@ -32,12 +32,13 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="7.0" layoutY="204.0" prefHeight="483.0" prefWidth="802.0" stylesheets="@../css/style.css">
+      <TableView fx:id="tableClient" layoutX="7.0" layoutY="204.0" prefHeight="483.0" prefWidth="802.0" stylesheets="@../css/style.css">
         <columns>
-          <TableColumn prefWidth="169.60000002384186" text="Cin" />
-          <TableColumn prefWidth="152.0" text="Nom" />
-            <TableColumn prefWidth="194.39999389648438" text="Prenom" />
-            <TableColumn prefWidth="282.4000244140625" text="Télephone" />
+          <TableColumn fx:id="coloneCin" prefWidth="105.60000896453857" text="Cin" />
+          <TableColumn fx:id="coloneFullName" prefWidth="159.2000274658203" text="Nom et Prenom" />
+            <TableColumn fx:id="coloneAdresse" prefWidth="227.199951171875" text="Adresse" />
+            <TableColumn fx:id="coloneTele" minWidth="0.0" prefWidth="160.800048828125" text="Télephone" />
+            <TableColumn fx:id="coloneEmail" prefWidth="143.0" text="Email" />
         </columns>
       </TableView>
       <JFXTextField focusColor="DODGERBLUE" layoutX="229.0" layoutY="167.0" prefHeight="26.0" prefWidth="309.0" promptText="Recherche(CIN)">

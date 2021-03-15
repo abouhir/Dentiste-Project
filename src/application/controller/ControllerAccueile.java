@@ -20,8 +20,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerAccueile implements Initializable {
-    @FXML
-    private JFXButton btnAccueile;
 
     @FXML
     private TableView<Model> tableRendez;
@@ -37,12 +35,6 @@ public class ControllerAccueile implements Initializable {
 
     @FXML
     private TableColumn<Model,String> coloneDate;
-
-    @FXML
-    private JFXButton btnClient;
-
-    @FXML
-    private AnchorPane content;
 
     @FXML
     private ImageView close;

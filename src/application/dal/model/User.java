@@ -3,11 +3,7 @@ package application.dal.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/***********************************************************************
- * Module:  User.java
- * Author:  W0L1D
- * Purpose: Defines the Class User
- ***********************************************************************/
+
 
 public class User extends Person {
    private String usernm;
