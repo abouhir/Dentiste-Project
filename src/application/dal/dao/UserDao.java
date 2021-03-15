@@ -11,19 +11,20 @@ import java.sql.SQLException;
 
 public class UserDao extends DefaultDao<User> {
 
-    PreparedStatement preStmCheckLogin;
+    PreparedStatement preStmCheckLogind;
+    PreparedStatement preStmCheckLoginf;
 
     public UserDao(Connection conn) throws SQLException {
-        preStmCheckLogin = conn.prepareStatement(SELECT_USER);
+        preStmCheckLogind = conn.prepareStatement(SELECT_USER_DENTIST);
+        preStmCheckLoginf = conn.prepareStatement(SELECT_USER_INFERMIER);
     }
 
     public Dentiste checkDentistLogin(String username, String password) {
         Dentiste d = null;
         try {
-            preStmCheckLogin.setString(1, "dentiste");
-            preStmCheckLogin.setString(2, username);
-            preStmCheckLogin.setString(3, password);
-            ResultSet rst = preStmCheckLogin.executeQuery();
+            preStmCheckLogind.setString(1, username);
+            preStmCheckLogind.setString(2, password);
+            ResultSet rst = preStmCheckLogind.executeQuery();
             if (rst.next())
                 d = new Dentiste(rst);
         } catch (SQLException e) {
@@ -36,8 +37,9 @@ public class UserDao extends DefaultDao<User> {
     public Infermier checkInfermierLogin(String username, String password) {
         Infermier i = null;
         try {
-            preStmCheckLogin.setString(1, "infermier");
-            ResultSet rst = preStmCheckLogin.executeQuery();
+            preStmCheckLoginf.setString(1, username);
+            preStmCheckLoginf.setString(2, password);
+            ResultSet rst = preStmCheckLogind.executeQuery();
             if (rst.next())
                 i = new Infermier(rst);
         } catch (SQLException e) {

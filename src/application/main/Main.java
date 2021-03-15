@@ -1,7 +1,6 @@
 package application.main;
 
 import application.DbConnection.DbConnection;
-import application.dal.model.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +13,7 @@ public class Main extends Application {
     private static DbConnection daos;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginDocument.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 777, 559));
