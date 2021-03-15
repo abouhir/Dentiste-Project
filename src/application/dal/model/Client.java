@@ -12,6 +12,11 @@ import java.sql.SQLException;
 public class Client extends Person {
 
 
+    public Client(){
+        super();
+
+    }
+
     public Client(ResultSet rst) throws SQLException {
         super(rst);
     }

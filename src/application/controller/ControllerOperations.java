@@ -17,9 +17,12 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ControllerOperations implements Initializable {
+    ControllerOperationClient ctc ;
     private Client client;
     private Alert message;
     private boolean b;
+
+    private String str="malkom";
 
     @FXML
     private JFXButton btnAnnuler;
@@ -42,7 +45,7 @@ public class ControllerOperations implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        System.out.println(client.getFullName());
     }
 
 
@@ -56,6 +59,8 @@ public class ControllerOperations implements Initializable {
         if(b){
             message("/resource/Icons/success.png","SUCCESS","Le Cient "+txtFullName.getText()+" Est Ajouter");
             close();
+
+
         }
         else{
             message("/resource/Icons/failed.png","ERROR","Le Cient "+txtFullName.getText()+" n\'est pas  Ajouter");
@@ -81,4 +86,13 @@ public class ControllerOperations implements Initializable {
         message.showAndWait();
     }
 
+    public void setClient(Client client){
+        System.out.println("set :" +client.getFullName());
+        this.client=client;
+        System.out.println("obj : "+this.client.getFullName());
+
+    }
+    public String getStr(){
+        return str;
+    }
 }

@@ -18,6 +18,8 @@ public class Person {
    private String address;
    private String email;
 
+   public Person(){}
+
    public Person(ResultSet person) throws SQLException {
       setId(person.getLong(1));
       setFullName(person.getString(2));

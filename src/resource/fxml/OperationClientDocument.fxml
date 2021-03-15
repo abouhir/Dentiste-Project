@@ -27,12 +27,12 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="614.0" layoutY="115.0" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #008CBA;" text="Rendez-vous" textFill="#f8f8f8">
+      <JFXButton fx:id="btn" layoutX="614.0" layoutY="115.0" onAction="#refreshOnAction" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #008CBA;" text="Rendez-vous" textFill="#f8f8f8">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tableClient" layoutX="7.0" layoutY="204.0" prefHeight="483.0" prefWidth="802.0" stylesheets="@../css/style.css">
+      <TableView fx:id="tableClient" layoutX="7.0" layoutY="204.0" onMousePressed="#tableOnMousePresseed" prefHeight="483.0" prefWidth="802.0" stylesheets="@../css/style.css">
         <columns>
           <TableColumn fx:id="coloneCin" prefWidth="105.60000896453857" text="Cin" />
           <TableColumn fx:id="coloneFullName" prefWidth="159.2000274658203" text="Nom et Prenom" />
