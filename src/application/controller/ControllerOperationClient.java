@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class ControllerOperationClient implements Initializable {
-    private Client client;
+    private static Client client;
 
     private Vector<Client> clientVector;
     @FXML
@@ -58,15 +58,17 @@ public class ControllerOperationClient implements Initializable {
     private ImageView reduce;
 
     @FXML
-    private JFXButton btn;
+    private ImageView imgRecherche;
 
-    ControllerOperations op = new ControllerOperations();
-
+    @FXML
+    private JFXTextField txtRecherche;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-            updateTable();
+        clientVector= Main.getDaos().getClientDao().selectAll();
+        updateTable(clientVector);
+        tableClient.getSelectionModel().selectFirst();
+        ControllerOperationClient.client=tableClient.getSelectionModel().getSelectedItem();
     }
 
     public void ajouterOnAction(ActionEvent event) throws IOException {
@@ -81,14 +83,20 @@ public class ControllerOperationClient implements Initializable {
         switchStage("/resource/fxml/SupprimerClientDocument.fxml");
     }
 
+    public void btnrechercheOnMouseEvent(MouseEvent event){
+        clientVector.clear();
+        clientVector.add(Main.getDaos().getClientDao().find(Long.parseLong(txtRecherche.getText())));
+        updateTable(clientVector);
+
+    }
+
 
     public void btncloseOnMouseEvent(MouseEvent event){
         close();
     }
     public void btnreduceOnMouseEvent(MouseEvent event){reduce();}
 
-    public void updateTable(){
-        clientVector= Main.getDaos().getClientDao().selectAll();
+    public void updateTable(Vector<Client> clientVector){
         list = FXCollections.observableArrayList(clientVector);
         coloneCin.setCellValueFactory(new PropertyValueFactory<Client, String>("Cin"));
         coloneFullName.setCellValueFactory(new PropertyValueFactory<Client, String>("FullName"));
@@ -98,16 +106,14 @@ public class ControllerOperationClient implements Initializable {
         tableClient.setItems(list);
     }
     public void tableOnMousePresseed(MouseEvent event){
-        client=tableClient.getSelectionModel().getSelectedItem();
-        System.out.println(client.getFullName());
-        op.setClient(client);
+        ControllerOperationClient.client=tableClient.getSelectionModel().getSelectedItem();
+    }
+    public static Client getClient(){
+        return client;
     }
 
-
-
     public void refreshOnAction(ActionEvent event){
-        updateTable();
-
+        updateTable(clientVector);
     }
 
 
@@ -126,4 +132,5 @@ public class ControllerOperationClient implements Initializable {
         Stage stage =(Stage)reduce.getScene().getWindow();
         stage.toBack();
     }
+
 }

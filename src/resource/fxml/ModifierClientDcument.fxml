@@ -54,17 +54,17 @@
                         <Font name="System Bold Italic" size="16.0" />
                     </font>
                 </Label>
-                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="61.0" prefHeight="26.0" prefWidth="238.0" promptText="Nom et Prenom">
+                <JFXTextField fx:id="txtFullName" focusColor="DODGERBLUE" layoutX="208.0" layoutY="61.0" prefHeight="26.0" prefWidth="238.0" promptText="Nom et Prenom">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="115.0" prefHeight="26.0" prefWidth="238.0" promptText="Cin">
+                <JFXTextField fx:id="txtCin" focusColor="DODGERBLUE" layoutX="208.0" layoutY="115.0" prefHeight="26.0" prefWidth="238.0" promptText="Cin">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="166.0" prefHeight="26.0" prefWidth="238.0" promptText="Téléphone">
+                <JFXTextField fx:id="txtTele" focusColor="DODGERBLUE" layoutX="208.0" layoutY="166.0" prefHeight="26.0" prefWidth="238.0" promptText="Téléphone">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -74,12 +74,12 @@
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
+                <JFXTextField fx:id="txtEmail" focusColor="DODGERBLUE" layoutX="208.0" layoutY="266.0" prefHeight="26.0" prefWidth="238.0" promptText="Email">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXButton layoutX="202.0" layoutY="341.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffcc00;" text="Modifier" textFill="WHITE">
+                <JFXButton layoutX="202.0" layoutY="341.0" onAction="#btnmodifierOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffcc00;" text="Modifier" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>

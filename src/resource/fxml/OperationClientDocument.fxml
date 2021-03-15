@@ -41,12 +41,12 @@
             <TableColumn fx:id="coloneEmail" prefWidth="143.0" text="Email" />
         </columns>
       </TableView>
-      <JFXTextField focusColor="DODGERBLUE" layoutX="229.0" layoutY="167.0" prefHeight="26.0" prefWidth="309.0" promptText="Recherche(CIN)">
+      <JFXTextField fx:id="txtRecherche" focusColor="DODGERBLUE" layoutX="229.0" layoutY="167.0" prefHeight="26.0" prefWidth="309.0" promptText="Recherche(CIN)">
          <font>
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="515.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgRecherche" fitHeight="25.0" fitWidth="35.0" layoutX="515.0" layoutY="169.0" onMouseClicked="#btnrechercheOnMouseEvent" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Icons/search.png" />
          </image>

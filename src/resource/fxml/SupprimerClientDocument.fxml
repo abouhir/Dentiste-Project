@@ -79,7 +79,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXButton layoutX="202.0" layoutY="341.0" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #f44336;" text="Supprimer" textFill="WHITE">
+                <JFXButton layoutX="202.0" layoutY="341.0" onAction="#btnsupprimerOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #f44336;" text="Supprimer" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
