@@ -28,7 +28,7 @@ public class DbConnection {
             visiteDao = new VisiteDao(cnx);
             userDao = new UserDao(cnx);
             ordDao = new OrdonnanceDao(cnx);
-            rdvDao = new RdvDao(cnx);
+            rdvDao = new RdvDao(cnx, clientDao);
         } catch (SQLException e) {
             e.printStackTrace();
         }
