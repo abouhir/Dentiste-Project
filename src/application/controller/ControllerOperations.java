@@ -1,29 +1,36 @@
 package application.controller;
 
 import application.dal.model.Client;
+import application.dal.model.RendezVous;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
+import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.SimpleFormatter;
 
 public class ControllerOperations implements Initializable {
 
     private Client client;
-    private Alert message,confirmer;
+    private RendezVous rdv;
+    private Alert message, confirmer;
     private boolean b;
+    private Date dateRdv ;
 
     @FXML
     private JFXButton btnAnnuler;
@@ -43,15 +50,26 @@ public class ControllerOperations implements Initializable {
     @FXML
     private JFXTextField txtEmail;
 
+    @FXML
+    private JFXButton btnAjouter;
+
+    private boolean isAjout;
+
+    @FXML
+    private DatePicker txtRdv;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       client=ControllerOperationClient.getClient();
-       txtFullName.setText(client.getFullName());
-       txtTele.setText(client.getTele());
-       txtAdresse.setText(client.getAddress());
-       txtCin.setText(client.getCin());
-       txtEmail.setText(client.getEmail());
+        isAjout = btnAjouter != null;
+        if (!isAjout) {
+            client=ControllerOperationClient.getClient();
+            txtFullName.setText(client.getFullName());
+            txtTele.setText(client.getTele());
+            txtAdresse.setText(client.getAddress());
+            txtCin.setText(client.getCin());
+            txtEmail.setText(client.getEmail());
+        }
     }
 
 
@@ -59,12 +77,14 @@ public class ControllerOperations implements Initializable {
     public void btnannulerOnAction(ActionEvent event){
         close();
     }
-    public void btnajouterOnAction(){
+    public void btnajouterOnAction() throws IOException {
         client =new Client(null,txtFullName.getText()+"",txtCin.getText()+"",txtTele.getText()+"",txtAdresse.getText()+"",txtEmail.getText()+"");
         b= Main.getDaos().getClientDao().insert(client);
         if(b){
             message("/resource/Icons/success.png","SUCCESS","Le Cient "+txtFullName.getText()+" Est Ajouter");
+            //ctc.refreshUpdate(null,client);
             close();
+
         }
         else{
             message("/resource/Icons/failed.png","ERROR","Le Cient "+txtFullName.getText()+" n\'est pas  Ajouter");
@@ -83,6 +103,16 @@ public class ControllerOperations implements Initializable {
         }
     }
 
+    public void btnrendezvoudOnAction() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+        dateRdv=sdf.parse(txtRdv.getValue().toString());
+        rdv=new RendezVous(null,1, ControllerOperationClient.getClient().getId(),dateRdv);
+        b=Main.getDaos().getRdvDao().insert(rdv);
+        if(b){
+            System.out.println("yes");
+        }
+    }
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
         stage.close();
@@ -109,13 +139,6 @@ public class ControllerOperations implements Initializable {
         } else {
             b = false;
         }
-    }
-
-    public void setClient(Client client){
-        System.out.println("set :" +client.getFullName());
-        this.client=client;
-        System.out.println("obj : "+this.client.getFullName());
-
     }
 
 }
