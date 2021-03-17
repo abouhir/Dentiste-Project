@@ -1,11 +1,15 @@
 package application.dal.dao;
 
+import application.DbConnection.DbConnection;
 import application.dal.model.RendezVous;
-import application.dal.model.RendezVous;
-
+import application.dal.model.TvRdvClient;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Optional;
 import java.util.Vector;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class RdvDao extends DefaultDao<RendezVous>{
 
@@ -16,10 +20,13 @@ public class RdvDao extends DefaultDao<RendezVous>{
     private final PreparedStatement preStmSelectByCli;
 
 
+    private final ClientDao clientDao;
 
     private Vector<RendezVous> rdvs;
 
-    public RdvDao(Connection conn) throws SQLException {
+    public RdvDao(Connection conn, ClientDao clientDao) throws SQLException {
+
+        this.clientDao = clientDao;
 
         preStmSelectAll = conn.prepareStatement(SELECT_ALL_RDV);
         preStmInsert = conn.prepareStatement(INSERT_RDV);
@@ -129,6 +136,22 @@ public class RdvDao extends DefaultDao<RendezVous>{
         preStm.setLong(1, o.getInfId());
         preStm.setLong(2, o.getCliId());
         preStm.setDate(3, new Date(o.getDateRdv().getTime()));
+    }
+
+    public Vector<TvRdvClient> findRdvClientOfToday() {
+
+        Vector<TvRdvClient> tvRdvClients = new Vector<>();
+        Vector<RendezVous> todRdv;
+        todRdv =  findAll().stream().filter(rdv -> {
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-YYYY");
+            String rdvs = f.format(rdv.getDateRdv());
+            String todays = f.format(new java.util.Date());
+            return rdvs.equals(todays);
+        }).collect(Collectors.toCollection(Vector::new));
+        todRdv.forEach(rdv -> {
+            tvRdvClients.add(new TvRdvClient(clientDao.find(rdv.getCliId()), rdv));
+        });
+        return tvRdvClients;
     }
 
 
