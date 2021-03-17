@@ -92,7 +92,7 @@ public class DbConnection {
         if (cnx == null) {
 
             try {
-              //  Class.forName("org.mariadb.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 cnx= DriverManager.getConnection("jdbc:mysql://localhost:3306/lp_java_mini_project","root","") ;
                 System.out.println("Successful connection to database ...");
             } catch (Exception e) {
