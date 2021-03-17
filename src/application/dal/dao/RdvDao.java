@@ -141,10 +141,7 @@ public class RdvDao extends DefaultDao<RendezVous>{
     public Vector<TvRdvClient> findRdvClientOfToday() {
 
         Vector<TvRdvClient> tvRdvClients = new Vector<>();
-        Vector<RendezVous> todRdv = new Vector<>();
-
-
-        Calendar c = Calendar.getInstance();
+        Vector<RendezVous> todRdv;
         todRdv =  findAll().stream().filter(rdv -> {
             SimpleDateFormat f = new SimpleDateFormat("dd-MM-YYYY");
             String rdvs = f.format(rdv.getDateRdv());
