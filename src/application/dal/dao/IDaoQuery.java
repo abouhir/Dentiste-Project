@@ -61,7 +61,7 @@ public interface IDaoQuery {
     String SELECT_ALL_ORDONNANCES = "SELECT * FROM ordonnance;";
     String UPDATE_ORDONNANCES =
             "UPDATE ordonnance SET vst_id = ?, " +
-                    "ord_date = current_timestamp" +
+                    "ord_date = CURRENT_TIMESTAMP()" +
                     "WHERE id = ?" ;
     String INSERT_ORDONNANCES =
             "INSERT INTO ordonnance VALUES (null, ?, null)";
