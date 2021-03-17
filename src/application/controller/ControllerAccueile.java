@@ -2,6 +2,7 @@ package application.controller;
 
 import application.dal.model.Client;
 import application.dal.model.RendezVous;
+import application.dal.model.TvRdvClient;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,24 +27,28 @@ import java.util.Vector;
 
 public class ControllerAccueile implements Initializable {
 
-    private Vector<Client> vectorClients;
+    private Vector<TvRdvClient> vectorTvRdClients;
 
-    private Vector<RendezVous> vectorRdvs;
 
-    @FXML
-    private TableView<Model> tableRendez;
 
     @FXML
-    private TableColumn<Model,String> coloneCin;
+    private TableView<TvRdvClient> tableRendez;
 
     @FXML
-    private TableColumn<Model,String> coloneNom;
+    private TableColumn<TvRdvClient,String> coloneCin;
 
     @FXML
-    private TableColumn<Model,String> colonePrenom;
+    private TableColumn<TvRdvClient,String> coloneFullName;
 
     @FXML
-    private TableColumn<Model,String> coloneDate;
+    private TableColumn<TvRdvClient,String> coloneTele;
+
+    @FXML
+    private TableColumn<TvRdvClient,String> coloneDateRendezVous;
+
+    @FXML
+    private Label lblNbrRdv;
+
 
     @FXML
     private ImageView close;
@@ -50,28 +56,28 @@ public class ControllerAccueile implements Initializable {
     @FXML
     private ImageView reduce;
 
-    ObservableList<Model> list;
+    ObservableList<TvRdvClient> list;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        list = FXCollections.observableArrayList(
-                new Model("BL1555900","Bouhir","Abderrahmane","2020/10/1"),
-                new Model("BL1555900","Bouhir","Abderrahmane","2020/10/1"),
-                new Model("BL1555900","Bouhir","Abderrahmane","2020/10/1"),
-                new Model("BL1555900","Bouhir","Abderrahmane","2020/10/1")
-        );
-        coloneCin.setCellValueFactory(new PropertyValueFactory<Model, String>("Cin"));
-        coloneNom.setCellValueFactory(new PropertyValueFactory<Model, String>("Nom"));
-        colonePrenom.setCellValueFactory(new PropertyValueFactory<Model, String>("Prenom"));
-        coloneDate.setCellValueFactory(new PropertyValueFactory<Model, String>("Date"));
-        tableRendez.setItems(list);
-
+        remplirTable();
+        lblNbrRdv.setText(vectorTvRdClients.size()+"");
     }
 
     public void btncloseOnMouseEvent(MouseEvent event){
         close();
     }
     public void btnreduceOnMouseEvent(MouseEvent event){ reduce(); }
+
+    public void remplirTable(){
+        vectorTvRdClients=Main.getDaos().getRdvDao().findRdvClientOfToday();
+        list = FXCollections.observableArrayList( vectorTvRdClients);
+        coloneCin.setCellValueFactory(new PropertyValueFactory<TvRdvClient,String>("cin"));
+        coloneFullName.setCellValueFactory(new PropertyValueFactory<TvRdvClient, String>("FullName"));
+        coloneTele.setCellValueFactory(new PropertyValueFactory<TvRdvClient, String>("tele"));
+        coloneDateRendezVous.setCellValueFactory(new PropertyValueFactory<TvRdvClient, String>("DateRdv"));
+        tableRendez.setItems(list);
+    }
 
     public void close(){
         Stage stage =(Stage)close.getScene().getWindow();

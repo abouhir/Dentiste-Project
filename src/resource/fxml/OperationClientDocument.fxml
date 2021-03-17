@@ -41,7 +41,7 @@
             <TableColumn fx:id="coloneEmail" prefWidth="143.0" text="Email" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="txtRecherche" focusColor="DODGERBLUE" layoutX="229.0" layoutY="167.0" prefHeight="26.0" prefWidth="309.0" promptText="Recherche(CIN)">
+      <JFXTextField fx:id="txtRecherche" focusColor="DODGERBLUE" layoutX="229.0" layoutY="167.0" onInputMethodTextChanged="#searchEvent" onKeyTyped="#searchEvent" prefHeight="26.0" prefWidth="309.0" promptText="Recherche(CIN)">
          <font>
             <Font size="14.0" />
          </font>

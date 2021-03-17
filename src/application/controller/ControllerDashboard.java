@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class ControllerDashboard implements Initializable {
-    private Vector<Client> vectorClients;
+    private Vector<Client> clientVector;
 
     @FXML
     private AnchorPane content;

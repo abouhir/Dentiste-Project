@@ -1,5 +1,7 @@
 package application.controller;
 
+import application.DbConnection.DbConnection;
+import application.dal.dao.ClientDao;
 import application.dal.model.Client;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
@@ -8,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,9 +22,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +40,7 @@ public class ControllerOperationClient implements Initializable {
     private Alert message, confirmer;
     private boolean b;
 
-    private Vector<Client> clientVector,rechercheVector=new Vector<>();
+    private Vector<Client> clientVector;
 
     private boolean isAjout;
     @FXML
@@ -57,6 +63,8 @@ public class ControllerOperationClient implements Initializable {
 
     ObservableList<Client> list;
 
+    ClientDao cliDao;
+
     @FXML
     private ImageView close;
 
@@ -70,7 +78,8 @@ public class ControllerOperationClient implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clientVector= Main.getDaos().getClientDao().selectAll();
+        cliDao = Main.getDaos().getClientDao();
+        clientVector= cliDao.selectAll();
         updateTable(clientVector);
         tableClient.getSelectionModel().selectFirst();
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
@@ -120,16 +129,29 @@ public class ControllerOperationClient implements Initializable {
         confirmer.setContentText(information+" "+client.getFullName());
         Optional<ButtonType> result = confirmer.showAndWait();
         if (result.get() == ButtonType.OK) {
-            b = Main.getDaos().getClientDao().delete(client.getId());
+            b = cliDao.delete(client.getId());
         } else {
             b = false;
         }
     }
 
+
+    @FXML
+    void searchEvent() {
+        String key = txtRecherche.getText();
+        Vector<Client> clients = new Vector<>();
+        try {
+            clients = cliDao.findThatContains(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        refreshTable(clients);
+    }
+
+
     public void btnrechercheOnMouseEvent(MouseEvent event)  {
-        rechercheVector.add(Main.getDaos().getClientDao().find(Long.parseLong(txtRecherche.getText())));
-        updateTable(rechercheVector);
-        rechercheVector.clear();
+
 
     }
     public void btncloseOnMouseEvent(MouseEvent event){
@@ -145,6 +167,10 @@ public class ControllerOperationClient implements Initializable {
         coloneTele.setCellValueFactory(new PropertyValueFactory<Client, String>("Tele"));
         coloneEmail.setCellValueFactory(new PropertyValueFactory<Client, String>("Email"));
         tableClient.setItems(list);
+    }
+
+    public void refreshTable(Vector<Client> clientVector){
+        tableClient.getItems().setAll(clientVector);
     }
     public void tableOnMousePresseed(MouseEvent event){
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
@@ -165,16 +191,16 @@ public class ControllerOperationClient implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource(name));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 600, 607));
+
+        primaryStage.addEventHandler(WindowEvent.WINDOW_HIDDEN, windowEvent -> {
+            cliDao.refresh();
+            clientVector = cliDao.findAll();
+            refreshTable(clientVector);
+        });
         primaryStage.showAndWait();
     }
 
 
-    public void  refreshUpdate(Client clientAn ,Client clientNv ){
-        if(clientAn!=null)
-        tableClient.getItems().removeAll(clientAn);
-        tableClient.getItems().add(clientNv);
-        tableClient.refresh();
-    }
 
 
 
