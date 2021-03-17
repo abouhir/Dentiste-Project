@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.dal.model.Client;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,14 +15,17 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 public class ControllerDashboard implements Initializable {
+    private Vector<Client> vectorClients;
 
     @FXML
     private AnchorPane content;
 
     @FXML
     private JFXButton btnDeconnecter;
+
 
 
     @Override

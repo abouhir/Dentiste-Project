@@ -1,5 +1,8 @@
 package application.controller;
 
+import application.dal.model.Client;
+import application.dal.model.RendezVous;
+import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,8 +21,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 public class ControllerAccueile implements Initializable {
+
+    private Vector<Client> vectorClients;
+
+    private Vector<RendezVous> vectorRdvs;
 
     @FXML
     private TableView<Model> tableRendez;
@@ -46,8 +54,6 @@ public class ControllerAccueile implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         list = FXCollections.observableArrayList(
                 new Model("BL1555900","Bouhir","Abderrahmane","2020/10/1"),
                 new Model("BL1555900","Bouhir","Abderrahmane","2020/10/1"),
