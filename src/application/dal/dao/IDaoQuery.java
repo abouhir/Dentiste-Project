@@ -111,7 +111,7 @@ public interface IDaoQuery {
                     "rdv_date = ?, rdv_createdAt = CURRENT_TIMESTAMP()" +
                     "WHERE rdv_id = ?" ;
     String INSERT_RDV =
-            "INSERT INTO rendezvous VALUES (null, ?, ?, ?, null)";
+            "INSERT INTO rendezvous VALUES (null, ?, ?, ?, CURRENT_TIMESTAMP())";
     String DELETE_RDV = "DELETE FROM medicament WHERE rdv_id = ?";
 
 
