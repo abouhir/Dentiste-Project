@@ -18,12 +18,12 @@ public class RendezVous {
    private Date dateRdv;
    private Date createdAt;
 
-   public RendezVous(Long id, long infId, long cliId, Date dateRdv, Date createdAt) {
+   public RendezVous(Long id, long infId, long cliId, Date dateRdv) {
       this.id = id;
       this.infId = infId;
       this.cliId = cliId;
       this.dateRdv = dateRdv;
-      this.createdAt = createdAt;
+      this.createdAt = new Date();
    }
 
 
