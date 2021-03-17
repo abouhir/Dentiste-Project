@@ -61,7 +61,7 @@ public interface IDaoQuery {
     String SELECT_ALL_ORDONNANCES = "SELECT * FROM ordonnance;";
     String UPDATE_ORDONNANCES =
             "UPDATE ordonnance SET vst_id = ?, " +
-                    "ord_date = ()" +
+                    "ord_date = CURRENT_TIMESTAMP()" +
                     "WHERE id = ?" ;
     String INSERT_ORDONNANCES =
             "INSERT INTO ordonnance VALUES (null, ?, null)";
@@ -91,7 +91,7 @@ public interface IDaoQuery {
     String UPDATE_VISITES =
             "UPDATE visite SET cli_id = ?, den_id = ?, " +
                     "vst_traitement = ?, vst_remarque = ? " +
-                    "vst_date =NOW()" +
+                    "vst_date = CURRENT_TIMESTAMP()" +
                     "WHERE id = ?" ;
     String INSERT_VISITES = "INSERT INTO visite " +
             "(id, vst_date, cli_id, den_id, vst_traitement, vst_remarque)" +
@@ -108,7 +108,7 @@ public interface IDaoQuery {
     String SELECT_ALL_BY_CLI = "SELECT * FROM rendezvous WHERE fcli_id = ?";
     String UPDATE_RDV =
             "UPDATE rendezvous SET finf_id = ?, fcli_id = ?, " +
-                    "rdv_date = ?, rdv_createdAt =NOW()" +
+                    "rdv_date = ?, rdv_createdAt = CURRENT_TIMESTAMP()" +
                     "WHERE rdv_id = ?" ;
     String INSERT_RDV =
             "INSERT INTO rendezvous VALUES (null, ?, ?, ?, null)";

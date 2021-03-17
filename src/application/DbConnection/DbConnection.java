@@ -37,7 +37,6 @@ public class DbConnection {
 
     public Connection getConnection() {
         if (cnx == null) {
-
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 cnx= DriverManager.getConnection("jdbc:mysql://localhost:3306/lp_java_mini_project","root","") ;
