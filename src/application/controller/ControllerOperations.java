@@ -27,7 +27,7 @@ import java.util.logging.SimpleFormatter;
 public class ControllerOperations implements Initializable {
 
     private Client client;
-    private RendezVous Rdv;
+    private RendezVous rdv;
     private Alert message, confirmer;
     private boolean b;
     private Date dateRdv ;
@@ -107,8 +107,11 @@ public class ControllerOperations implements Initializable {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         dateRdv=sdf.parse(txtRdv.getValue().toString());
-        Rdv=new RendezVous(null,2, ControllerOperationClient.getClient().getId(),dateRdv);
-        //b=Main.getDaos().
+        rdv=new RendezVous(null,1, ControllerOperationClient.getClient().getId(),dateRdv);
+        b=Main.getDaos().getRdvDao().insert(rdv);
+        if(b){
+            System.out.println("yes");
+        }
     }
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
