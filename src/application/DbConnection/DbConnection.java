@@ -16,6 +16,7 @@ public class DbConnection {
     private VisiteDao visiteDao;
     private UserDao userDao;
     private OrdonnanceDao ordDao;
+    private RdvDao rdvDao;
 
     public DbConnection() {
         cnx = getConnection();
@@ -27,66 +28,12 @@ public class DbConnection {
             visiteDao = new VisiteDao(cnx);
             userDao = new UserDao(cnx);
             ordDao = new OrdonnanceDao(cnx);
+            rdvDao = new RdvDao(cnx);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public ClientDao getClientDao() {
-        return clientDao;
-    }
-
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
-    }
-
-    public DentisteDao getDentistDao() {
-        return dentistDao;
-    }
-
-    public void setDentistDao(DentisteDao dentistDao) {
-        this.dentistDao = dentistDao;
-    }
-
-    public InfermierDao getInfermierDao() {
-        return infermierDao;
-    }
-
-    public void setInfermierDao(InfermierDao infermierDao) {
-        this.infermierDao = infermierDao;
-    }
-
-    public MedicsDao getMedicsDao() {
-        return medicsDao;
-    }
-
-    public void setMedicsDao(MedicsDao medicsDao) {
-        this.medicsDao = medicsDao;
-    }
-
-    public VisiteDao getVisiteDao() {
-        return visiteDao;
-    }
-
-    public void setVisiteDao(VisiteDao visiteDao) {
-        this.visiteDao = visiteDao;
-    }
-
-    public UserDao getUserDao() {
-        return userDao;
-    }
-
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
-
-    public OrdonnanceDao getOrdDao() {
-        return ordDao;
-    }
-
-    public void setOrdDao(OrdonnanceDao ordDao) {
-        this.ordDao = ordDao;
-    }
 
     public Connection getConnection() {
         if (cnx == null) {
@@ -103,5 +50,35 @@ public class DbConnection {
         return cnx;
     }
 
+    public ClientDao getClientDao() {
+        return clientDao;
+    }
 
+    public DentisteDao getDentistDao() {
+        return dentistDao;
+    }
+
+    public InfermierDao getInfermierDao() {
+        return infermierDao;
+    }
+
+    public MedicsDao getMedicsDao() {
+        return medicsDao;
+    }
+
+    public VisiteDao getVisiteDao() {
+        return visiteDao;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public OrdonnanceDao getOrdDao() {
+        return ordDao;
+    }
+
+    public RdvDao getRdvDao() {
+        return rdvDao;
+    }
 }
