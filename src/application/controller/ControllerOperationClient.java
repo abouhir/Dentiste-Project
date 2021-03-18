@@ -74,6 +74,14 @@ public class ControllerOperationClient implements Initializable {
     @FXML
     private JFXTextField txtRecherche;
 
+    @FXML
+    private JFXButton btnUpdate;
+
+    @FXML
+    private JFXButton btnRdv;
+
+    @FXML
+    private JFXButton btnDelete;
 
 
     @Override
@@ -81,7 +89,6 @@ public class ControllerOperationClient implements Initializable {
         cliDao = Main.getDaos().getClientDao();
         clientVector= cliDao.selectAll();
         updateTable(clientVector);
-        tableClient.getSelectionModel().selectFirst();
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
 
     }
@@ -96,9 +103,6 @@ public class ControllerOperationClient implements Initializable {
     }
 
     public void supprimerOnAction(ActionEvent event) throws IOException {
-      //  switchStage("/resource/fxml/SupprimerClientDocument.fxml");
-
-       // client = new Client(ControllerOperationClient.getClient().getId(), txtFullName.getText() + "", txtCin.getText() + "", txtTele.getText() + "", txtAdresse.getText() + "", txtEmail.getText() + "");
         client=ControllerOperationClient.getClient();
         alertConfirmation("Voulez vous vraiment supprimer le client : ");
         if (b) {
