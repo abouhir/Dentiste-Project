@@ -143,7 +143,7 @@ public class RdvDao extends DefaultDao<RendezVous>{
         Vector<TvRdvClient> tvRdvClients = new Vector<>();
         Vector<RendezVous> todRdv;
         todRdv =  findAll().stream().filter(rdv -> {
-            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-YYYY");
             String rdvs = f.format(rdv.getDateRdv());
             String todays = f.format(new java.util.Date());
             return rdvs.equals(todays);

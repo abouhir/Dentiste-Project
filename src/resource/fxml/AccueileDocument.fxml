@@ -25,7 +25,7 @@
                     <children>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                             <children>
-                                <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="67.0" prefWidth="213.0" text="10" textFill="AQUAMARINE" textOverrun="CLIP">
+                                <Label fx:id="lblNbrRdv" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="67.0" prefWidth="213.0" text="10" textFill="AQUAMARINE" textOverrun="CLIP">
                                     <font>
                                         <Font name="Arial" size="72.0" />
                                     </font>
@@ -57,9 +57,9 @@
                 <TableView fx:id="tableRendez" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0" stylesheets="@../css/style.css">
                     <columns>
                         <TableColumn fx:id="coloneCin" prefWidth="100.0" text="CIN" />
-                        <TableColumn fx:id="coloneNom" prefWidth="157.60005950927734" text="Nom" />
-                        <TableColumn fx:id="colonePrenom" minWidth="0.0" prefWidth="279.1999816894531" text="Prenom" />
-                        <TableColumn fx:id="coloneDate" minWidth="-Infinity" prefWidth="269.59991455078125" text="Heure Rendez-vous" />
+                        <TableColumn fx:id="coloneFullName" prefWidth="157.60005950927734" text="Nom et Prenom" />
+                        <TableColumn fx:id="coloneTele" minWidth="0.0" prefWidth="279.1999816894531" text="Telephone" />
+                        <TableColumn fx:id="coloneDateRendezVous" minWidth="-Infinity" prefWidth="269.59991455078125" text="Date De Rendez-vous" />
                     </columns>
                 </TableView>
       <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="773.0" layoutY="14.0" onMouseClicked="#btncloseOnMouseEvent" pickOnBounds="true" preserveRatio="true">
