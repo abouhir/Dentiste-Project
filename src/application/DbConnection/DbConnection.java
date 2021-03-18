@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class DbConnection {
 
-    private Connection cnx;
+    private static Connection cnx;
     private ClientDao clientDao;
     private DentisteDao dentistDao;
     private InfermierDao infermierDao;
@@ -34,42 +34,40 @@ public class DbConnection {
             rdvDao = new RdvDao(cnx, clientDao);
         } catch (SQLException e) {
             e.printStackTrace();
-            showNotConnectedDialog(this);
+
         }
     }
 
 
-    public Connection getConnection() {
+
+
+    public static Connection getConnection() {
         if (cnx == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 cnx= DriverManager.getConnection("jdbc:mysql://localhost:3306/lp_java_mini_project","root","") ;
                 System.out.println("Successful connection to database ...");
             } catch (Exception e) {
-                System.out.println("connection to database Failed !!");
-                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Error :: Enable to connect to the Server...");
+                alert.setContentText("Check your Connection or the stat of the server.");
+                alert.showAndWait();
+                alert.close();
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Reconnexion :");
+                alert.setHeaderText("Voulez vous reconnecter au server ?");
+                alert.setContentText("Verifier votre connexion internet.");
+                alert.showAndWait().ifPresent(buttonType -> {
+                    if (buttonType == ButtonType.OK)
+                        getConnection();
+                    else if (buttonType == ButtonType.CANCEL)
+                        Platform.exit();
+                });
             }
         }
         return cnx;
     }
 
-    public static void showNotConnectedDialog(DbConnection dbc) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("Error :: Enable to connect to the Server...");
-        alert.setContentText("Check your Connection or the stat of the server.");
-        alert.showAndWait();
-        alert.close();
-        alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Reconnexion :");
-        alert.setHeaderText("Voulez vous reconnecter au server ?");
-        alert.setContentText("Verifier votre connexion internet.");
-        alert.showAndWait().ifPresent(buttonType -> {
-            if (buttonType == ButtonType.OK)
-                dbc.getConnection();
-            else if (buttonType == ButtonType.CANCEL)
-                Platform.exit();
-        });
-    }
 
     public ClientDao getClientDao() {
         return clientDao;

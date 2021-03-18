@@ -15,12 +15,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
+        daos = new DbConnection();
+
+        if (DbConnection.getConnection() == null)
+            return;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginDocument.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 777, 559));
         primaryStage.show();
 
-        daos = new DbConnection();
     }
 
 
