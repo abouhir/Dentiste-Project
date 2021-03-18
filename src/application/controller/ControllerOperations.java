@@ -4,6 +4,7 @@ import application.dal.model.Client;
 import application.dal.model.RendezVous;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,6 +58,17 @@ public class ControllerOperations implements Initializable {
 
     @FXML
     private DatePicker txtRdv;
+
+
+    @FXML
+    private JFXTextArea txtTraitement;
+
+    @FXML
+    private JFXTextField txtRemarque;
+
+    @FXML
+    private JFXButton btnAjouterTraitement;
+
 
 
     @Override
