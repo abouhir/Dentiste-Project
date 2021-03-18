@@ -90,6 +90,18 @@ public class ControllerOperationClient implements Initializable {
         clientVector= cliDao.selectAll();
         updateTable(clientVector);
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
+
+        btnRdv.setDisable(true);
+        btnUpdate.setDisable(true);
+        btnDelete.setDisable(true);
+    }
+
+    @FXML
+    void tvMouseClicked() {
+        Client c = tableClient.getSelectionModel().getSelectedItem();
+        btnRdv.setDisable(c == null);
+        btnUpdate.setDisable(c == null);
+        btnDelete.setDisable(c == null);
     }
 
     public void ajouterOnAction(ActionEvent event) throws IOException {

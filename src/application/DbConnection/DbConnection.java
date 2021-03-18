@@ -1,6 +1,9 @@
 package application.DbConnection;
 
 import application.dal.dao.*;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,6 +34,7 @@ public class DbConnection {
             rdvDao = new RdvDao(cnx, clientDao);
         } catch (SQLException e) {
             e.printStackTrace();
+            showNotConnectedDialog(this);
         }
     }
 
@@ -47,6 +51,24 @@ public class DbConnection {
             }
         }
         return cnx;
+    }
+
+    public static void showNotConnectedDialog(DbConnection dbc) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Error :: Enable to connect to the Server...");
+        alert.setContentText("Check your Connection or the stat of the server.");
+        alert.showAndWait();
+        alert.close();
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reconnexion :");
+        alert.setHeaderText("Voulez vous reconnecter au server ?");
+        alert.setContentText("Verifier votre connexion internet.");
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == ButtonType.OK)
+                dbc.getConnection();
+            else if (buttonType == ButtonType.CANCEL)
+                Platform.exit();
+        });
     }
 
     public ClientDao getClientDao() {
