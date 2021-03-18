@@ -33,6 +33,7 @@ public class ControllerLogin implements Initializable {
     private User user;
     private Dentiste dentist;
     private Infermier infermier;
+    private static String role;
 
     @FXML
     private JFXTextField txtLogin;
@@ -63,10 +64,12 @@ public class ControllerLogin implements Initializable {
         dentist = Main.getDaos().getUserDao().checkDentistLogin(txtLogin.getText()+"",txtPwd.getText()+"");
         infermier=Main.getDaos().getUserDao().checkInfermierLogin(txtLogin.getText()+"",txtPwd.getText()+"");
         if(dentist!=null) {
+            role="dentiste";
             switchStage();
             close();
         }
         else if(infermier!=null){
+            role="infermier";
             switchStage();
             close();
         }
@@ -85,6 +88,7 @@ public class ControllerLogin implements Initializable {
     public void btnminusOnMouseEvent(MouseEvent event){
         reduce();
     }
+
     public void switchStage() throws IOException {
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardInfirmierDocument.fxml"));
