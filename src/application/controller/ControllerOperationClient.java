@@ -6,6 +6,8 @@ import application.dal.model.Client;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -96,6 +98,16 @@ public class ControllerOperationClient implements Initializable {
         btnDelete.setDisable(true);
 
 
+
+        tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
+            @Override
+            public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
+
+                btnRdv.setDisable(t1 == null);
+                btnUpdate.setDisable(t1 == null);
+                btnDelete.setDisable(t1 == null);
+            }
+        });
     }
 
 
@@ -188,9 +200,7 @@ public class ControllerOperationClient implements Initializable {
         Client c =tableClient.getSelectionModel().getSelectedItem();
         ControllerOperationClient.clientSelected=c;
 
-        btnRdv.setDisable(c == null);
-        btnUpdate.setDisable(c == null);
-        btnDelete.setDisable(c == null);
+
     }
 
 
