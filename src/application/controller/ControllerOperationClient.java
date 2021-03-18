@@ -90,7 +90,6 @@ public class ControllerOperationClient implements Initializable {
         clientVector= cliDao.selectAll();
         updateTable(clientVector);
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
-
     }
 
     public void ajouterOnAction(ActionEvent event) throws IOException {
