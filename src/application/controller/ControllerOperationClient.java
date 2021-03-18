@@ -94,15 +94,10 @@ public class ControllerOperationClient implements Initializable {
         btnRdv.setDisable(true);
         btnUpdate.setDisable(true);
         btnDelete.setDisable(true);
+
+
     }
 
-    @FXML
-    void tvMouseClicked() {
-        Client c = tableClient.getSelectionModel().getSelectedItem();
-        btnRdv.setDisable(c == null);
-        btnUpdate.setDisable(c == null);
-        btnDelete.setDisable(c == null);
-    }
 
     public void ajouterOnAction(ActionEvent event) throws IOException {
         switchStage("/resource/fxml/AjouterClientDocument.fxml");
@@ -187,12 +182,24 @@ public class ControllerOperationClient implements Initializable {
     public void refreshTable(Vector<Client> clientVector){
         tableClient.getItems().setAll(clientVector);
     }
+
+
     public void tableOnMousePresseed(MouseEvent event){
-        ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
+        Client c =tableClient.getSelectionModel().getSelectedItem();
+        ControllerOperationClient.clientSelected=c;
+
+        btnRdv.setDisable(c == null);
+        btnUpdate.setDisable(c == null);
+        btnDelete.setDisable(c == null);
     }
+
+
+
     public static Client getClient(){
         return clientSelected;
     }
+
+
 
     public void refreshOnAction(ActionEvent event) throws IOException {
         //updateTable(clientVector);
