@@ -1,11 +1,15 @@
 package application.controller;
 
+import application.dal.dao.ClientDao;
+import application.dal.dao.VisiteDao;
 import application.dal.model.Client;
 import application.dal.model.RendezVous;
+import application.dal.model.Visite;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,10 +32,13 @@ import java.util.logging.SimpleFormatter;
 public class ControllerOperations implements Initializable {
 
     private Client client;
+    private Visite visite;
     private RendezVous rdv;
     private Alert message, confirmer;
     private boolean b;
     private Date dateRdv ;
+    private ClientDao clientDao=Main.getDaos().getClientDao();
+    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
 
     @FXML
     private JFXButton btnAnnuler;
@@ -69,6 +76,8 @@ public class ControllerOperations implements Initializable {
     @FXML
     private JFXButton btnAjouterTraitement;
 
+    @FXML
+    private JFXButton btnRdv;
 
 
     @Override
@@ -91,10 +100,9 @@ public class ControllerOperations implements Initializable {
     }
     public void btnajouterOnAction() throws IOException {
         client =new Client(null,txtFullName.getText()+"",txtCin.getText()+"",txtTele.getText()+"",txtAdresse.getText()+"",txtEmail.getText()+"");
-        b= Main.getDaos().getClientDao().insert(client);
+        b= clientDao.insert(client);
         if(b){
             message("/resource/Icons/success.png","SUCCESS","Le Cient "+txtFullName.getText()+" Est Ajouter");
-            //ctc.refreshUpdate(null,client);
             close();
 
         }
@@ -116,13 +124,31 @@ public class ControllerOperations implements Initializable {
     }
 
     public void btnrendezvoudOnAction() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        if(btnRdv!=null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            dateRdv = sdf.parse(txtRdv.getValue().toString());
+            rdv = new RendezVous(null, 1, ControllerOperationClient.getClient().getId(), dateRdv);
+            b = Main.getDaos().getRdvDao().insert(rdv);
+            if (b) {
+                message("/resource/Icons/success.png","SUCCESS","Le Client  "+txtFullName.getText()+" est prend un rendez-vous");
+                close();
+            }
+            else{
+                message("/resource/Icons/failed.png","ERROR","Echec !!!!");
 
-        dateRdv=sdf.parse(txtRdv.getValue().toString());
-        rdv=new RendezVous(null,1, ControllerOperationClient.getClient().getId(),dateRdv);
-        b=Main.getDaos().getRdvDao().insert(rdv);
-        if(b){
-            System.out.println("yes");
+            }
+        }
+        else{
+            //b=visiteDao.insert(new Visite(null,1,1,null,txtTraitement.getText(),txtRemarque.getText()));
+            if (b) {
+                message("/resource/Icons/success.png","SUCCESS","Traitement ajouter avec success");
+                close();
+            }
+            else{
+                message("/resource/Icons/failed.png","ERROR","Echec !!!!");
+
+            }
+
         }
     }
     public void close(){
