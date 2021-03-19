@@ -114,4 +114,7 @@ public class ControllerLogin implements Initializable {
         message.setContentText(msg);
         message.showAndWait();
     }
+    public static String getRole(){
+        return role;
+    }
 }

@@ -1,6 +1,5 @@
 package application.controller;
 
-import application.DbConnection.DbConnection;
 import application.dal.dao.ClientDao;
 import application.dal.model.Client;
 import application.main.Main;
@@ -12,8 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,7 +21,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -41,6 +37,7 @@ public class ControllerOperationClient implements Initializable {
     private Client client;
     private Alert message, confirmer;
     private boolean b;
+    private String role=ControllerLogin.getRole();
 
     private Vector<Client> clientVector;
 
@@ -68,9 +65,6 @@ public class ControllerOperationClient implements Initializable {
     ClientDao cliDao;
 
     @FXML
-    private ImageView close;
-
-    @FXML
     private ImageView reduce;
 
     @FXML
@@ -80,10 +74,14 @@ public class ControllerOperationClient implements Initializable {
     private JFXButton btnUpdate;
 
     @FXML
-    private JFXButton btnRdv;
+    private JFXButton btnAction;
 
     @FXML
     private JFXButton btnDelete;
+
+    @FXML
+    private JFXButton btnAjouter;
+
 
 
     @Override
@@ -93,33 +91,48 @@ public class ControllerOperationClient implements Initializable {
         updateTable(clientVector);
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
 
-        btnRdv.setDisable(true);
-        btnUpdate.setDisable(true);
-        btnDelete.setDisable(true);
-
-
-
-        tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
+            btnAction.setDisable(true);
+            btnUpdate.setDisable(true);
+            btnDelete.setDisable(true);
+            tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
             @Override
             public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
-
-                btnRdv.setDisable(t1 == null);
+                btnAction.setDisable(t1 == null);
                 btnUpdate.setDisable(t1 == null);
                 btnDelete.setDisable(t1 == null);
             }
         });
+
+            if(role.equals("dentiste")){
+                btnAction.setText("Traitement");
+            }
+
     }
 
 
     public void ajouterOnAction(ActionEvent event) throws IOException {
-        switchStage("/resource/fxml/AjouterClientDocument.fxml");
+        if(role.equals("infermier"))
+             switchStage("/resource/fxml/AjouterClientDocument.fxml");
+        else
+            switchStage("/resource/fxml/AjouterVisiteDocument.fxml");
 
     }
 
     public void modifierOnAction(ActionEvent event) throws IOException {
-        switchStage("/resource/fxml/ModifierClientDcument.fxml");
+        if(role.equals("infermier"))
+            switchStage("/resource/fxml/ModifierClientDcument.fxml");
+        else
+            switchStage("/resource/fxml/ModifierVisiteDocument.fxml");
     }
 
+    public void actionOnAction(ActionEvent event) throws IOException {
+        if(role.equals("infermier")) {
+            switchStage("/resource/fxml/RendezVousClientDocument.fxml");
+        }
+            else {
+            switchStage("/fxml/AjouterVisiteDocument.fxml");
+        }
+    }
     public void supprimerOnAction(ActionEvent event) throws IOException {
         client=ControllerOperationClient.getClient();
         alertConfirmation("Voulez vous vraiment supprimer le client : ");
@@ -171,11 +184,6 @@ public class ControllerOperationClient implements Initializable {
         refreshTable(clients);
     }
 
-
-    public void btnrechercheOnMouseEvent(MouseEvent event)  {
-
-
-    }
     public void btncloseOnMouseEvent(MouseEvent event){
         close(event);
     }
@@ -197,10 +205,7 @@ public class ControllerOperationClient implements Initializable {
 
 
     public void tableOnMousePresseed(MouseEvent event){
-        Client c =tableClient.getSelectionModel().getSelectedItem();
-        ControllerOperationClient.clientSelected=c;
-
-
+        ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
     }
 
 
@@ -209,12 +214,6 @@ public class ControllerOperationClient implements Initializable {
         return clientSelected;
     }
 
-
-
-    public void refreshOnAction(ActionEvent event) throws IOException {
-        //updateTable(clientVector);
-        switchStage("/resource/fxml/RendezVousClientDocument.fxml");
-    }
 
 
 
