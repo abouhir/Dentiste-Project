@@ -1,15 +1,18 @@
 package application.dal.dao;
 
 import application.DbConnection.DbConnection;
+import application.dal.model.*;
 import application.dal.model.Visite;
-import application.dal.model.Visite;
+import application.main.Main;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class VisiteDao extends DefaultDao<Visite> {
 
@@ -22,6 +25,7 @@ public class VisiteDao extends DefaultDao<Visite> {
 
     Vector<Visite> visites;
 
+    ClientDao clientDao;
 
     public VisiteDao(Connection conn) throws SQLException {
         preStmSelectAll = conn.prepareStatement(SELECT_ALL_VISITES);
@@ -29,6 +33,7 @@ public class VisiteDao extends DefaultDao<Visite> {
         preStmUpdate = conn.prepareStatement(UPDATE_VISITES);
         preStmDelete = conn.prepareStatement(DELETE_VISITES);
 
+        clientDao = Main.getDaos().getClientDao();
     }
 
 
@@ -118,5 +123,14 @@ public class VisiteDao extends DefaultDao<Visite> {
         preStm.setLong(2, o.getDentId());
         preStm.setString(3, o.getTrait());
         preStm.setString(4, o.getRemarque());
+    }
+
+
+    public Vector<TvVstClient> findVstByClient() {
+        Vector<TvVstClient> tvVstClients = new Vector<>();
+        findAll().forEach(vst -> {
+            tvVstClients.add(new TvVstClient(clientDao.find(vst.getCliId()), vst));
+        });
+        return tvVstClients;
     }
 }
