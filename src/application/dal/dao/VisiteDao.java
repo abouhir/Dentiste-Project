@@ -27,13 +27,13 @@ public class VisiteDao extends DefaultDao<Visite> {
 
     ClientDao clientDao;
 
-    public VisiteDao(Connection conn) throws SQLException {
+    public VisiteDao(Connection conn, ClientDao clientDao) throws SQLException {
         preStmSelectAll = conn.prepareStatement(SELECT_ALL_VISITES);
         preStmInsert = conn.prepareStatement(INSERT_VISITES);
         preStmUpdate = conn.prepareStatement(UPDATE_VISITES);
         preStmDelete = conn.prepareStatement(DELETE_VISITES);
 
-        clientDao = Main.getDaos().getClientDao();
+        this.clientDao = clientDao;
     }
 
 

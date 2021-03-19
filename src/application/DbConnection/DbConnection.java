@@ -28,7 +28,7 @@ public class DbConnection {
             dentistDao = new DentisteDao(cnx);
             infermierDao = new InfermierDao(cnx);
             medicsDao = new MedicsDao(cnx);
-            visiteDao = new VisiteDao(cnx);
+            visiteDao = new VisiteDao(cnx, clientDao);
             userDao = new UserDao(cnx);
             ordDao = new OrdonnanceDao(cnx);
             rdvDao = new RdvDao(cnx, clientDao);

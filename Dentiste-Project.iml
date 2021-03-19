@@ -11,15 +11,7 @@
     <orderEntry type="library" name="javafx-sdk-15.0" level="application" />
     <orderEntry type="library" name="mysql-connector-java-8.0.19" level="application" />
     <orderEntry type="library" name="mysql-connector-java-8.0.22" level="project" />
-    <orderEntry type="module-library">
-      <library name="jfoenix-9.0.1">
-        <CLASSES>
-          <root url="jar://D:/programmes/Jar Files/jfoenix-9.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="javafx15" level="project" />
+    <orderEntry type="library" name="jfoenix-9.0.1" level="application" />
   </component>
 </module>
