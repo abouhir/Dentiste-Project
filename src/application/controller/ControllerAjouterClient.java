@@ -1,7 +1,5 @@
 package application.controller;
 
-import application.DbConnection.DbConnection;
-import application.dal.dao.ClientDao;
 import application.dal.model.Client;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
@@ -13,8 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
