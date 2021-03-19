@@ -39,7 +39,7 @@ public class UserDao extends DefaultDao<User> {
         try {
             preStmCheckLoginf.setString(1, username);
             preStmCheckLoginf.setString(2, password);
-            ResultSet rst = preStmCheckLogind.executeQuery();
+            ResultSet rst = preStmCheckLoginf.executeQuery();
             if (rst.next())
                 i = new Infermier(rst);
         } catch (SQLException e) {

@@ -79,7 +79,7 @@ public class ClientDao extends DefaultDao<Client> {
             refresh();
             return true;
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
+           // throwable.printStackTrace();
             return false;
         }
     }

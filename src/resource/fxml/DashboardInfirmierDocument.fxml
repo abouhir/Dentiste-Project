@@ -13,7 +13,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="142.0" style="-fx-background-color: #00BFFF;" styleClass="vbox" stylesheets="@/resource/css/style.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imgInf" fitHeight="102.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="102.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/nurse.png" />
                </image>

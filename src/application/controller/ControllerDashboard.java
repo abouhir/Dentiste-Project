@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,7 +20,6 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class ControllerDashboard implements Initializable {
-    private Vector<Client> clientVector;
 
     @FXML
     private AnchorPane content;
@@ -26,10 +27,18 @@ public class ControllerDashboard implements Initializable {
     @FXML
     private JFXButton btnDeconnecter;
 
+    @FXML
+    private ImageView img;
 
+    private String role=ControllerLogin.getRole();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(role.equals("dentiste")){
+            img.setImage(new Image(this.getClass().getResource("/resource/Icons/dentiste.png").toString()));
+        }
+
+
         content.getChildren().clear();
         try {
             content.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/AccueileDocument.fxml")));

@@ -89,14 +89,14 @@ public interface IDaoQuery {
      */
     String SELECT_ALL_VISITES = "SELECT * FROM visite";
     String UPDATE_VISITES =
-            "UPDATE visite SET cli_id = ?, den_id = ?, " +
-                    "vst_traitement = ?, vst_remarque = ? " +
-                    "vst_date = CURRENT_TIMESTAMP()" +
-                    "WHERE id = ?" ;
+            "UPDATE visite SET fcli_id = ?, fdent_id = ?, " +
+                    "vst_traitement = ?, vst_remarque = ?, " +
+                    "vst_date = CURRENT_TIMESTAMP() " +
+                    "WHERE vst_id = ?" ;
     String INSERT_VISITES = "INSERT INTO visite " +
-            "(id, vst_date, cli_id, den_id, vst_traitement, vst_remarque)" +
-            " VALUES (null, null, ?, ?, ?, ?)";
-    String DELETE_VISITES = "DELETE FROM visite WHERE id = ?";
+            "(vst_id, vst_date, fcli_id, fdent_id, vst_traitement, vst_remarque)" +
+            " VALUES (null, CURRENT_TIMESTAMP(), ?, ?, ?, ?)";
+    String DELETE_VISITES = "DELETE FROM visite WHERE vst_id = ?";
 
 
 
