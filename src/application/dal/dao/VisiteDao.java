@@ -128,9 +128,12 @@ public class VisiteDao extends DefaultDao<Visite> {
 
     public Vector<TvVstClient> findVstByClient() {
         Vector<TvVstClient> tvVstClients = new Vector<>();
-        findAll().forEach(vst -> {
-            tvVstClients.add(new TvVstClient(clientDao.find(vst.getCliId()), vst));
-        });
+        findAll().forEach(vst -> tvVstClients
+                .add(new TvVstClient(
+                        clientDao.find(vst.getCliId()),
+                        vst)
+                )
+        );
         return tvVstClients;
     }
 }
