@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.dal.dao.ClientDao;
+import application.dal.dao.VisiteDao;
 import application.dal.model.Client;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
@@ -33,15 +34,15 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class ControllerOperationClient implements Initializable {
+    private ClientDao cliDao;
     private static Client clientSelected;
     private Client client;
     private Alert message, confirmer;
     private boolean b;
     private String role=ControllerLogin.getRole();
-
+    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
     private Vector<Client> clientVector;
 
-    private boolean isAjout;
     @FXML
     TableView<Client> tableClient;
 
@@ -60,9 +61,11 @@ public class ControllerOperationClient implements Initializable {
     @FXML
     private TableColumn<Client, String> coloneEmail;
 
-    ObservableList<Client> list;
+    @FXML
+    private Label lblAction;
 
-    ClientDao cliDao;
+    private ObservableList<Client> list;
+
 
     @FXML
     private ImageView reduce;
@@ -84,27 +87,35 @@ public class ControllerOperationClient implements Initializable {
 
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cliDao = Main.getDaos().getClientDao();
-        clientVector= cliDao.selectAll();
-        updateTable(clientVector);
-        ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
+             cliDao = Main.getDaos().getClientDao();
+             clientVector= cliDao.selectAll();
+             updateTable(clientVector);
+             ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
 
             btnAction.setDisable(true);
             btnUpdate.setDisable(true);
             btnDelete.setDisable(true);
+            if(role.equals("dentiste"))
+                btnAjouter.setDisable(true);
+
             tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
             @Override
             public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
+                if(!role.equals("dentiste")){
                 btnAction.setDisable(t1 == null);
+                }
                 btnUpdate.setDisable(t1 == null);
                 btnDelete.setDisable(t1 == null);
+                if(role.equals("dentiste"))
+                    btnAjouter.setDisable(t1 == null);
             }
         });
 
             if(role.equals("dentiste")){
-                btnAction.setText("Traitement");
+               lblAction.setText("Visite du client");
             }
 
     }
@@ -115,8 +126,7 @@ public class ControllerOperationClient implements Initializable {
              switchStage("/resource/fxml/AjouterClientDocument.fxml");
         else
             switchStage("/resource/fxml/AjouterVisiteDocument.fxml");
-
-    }
+        }
 
     public void modifierOnAction(ActionEvent event) throws IOException {
         if(role.equals("infermier"))
@@ -134,14 +144,27 @@ public class ControllerOperationClient implements Initializable {
         }
     }
     public void supprimerOnAction(ActionEvent event) throws IOException {
-        client=ControllerOperationClient.getClient();
-        alertConfirmation("Voulez vous vraiment supprimer le client : ");
-        if (b) {
-            message("/resource/Icons/success.png", "SUCCESS", "Le Cient " + client.getFullName() + " Est supprimer");
-            tableClient.getItems().removeAll(client);
-            tableClient.refresh();
-        } else {
-            message("/resource/Icons/failed.png", "ERROR", "Le Cient " + client.getFullName() + " n\'est pas  supprimer");
+        if(role.equals("infermier")) {
+            client = ControllerOperationClient.getClient();
+            alertConfirmation("Voulez vous vraiment supprimer le client : ");
+            if (b) {
+                message("/resource/Icons/success.png", "SUCCESS", "Le Cient " + client.getFullName() + " Est supprimer");
+                tableClient.getItems().removeAll(client);
+                tableClient.refresh(); }
+            else {
+                message("/resource/Icons/failed.png", "ERROR", "Le Cient " + client.getFullName() + " n\'est pas  supprimer");
+            }
+        }
+        else{
+            alertConfirmation("Voulez vous vraiment supprimer le Traitement : ");
+            if (b) {
+                message("/resource/Icons/success.png","SUCCESS","Traitement Supprimer avec success");
+            }
+            else{
+                message("/resource/Icons/failed.png","ERROR","Echec !!!!");
+
+            }
+
         }
     }
 
@@ -161,10 +184,13 @@ public class ControllerOperationClient implements Initializable {
         confirmer = new Alert(Alert.AlertType.CONFIRMATION);
         confirmer.setTitle("Confirmation Dialog");
         confirmer.setHeaderText(null);
-        confirmer.setContentText(information+" "+client.getFullName());
+        confirmer.setContentText(information+" "+clientSelected.getFullName());
         Optional<ButtonType> result = confirmer.showAndWait();
         if (result.get() == ButtonType.OK) {
-            b = cliDao.delete(client.getId());
+            if(role.equals("infermier"))
+                b = cliDao.delete(client.getId());
+            else
+                b=visiteDao.delete(3);
         } else {
             b = false;
         }
@@ -202,21 +228,12 @@ public class ControllerOperationClient implements Initializable {
     public void refreshTable(Vector<Client> clientVector){
         tableClient.getItems().setAll(clientVector);
     }
-
-
     public void tableOnMousePresseed(MouseEvent event){
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
     }
-
-
-
     public static Client getClient(){
         return clientSelected;
     }
-
-
-
-
     public void switchStage(String name ) throws IOException {
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(name));
@@ -230,11 +247,6 @@ public class ControllerOperationClient implements Initializable {
         });
         primaryStage.showAndWait();
     }
-
-
-
-
-
     public void close(Event event){
         Stage stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();

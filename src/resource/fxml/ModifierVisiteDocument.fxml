@@ -30,7 +30,7 @@
    <center>
         <AnchorPane prefHeight="462.0" prefWidth="603.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton layoutX="165.0" layoutY="366.0" onAction="#btnmodifierOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffcc00;" text="Modifier" textFill="WHITE">
+                <JFXButton layoutX="165.0" layoutY="366.0" onAction="#btnmodifierOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffcc00;" text="Modifier Traitement" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>

@@ -9,7 +9,6 @@ import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,19 +27,19 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.SimpleFormatter;
 
 public class ControllerOperations implements Initializable {
-
+    private ClientDao clientDao=Main.getDaos().getClientDao();
+    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
     private Client client;
     private Visite visite;
     private RendezVous rdv;
     private Alert message, confirmer;
     private boolean b;
     private Date dateRdv ;
-    private ClientDao clientDao=Main.getDaos().getClientDao();
-    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
     private String role=ControllerLogin.getRole();
+    private boolean isAjout;
+
     @FXML
     private JFXButton btnAnnuler;
 
@@ -62,8 +61,7 @@ public class ControllerOperations implements Initializable {
     @FXML
     private JFXButton btnAjouter;
 
-    private boolean isAjout;
-    private boolean isTraitement;
+
 
     @FXML
     private DatePicker txtRdv;
@@ -75,9 +73,6 @@ public class ControllerOperations implements Initializable {
     @FXML
     private JFXTextField txtRemarque;
 
-    @FXML
-    private JFXButton btnAjouterTraitement;
-
      @FXML
     private Label lblName;
 
@@ -86,14 +81,14 @@ public class ControllerOperations implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client=ControllerOperationClient.getClient();
         isAjout = btnAjouter != null;
-        isTraitement= btnAjouterTraitement!=null ;
         if(role.equals("infermier")) {
-            if (!isAjout && !isTraitement) {
+            if (!isAjout) {
                 txtFullName.setText(client.getFullName());
                 txtTele.setText(client.getTele());
                 txtAdresse.setText(client.getAddress());
                 txtCin.setText(client.getCin());
                 txtEmail.setText(client.getEmail());
+
             }
         }
         if(lblName!=null){
@@ -132,11 +127,8 @@ public class ControllerOperations implements Initializable {
             }
             else{
                 message("/resource/Icons/failed.png","ERROR","Echec !!!!");
-
             }
-
         }
-
     }
     public void btnmodifierOnAction(){
         if(role.equals("infermier")) {
@@ -162,9 +154,8 @@ public class ControllerOperations implements Initializable {
             }
         }
     }
-
     public void btnrendezvoudOnAction() throws ParseException {
-        if(role.equals("infermier")) {
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
             dateRdv = sdf.parse(txtRdv.getValue().toString());
             rdv = new RendezVous(null, 1, ControllerOperationClient.getClient().getId(), dateRdv);
@@ -176,21 +167,9 @@ public class ControllerOperations implements Initializable {
             else{
                 message("/resource/Icons/failed.png","ERROR","Echec !!!!");
 
-            }
-        }
-        else{
-            visite=new Visite(2L,client.getId(),1,null,txtTraitement.getText(),txtRemarque.getText());
-            b=visiteDao.insert(visite);
-            if (b) {
-                message("/resource/Icons/success.png","SUCCESS","Traitement ajouter avec success");
-                close();
-            }
-            else{
-                message("/resource/Icons/failed.png","ERROR","Echec !!!!");
-
-            }
 
         }
+
     }
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
@@ -219,5 +198,4 @@ public class ControllerOperations implements Initializable {
             b = false;
         }
     }
-
 }

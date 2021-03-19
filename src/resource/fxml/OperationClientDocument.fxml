@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="687.0" prefWidth="739.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerOperationClient">
    <children>
-      <Label layoutX="70.0" layoutY="23.0" text="Operation sur les Clients  ">
+      <Label fx:id="lblAction" layoutX="70.0" layoutY="23.0" text="Operation sur les Clients  ">
          <font>
             <Font name="Algerian" size="48.0" />
          </font>
