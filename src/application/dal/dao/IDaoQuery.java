@@ -92,7 +92,7 @@ public interface IDaoQuery {
             "UPDATE visite SET fcli_id = ?, fdent_id = ?, " +
                     "vst_traitement = ?, vst_remarque = ?, " +
                     "vst_date = CURRENT_TIMESTAMP() " +
-                    "WHERE vst_id = ?" ;
+                    "WHERE vst_id = ?";
     String INSERT_VISITES = "INSERT INTO visite " +
             "(vst_id, vst_date, fcli_id, fdent_id, vst_traitement, vst_remarque)" +
             " VALUES (null, CURRENT_TIMESTAMP(), ?, ?, ?, ?)";

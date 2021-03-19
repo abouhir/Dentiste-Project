@@ -76,6 +76,14 @@ public class VisiteDao extends DefaultDao<Visite> {
 
 
 
+    public Vector<Visite> findByCli(long id) {
+        return findAll().stream()
+                .filter(visite -> visite.getCliId() == id)
+                .collect(Collectors.toCollection(Vector::new));
+    }
+
+
+
     @Override
     public boolean delete(long id) {
         try {
