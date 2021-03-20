@@ -104,4 +104,13 @@ public class Person {
               || getId().toString().contains(key)
               || getFullName().contains(key);
     }
+
+   @Override
+   public String toString() {
+      return "Person{" +
+              "id=" + id +
+              ", fullName='" + fullName + '\'' +
+              ", cin='" + cin + '\'' +
+              '}';
+   }
 }

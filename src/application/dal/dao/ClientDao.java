@@ -3,8 +3,10 @@ package application.dal.dao;
 import application.DbConnection.DbConnection;
 import application.dal.model.Client;
 import application.dal.model.Dentiste;
+import application.dal.model.Visite;
 
 import java.sql.*;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Vector;
 import java.util.stream.Collectors;
@@ -30,7 +32,7 @@ public class ClientDao extends DefaultDao<Client> {
 
     @Override
     public Vector<Client> findAll() {
-        if (clients == null)
+        if (clients == null || clients.isEmpty())
             refresh();
         return clients;
     }
@@ -57,10 +59,14 @@ public class ClientDao extends DefaultDao<Client> {
 
     @Override
     public Client find(long id) {
-        Optional<Client> c = findAll().stream()
-                .filter(client -> client.getId() == id)
-                .findFirst();
-        return (c.orElse(null));
+        Long id1 = id;
+        System.out.println("I'm searching for the client : " + id);
+        Optional<Client> v = findAll().stream()
+                .filter(c -> c.getId().equals(id1))
+                .findAny();
+        if (v.isPresent())
+            return v.get();
+        throw new NoSuchElementException();
     }
 
     @Override

@@ -22,6 +22,7 @@ public class Visite {
    private Date dateVisite;
    private String trait;
    private String remarque;
+   private float price;
 
 
    public Visite(long id, long cliId, long dentId, Date dateVisite, String trait, String remarque) {
@@ -35,9 +36,12 @@ public class Visite {
 
    public Visite(ResultSet rst) throws SQLException {
       setId(rst.getLong("vst_id"));
+      setCliId(rst.getLong("fcli_id"));
+      setDentId(rst.getLong("fdent_id"));
       setDateVisite(rst.getDate("vst_date"));
       setTrait(rst.getString("vst_traitement"));
       setRemarque(rst.getString("vst_remarque"));
+      setPrice(rst.getLong("vst_price"));
    }
 
    public long getCliId() {
@@ -86,5 +90,23 @@ public class Visite {
 
    public void setDateVisite(Date dateVisite) {
       this.dateVisite = dateVisite;
+   }
+
+   public float getPrice() {
+      return price;
+   }
+
+   public void setPrice(float price) {
+      this.price = price;
+   }
+
+   @Override
+   public String toString() {
+      return "Visite{" +
+              "id=" + id +
+              ", cliId=" + cliId +
+              ", dentId=" + dentId +
+              ", dateVisite=" + dateVisite +
+              '}';
    }
 }

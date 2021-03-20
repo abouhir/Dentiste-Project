@@ -66,14 +66,14 @@ public class ControllerAccueile implements Initializable {
        //int size;
         if(role.equals("dentiste")){
             coloneDateRendezVous.setText("Traitement");
-        // vectorTvRdClients.clear();
-//          vstClientVector=visiteDao.findVstByClient();
-//          vstClientVector.forEach(v-> System.out.println(v.getTrait()));
-//           vstClientVector.forEach(vst-> {client=new Client(vst.getIdClient(),vst.getFullName(),vst.getCin(),vst.getTele(),vst.getAddress(),vst.getEmail());
-//         rdv=null;
-//              clientRdv=new TvRdvClient(client,rdv);
-//                vectorTvRdClients.add(clientRdv);
-//     });
+            vectorTvRdClients.clear();
+            vstClientVector=visiteDao.findVstByClient();
+            vstClientVector.forEach(v-> System.out.println(v.getTrait()));
+            vstClientVector.forEach(vst-> {client=new Client(vst.getIdClient(),vst.getFullName(),vst.getCin(),vst.getTele(),vst.getAddress(),vst.getEmail());
+                rdv=null;
+                clientRdv=new TvRdvClient(client,rdv);
+                vectorTvRdClients.add(clientRdv);
+            });
         }else{
             lblNbrRdv.setText(vectorTvRdClients.size()+"");
         }
