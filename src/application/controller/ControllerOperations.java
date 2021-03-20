@@ -118,7 +118,6 @@ public class ControllerOperations implements Initializable {
           visiteVector=visiteDao.findByCli(client.getId());
           visiteVector.forEach(v-> System.out.println(v.getTrait()));
           remplirTable(visiteVector);
-          System.out.println("dkhelt");
         }
     }
 
