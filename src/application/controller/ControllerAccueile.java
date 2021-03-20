@@ -1,6 +1,11 @@
 package application.controller;
 
+import application.dal.dao.ClientDao;
+import application.dal.dao.VisiteDao;
+import application.dal.model.Client;
+import application.dal.model.RendezVous;
 import application.dal.model.TvRdvClient;
+import application.dal.model.TvVstClient;
 import application.main.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,8 +25,13 @@ import java.util.Vector;
 public class ControllerAccueile implements Initializable {
 
     private Vector<TvRdvClient> vectorTvRdClients;
-
-
+    private String role=ControllerLogin.getRole();
+    private  Vector<TvVstClient> vstClientVector;
+    private ClientDao clientDao=Main.getDaos().getClientDao();
+    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
+    private TvRdvClient clientRdv;
+    private Client client;
+    private RendezVous rdv;
 
     @FXML
     private TableView<TvRdvClient> tableRendez;
@@ -52,8 +62,22 @@ public class ControllerAccueile implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        remplirTable();
-        lblNbrRdv.setText(vectorTvRdClients.size()+"");
+        vectorTvRdClients=Main.getDaos().getRdvDao().findRdvClientOfToday();
+       //int size;
+        if(role.equals("dentiste")){
+            coloneDateRendezVous.setText("Traitement");
+        // vectorTvRdClients.clear();
+//          vstClientVector=visiteDao.findVstByClient();
+//          vstClientVector.forEach(v-> System.out.println(v.getTrait()));
+//           vstClientVector.forEach(vst-> {client=new Client(vst.getIdClient(),vst.getFullName(),vst.getCin(),vst.getTele(),vst.getAddress(),vst.getEmail());
+//         rdv=null;
+//              clientRdv=new TvRdvClient(client,rdv);
+//                vectorTvRdClients.add(clientRdv);
+//     });
+        }else{
+            lblNbrRdv.setText(vectorTvRdClients.size()+"");
+        }
+        remplirTable(vectorTvRdClients);
     }
 
     public void btncloseOnMouseEvent(MouseEvent event){
@@ -61,9 +85,8 @@ public class ControllerAccueile implements Initializable {
     }
     public void btnreduceOnMouseEvent(MouseEvent event){ reduce(); }
 
-    public void remplirTable(){
-        vectorTvRdClients=Main.getDaos().getRdvDao().findRdvClientOfToday();
-        list = FXCollections.observableArrayList( vectorTvRdClients);
+    public void remplirTable(Vector<TvRdvClient> vector){
+        list = FXCollections.observableArrayList(vector);
         coloneCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         coloneFullName.setCellValueFactory(new PropertyValueFactory<>("FullName"));
         coloneTele.setCellValueFactory(new PropertyValueFactory<>("tele"));

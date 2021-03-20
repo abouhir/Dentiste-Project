@@ -89,10 +89,11 @@ public class ControllerOperationClient implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-             cliDao = Main.getDaos().getClientDao();
-             clientVector= cliDao.selectAll();
-             updateTable(clientVector);
-             ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
+
+            cliDao = Main.getDaos().getClientDao();
+            clientVector = cliDao.selectAll();
+            remplirTable(clientVector);
+            ControllerOperationClient.clientSelected = tableClient.getSelectionModel().getSelectedItem();
 
             btnAction.setDisable(true);
             btnUpdate.setDisable(true);
@@ -103,9 +104,8 @@ public class ControllerOperationClient implements Initializable {
             tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
             @Override
             public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
-                if(!role.equals("dentiste")){
+
                 btnAction.setDisable(t1 == null);
-                }
                 btnUpdate.setDisable(t1 == null);
                 btnDelete.setDisable(t1 == null);
                 if(role.equals("dentiste"))
@@ -115,6 +115,7 @@ public class ControllerOperationClient implements Initializable {
 
             if(role.equals("dentiste")){
                lblAction.setText("Visite du client");
+               btnAction.setText("Traitement");
             }
 
     }
@@ -139,7 +140,7 @@ public class ControllerOperationClient implements Initializable {
             switchStage("/resource/fxml/RendezVousClientDocument.fxml");
         }
             else {
-            switchStage("/fxml/AjouterVisiteDocument.fxml");
+            switchStage("/fxml/TraitementClientDocument.fxml");
         }
     }
     public void supprimerOnAction(ActionEvent event) throws IOException {
@@ -214,7 +215,7 @@ public class ControllerOperationClient implements Initializable {
     }
     public void btnreduceOnMouseEvent(MouseEvent event){reduce();}
 
-    public void updateTable(Vector<Client> clientVector){
+    public void remplirTable(Vector<Client> clientVector){
         list = FXCollections.observableArrayList(clientVector);
         coloneCin.setCellValueFactory(new PropertyValueFactory<Client, String>("Cin"));
         coloneFullName.setCellValueFactory(new PropertyValueFactory<Client, String>("FullName"));

@@ -4,18 +4,19 @@ import application.dal.dao.ClientDao;
 import application.dal.dao.VisiteDao;
 import application.dal.model.Client;
 import application.dal.model.RendezVous;
+import application.dal.model.TvVstClient;
 import application.dal.model.Visite;
 import application.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -23,10 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ControllerOperations implements Initializable {
     private ClientDao clientDao=Main.getDaos().getClientDao();
@@ -76,13 +74,34 @@ public class ControllerOperations implements Initializable {
      @FXML
     private Label lblName;
 
+    @FXML
+    private TableView<Visite> tableVisite;
 
+    @FXML
+    private TableColumn<Visite, String> coloneCin;
+
+    @FXML
+    private TableColumn<Visite, String> coloneFullName;
+
+    @FXML
+    private TableColumn<Visite, String> coloneDateVisite;
+
+    @FXML
+    private TableColumn<Visite, String> coloneTraitement;
+
+    private ObservableList<Visite> list;
+
+    private Vector<Visite> visiteVector;
+
+
+    boolean isTrait;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client=ControllerOperationClient.getClient();
         isAjout = btnAjouter != null;
+        isTrait=tableVisite!=null;
         if(role.equals("infermier")) {
-            if (!isAjout) {
+            if (!isAjout && !isTrait) {
                 txtFullName.setText(client.getFullName());
                 txtTele.setText(client.getTele());
                 txtAdresse.setText(client.getAddress());
@@ -91,14 +110,16 @@ public class ControllerOperations implements Initializable {
 
             }
         }
-        if(lblName!=null){
+        if(lblName!=null ){
             lblName.setText(client.getCin() + " " + client.getFullName());
         }
-//        if(role.equals("dentiste") && !isAjout) {
-//            if (!isAjout) {
-//
-//            }
-//        }
+        if(isTrait){
+            System.out.println(client.getId());
+          visiteVector=visiteDao.findByCli(client.getId());
+          visiteVector.forEach(v-> System.out.println(v.getTrait()));
+          remplirTable(visiteVector);
+          System.out.println("dkhelt");
+        }
     }
 
 
@@ -166,11 +187,17 @@ public class ControllerOperations implements Initializable {
             }
             else{
                 message("/resource/Icons/failed.png","ERROR","Echec !!!!");
-
-
         }
 
     }
+
+    public void remplirTable(Vector<Visite> visiteVector){
+        list = FXCollections.observableArrayList(visiteVector);
+        coloneDateVisite.setCellValueFactory(new PropertyValueFactory<Visite, String>("dateVst"));
+        coloneTraitement.setCellValueFactory(new PropertyValueFactory<Visite, String>("trait"));
+        tableVisite.setItems(list);
+    }
+
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
         stage.close();
