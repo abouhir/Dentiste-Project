@@ -61,7 +61,6 @@ public class ClientDao extends DefaultDao<Client> {
                 .filter(client -> client.getId() == id)
                 .findFirst();
         return (c.orElse(null));
-
     }
 
     @Override

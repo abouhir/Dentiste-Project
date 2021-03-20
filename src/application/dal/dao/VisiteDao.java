@@ -10,8 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Vector;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class VisiteDao extends DefaultDao<Visite> {
@@ -68,10 +70,12 @@ public class VisiteDao extends DefaultDao<Visite> {
 
     @Override
     public Visite find(long id) {
-        Optional<Visite> c = findAll().stream()
+        Optional<Visite> v = findAll().stream()
                 .filter(visite -> visite.getId() == id)
-                .findFirst();
-        return (c.orElse(null));
+                .findAny();
+        if (v.isPresent())
+            return v.get();
+        throw new NoSuchElementException();
     }
 
 
