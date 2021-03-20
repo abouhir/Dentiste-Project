@@ -59,10 +59,8 @@ public class ClientDao extends DefaultDao<Client> {
 
     @Override
     public Client find(long id) {
-        Long id1 = id;
-        System.out.println("I'm searching for the client : " + id);
         Optional<Client> v = findAll().stream()
-                .filter(c -> c.getId().equals(id1))
+                .filter(c -> c.getId() == id)
                 .findAny();
         if (v.isPresent())
             return v.get();
