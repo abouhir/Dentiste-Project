@@ -78,13 +78,7 @@ public class ControllerOperations implements Initializable {
     private TableView<Visite> tableVisite;
 
     @FXML
-    private TableColumn<Visite, String> coloneCin;
-
-    @FXML
-    private TableColumn<Visite, String> coloneFullName;
-
-    @FXML
-    private TableColumn<Visite, String> coloneDateVisite;
+    private TableColumn<Visite, Date> coloneDateVisite;
 
     @FXML
     private TableColumn<Visite, String> coloneTraitement;
@@ -114,14 +108,11 @@ public class ControllerOperations implements Initializable {
             lblName.setText(client.getCin() + " " + client.getFullName());
         }
         if(isTrait){
-            System.out.println(client.getId());
           visiteVector=visiteDao.findByCli(client.getId());
-          visiteVector.forEach(v-> System.out.println(v.getTrait()));
           remplirTable(visiteVector);
+          lblName.setText(client.getCin() + " " + client.getFullName());
         }
     }
-
-
 
     public void btnannulerOnAction(ActionEvent event){
         close();
@@ -175,7 +166,6 @@ public class ControllerOperations implements Initializable {
         }
     }
     public void btnrendezvoudOnAction() throws ParseException {
-
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
             dateRdv = sdf.parse(txtRdv.getValue().toString());
             rdv = new RendezVous(null, 1, ControllerOperationClient.getClient().getId(), dateRdv);
@@ -192,8 +182,8 @@ public class ControllerOperations implements Initializable {
 
     public void remplirTable(Vector<Visite> visiteVector) {
         list = FXCollections.observableArrayList(visiteVector);
-        coloneDateVisite.setCellValueFactory(new PropertyValueFactory<Visite, String>("dateVst"));
-        coloneTraitement.setCellValueFactory(new PropertyValueFactory<Visite, String>("trait"));
+        coloneDateVisite.setCellValueFactory(new PropertyValueFactory<>("dateVisite"));
+        coloneTraitement.setCellValueFactory(new PropertyValueFactory<>("trait"));
         tableVisite.setItems(list);
     }
 

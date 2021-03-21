@@ -38,7 +38,7 @@
             <TableView fx:id="tableVisite" layoutY="53.0" prefHeight="343.0" prefWidth="600.0" stylesheets="@../css/style.css">
               <columns>
                   <TableColumn fx:id="coloneDateVisite" prefWidth="152.0" text="Date Visite" />
-                  <TableColumn fx:id="coloneTraitement" prefWidth="242.4000244140625" text="Traitement" />
+                  <TableColumn fx:id="coloneTraitement" prefWidth="447.20001220703125" text="Traitement" />
               </columns>
             </TableView>
                 <Label fx:id="lblName" layoutX="280.0" layoutY="14.0" prefHeight="34.0" prefWidth="20.0">
