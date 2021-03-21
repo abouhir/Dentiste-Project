@@ -23,6 +23,8 @@ public class Medicament {
 
     }
 
+
+
     public long getId() {
         return id;
     }
@@ -46,4 +48,7 @@ public class Medicament {
    public void setNom(String nom) {
       this.nom = nom;
    }
+
+
+
 }

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Vector;
 
@@ -66,16 +67,20 @@ public class MedicsDao extends DefaultDao<Medicament> {
     public Medicament find(long id) {
         Optional<Medicament> c = findAll().stream()
                 .filter(medicament -> medicament.getId() == id)
-                .findFirst();
-        return (c.orElse(null));
+                .findAny();
+        if (c.isPresent())
+            return c.get();
+        throw new NoSuchElementException();
     }
 
     @Override
     public Medicament find(String name) {
         Optional<Medicament> c = findAll().stream()
                 .filter(medicament -> medicament.getNom().equals(name))
-                .findFirst();
-        return (c.orElse(null));
+                .findAny();
+        if (c.isPresent())
+            return c.get();
+        throw new NoSuchElementException();
     }
 
     public Vector<Medicament> findByOrd(long ordID) {

@@ -1,5 +1,6 @@
 package application.dal.model;
 
+import application.dal.dao.MedicsDao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class Ordonnance {
    private Long id;
    private Long visId;
    private Date date;
-   private Vector<String> medics;
+   private Vector<Medicament> medics;
 
 
 
@@ -26,6 +27,20 @@ public class Ordonnance {
         setId(rst.getLong("ord_id"));
         setVisId(rst.getLong("fvst_id"));
         setDate(rst.getDate("ord_date"));
+    }
+
+
+    public Ordonnance(ResultSet rst, MedicsDao medDao) throws SQLException {
+        this(rst);
+        setMedics(medDao.findByOrd(this.id));
+    }
+
+    public Vector<Medicament> getMedics() {
+        return medics;
+    }
+
+    public void setMedics(Vector<Medicament> medics) {
+        this.medics = medics;
     }
 
     public Date getDate() {
@@ -51,5 +66,10 @@ public class Ordonnance {
 
    public void setId(Long id) {
       this.id = id;
+   }
+
+
+   public String getPdfTitle() {
+        return "Ordonnance -" +getId()+"- :";
    }
 }

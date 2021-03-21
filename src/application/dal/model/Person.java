@@ -113,4 +113,11 @@ public class Person {
               ", cin='" + cin + '\'' +
               '}';
    }
+
+    public String showInfos() {
+      return "id : " + id + "\r\n" +
+              "FullName : " + fullName + "\r\n" +
+              "CIN : " + cin + "\r\n" +
+              "Tele : " + tele + "\r\n";
+    }
 }
