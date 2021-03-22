@@ -6,18 +6,17 @@ import application.dal.model.Medicament;
 import application.dal.model.Ordonnance;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import java.io.FileOutputStream;
 
+
 public class PdfGenerator {
-
-
-
     public static void GeneratePdf(Client c, Dentiste d, Ordonnance o) {
 
-        Font ttlFont = new Font(Font.FontFamily.valueOf("TimesRoman"), Font.BOLD, 30);
-        Font hdrFont = new Font(Font.FontFamily.valueOf("TimesRoman"), Font.BOLD, 25);
-        Font lstFont = new Font(Font.FontFamily.valueOf("TimesRoman"), Font.NORMAL, 16);
-        Font infosFont = new Font(Font.FontFamily.valueOf("TimesRoman"), Font.NORMAL, 18);
+        Font ttlFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.BOLD, 30);
+        Font hdrFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.BOLD, 25);
+        Font lstFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 16);
+        Font infosFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 18);
 
         Document document = new Document(PageSize.A6);
         document.setMargins(10, 10, 10, 10);
@@ -58,8 +57,7 @@ public class PdfGenerator {
 
         //Medics List
         List medicsList = new List(List.UNORDERED);
-        for (Medicament m:
-                o.getMedics())
+        for (Medicament m: o.getMedics())
             medicsList.add(new ListItem(m.getNom(), lstFont));
 
 

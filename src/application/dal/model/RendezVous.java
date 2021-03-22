@@ -26,8 +26,6 @@ public class RendezVous {
       this.createdAt = new Date();
    }
 
-
-
    public RendezVous(ResultSet rst) throws SQLException {
       setId(rst.getLong("rdv_id"));
       setInfId(rst.getLong("finf_id"));

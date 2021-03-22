@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="content" prefHeight="687.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerAccueile">
+
+
+    <children>
+        <Label fx:id="lblVisite" layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="274.0" text="Rendez-vous :">
+            <font>
+                <Font name="Algerian" size="24.0" />
+            </font>
+        </Label>
+        <HBox layoutX="288.0" layoutY="69.0" prefHeight="122.0" prefWidth="251.0" styleClass="hbox" stylesheets="@../css/style.css">
+            <children>
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label fx:id="lblNbrRdv" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="67.0" prefWidth="213.0" text="0" textFill="AQUAMARINE" textOverrun="CLIP">
+                            <font>
+                                <Font name="Arial" size="72.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="NW_RESIZE" />
+                            </cursor>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="102.0" text="Préalable">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="80.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+            <opaqueInsets>
+                <Insets left="40.0" />
+            </opaqueInsets>
+        </HBox>
+        <TableView fx:id="tableViste" layoutX="4.0" layoutY="234.0" prefHeight="452.0" prefWidth="801.0" stylesheets="@../css/style.css">
+            <columns>
+                <TableColumn fx:id="coloneCIN" prefWidth="100.0" text="CIN" />
+                <TableColumn fx:id="coloneNAME" prefWidth="157.60005950927734" text="Nom et Prenom" />
+                <TableColumn fx:id="coloneDateVisite" minWidth="0.0" prefWidth="279.1999816894531" text="Date Visite" />
+                <TableColumn fx:id="coloneTraitement" minWidth="-Infinity" prefWidth="263.1999755859375" text="Traitement" />
+            </columns>
+        </TableView>
+        <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="773.0" layoutY="14.0" onMouseClicked="#btncloseOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Icons/close.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="reduce" fitHeight="32.0" fitWidth="40.0" layoutX="736.0" layoutY="11.0" onMouseClicked="#btnreduceOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Icons/minus.png" />
+            </image>
+        </ImageView>
+    </children>
+
+
+</AnchorPane>

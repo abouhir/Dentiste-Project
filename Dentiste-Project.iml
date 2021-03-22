@@ -13,6 +13,6 @@
     <orderEntry type="library" name="mysql-connector-java-8.0.22" level="project" />
     <orderEntry type="library" name="javafx15" level="project" />
     <orderEntry type="library" name="jfoenix-9.0.1" level="project" />
-    <orderEntry type="library" name="itextpdf-5.5.13.2" level="application" />
+    <orderEntry type="library" name="itextpdf-5.5.13.2" level="project" />
   </component>
 </module>

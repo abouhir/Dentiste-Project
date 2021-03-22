@@ -31,33 +31,23 @@ public class ControllerDashboard implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         if(role.equals("dentiste")){
             img.setImage(new Image(this.getClass().getResource("/resource/Icons/dentiste.png").toString()));
+            switchStage("/fxml/AccueileDentisteDocument.fxml");
         }
-
-
-        content.getChildren().clear();
-        try {
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/AccueileDocument.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
+       else {
+            switchStage("/fxml/AccueileInfermierDocument.fxml");
         }
     }
     public void btnAccueileOnAction(ActionEvent event) throws IOException {
-        content.getChildren().clear();
-        try {
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/AccueileDocument.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if(role.equals("dentiste"))
+            switchStage("/fxml/AccueileDentisteDocument.fxml");
+        else
+            switchStage("/fxml/AccueileInfermierDocument.fxml");
     }
     public void btnclientOnAction(ActionEvent event) throws IOException {
-        content.getChildren().clear();
-        try {
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("/resource/fxml/OperationClientDocument.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       switchStage("/resource/fxml/OperationClientDocument.fxml");
 
     }
     public void btndeconnecterOnAction(ActionEvent event) throws IOException {
@@ -69,5 +59,13 @@ public class ControllerDashboard implements Initializable {
         Stage stage =(Stage)btnDeconnecter.getScene().getWindow();
         stage.close();
 
+    }
+    public void switchStage(String url){
+        content.getChildren().clear();
+        try {
+            content.getChildren().add(FXMLLoader.load(getClass().getResource(url)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     }

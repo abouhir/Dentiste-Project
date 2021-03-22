@@ -41,7 +41,8 @@ public class Visite {
       setDateVisite(rst.getDate("vst_date"));
       setTrait(rst.getString("vst_traitement"));
       setRemarque(rst.getString("vst_remarque"));
-      setPrice(rst.getLong("vst_price"));
+      //setPrice(rst.getLong("vst_price"));
+
    }
 
    public long getCliId() {

@@ -1,13 +1,11 @@
 package application.controller;
 
 import application.dal.dao.ClientDao;
-import application.dal.dao.RdvDao;
+import application.dal.dao.MedicsDao;
 import application.dal.dao.VisiteDao;
-import application.dal.model.Client;
-import application.dal.model.RendezVous;
-import application.dal.model.TvVstClient;
-import application.dal.model.Visite;
+import application.dal.model.*;
 import application.main.Main;
+import application.pdf.PdfGenerator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -28,9 +26,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ControllerOperations implements Initializable {
-    private ClientDao clientDao;
-    private VisiteDao visiteDao;
-    private RdvDao rdvDao;
+    private ClientDao clientDao=Main.getDaos().getClientDao();
+    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
     private Client client;
     private Visite visite;
     private RendezVous rdv;
@@ -62,6 +59,7 @@ public class ControllerOperations implements Initializable {
     private JFXButton btnAjouter;
 
 
+
     @FXML
     private DatePicker txtRdv;
 
@@ -79,13 +77,7 @@ public class ControllerOperations implements Initializable {
     private TableView<Visite> tableVisite;
 
     @FXML
-    private TableColumn<Visite, String> coloneCin;
-
-    @FXML
-    private TableColumn<Visite, String> coloneFullName;
-
-    @FXML
-    private TableColumn<Visite, String> coloneDateVisite;
+    private TableColumn<Visite, Date> coloneDateVisite;
 
     @FXML
     private TableColumn<Visite, String> coloneTraitement;
@@ -94,15 +86,12 @@ public class ControllerOperations implements Initializable {
 
     private Vector<Visite> visiteVector;
 
+    @FXML
+    private JFXButton btnOr;
 
     boolean isTrait;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        visiteDao=Main.getDaos().getVisiteDao();
-        clientDao=Main.getDaos().getClientDao();
-        rdvDao = Main.getDaos().getRdvDao();
-
-
         client=ControllerOperationClient.getClient();
         isAjout = btnAjouter != null;
         isTrait=tableVisite!=null;
@@ -120,14 +109,11 @@ public class ControllerOperations implements Initializable {
             lblName.setText(client.getCin() + " " + client.getFullName());
         }
         if(isTrait){
-            System.out.println(client.getId());
           visiteVector=visiteDao.findByCli(client.getId());
-          visiteVector.forEach(v-> System.out.println(v.getTrait()));
           remplirTable(visiteVector);
+          lblName.setText(client.getCin() + " " + client.getFullName());
         }
     }
-
-
 
     public void btnannulerOnAction(ActionEvent event){
         close();
@@ -181,23 +167,24 @@ public class ControllerOperations implements Initializable {
         }
     }
     public void btnrendezvoudOnAction() throws ParseException {
-
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
             dateRdv = sdf.parse(txtRdv.getValue().toString());
             rdv = new RendezVous(null, 1, ControllerOperationClient.getClient().getId(), dateRdv);
-            b = rdvDao.insert(rdv);
+            b = Main.getDaos().getRdvDao().insert(rdv);
             if (b) {
                 message("/resource/Icons/success.png","SUCCESS","Le Client  "+txtFullName.getText()+" est prend un rendez-vous");
                 close();
             }
-            else
+            else{
                 message("/resource/Icons/failed.png","ERROR","Echec !!!!");
+        }
+
     }
 
     public void remplirTable(Vector<Visite> visiteVector) {
         list = FXCollections.observableArrayList(visiteVector);
-        coloneDateVisite.setCellValueFactory(new PropertyValueFactory<Visite, String>("dateVst"));
-        coloneTraitement.setCellValueFactory(new PropertyValueFactory<Visite, String>("trait"));
+        coloneDateVisite.setCellValueFactory(new PropertyValueFactory<>("dateVisite"));
+        coloneTraitement.setCellValueFactory(new PropertyValueFactory<>("trait"));
         tableVisite.setItems(list);
     }
 
@@ -227,5 +214,12 @@ public class ControllerOperations implements Initializable {
         } else {
             b = false;
         }
+    }
+    public void btnorOnAction(){
+        Dentiste d = Main.getDaos().getDentistDao().find(1);
+        MedicsDao medicsDao=Main.getDaos().getMedicsDao();
+        Ordonnance o = new Ordonnance(1L,2L,new Date(),medicsDao);
+        Client c = ControllerOperationClient.getClient();
+        PdfGenerator.GeneratePdf(c,d,o);
     }
 }
