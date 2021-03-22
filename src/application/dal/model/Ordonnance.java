@@ -35,6 +35,14 @@ public class Ordonnance {
         setMedics(medDao.findByOrd(this.id));
     }
 
+
+    public Ordonnance(Long id, Long visId, Date date, MedicsDao medDao) {
+        this.id = id;
+        this.visId = visId;
+        this.date = date;
+        setMedics(medDao.findByOrd(this.id));
+    }
+
     public Vector<Medicament> getMedics() {
         return medics;
     }

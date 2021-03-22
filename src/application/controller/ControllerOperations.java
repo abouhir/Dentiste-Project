@@ -190,7 +190,7 @@ public class ControllerOperations implements Initializable {
 
     }
 
-    public void remplirTable(Vector<Visite> visiteVector){
+    public void remplirTable(Vector<Visite> visiteVector) {
         list = FXCollections.observableArrayList(visiteVector);
         coloneDateVisite.setCellValueFactory(new PropertyValueFactory<Visite, String>("dateVst"));
         coloneTraitement.setCellValueFactory(new PropertyValueFactory<Visite, String>("trait"));
@@ -219,7 +219,7 @@ public class ControllerOperations implements Initializable {
         confirmer.setContentText(information+" "+txtFullName.getText());
         Optional<ButtonType> result = confirmer.showAndWait();
         if (result.get() == ButtonType.OK) {
-            b = Main.getDaos().getClientDao().update(client);
+            b = clientDao.update(client);
         } else {
             b = false;
         }
