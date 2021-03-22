@@ -6,6 +6,7 @@ import application.dal.dao.VisiteDao;
 import application.dal.model.*;
 import application.main.Main;
 import application.pdf.PdfGenerator;
+import com.itextpdf.text.BadElementException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -215,7 +216,7 @@ public class ControllerOperations implements Initializable {
             b = false;
         }
     }
-    public void btnorOnAction(){
+    public void btnorOnAction() throws IOException, BadElementException {
         Dentiste d = Main.getDaos().getDentistDao().find(1);
         MedicsDao medicsDao=Main.getDaos().getMedicsDao();
         Ordonnance o = new Ordonnance(1L,2L,new Date(),medicsDao);

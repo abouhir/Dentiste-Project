@@ -115,9 +115,9 @@ public class Person {
    }
 
     public String showInfos() {
-      return "id : " + id + "\r\n" +
-              "FullName : " + fullName + "\r\n" +
-              "CIN : " + cin + "\r\n" +
-              "Tele : " + tele + "\r\n";
+      return "id : " + id + " " +
+              "FullName : " + fullName + " " +
+              "CIN : " + cin + " " +
+              "Tele : " + tele + " ";
     }
 }

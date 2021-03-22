@@ -6,54 +6,60 @@ import application.dal.model.Medicament;
 import application.dal.model.Ordonnance;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sun.scenario.effect.ImageData;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class PdfGenerator {
-    public static void GeneratePdf(Client c, Dentiste d, Ordonnance o,String nomfile) {
+    public static void GeneratePdf(Client c, Dentiste d, Ordonnance o,String nomfile) throws IOException, BadElementException {
 
         Font ttlFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 10f);
         Font hdrFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 8f);
         Font lstFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6f);
-        Font infosFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6f);
+        Font infosFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6f,BaseColor.BLUE);
 
 
         Document document = new Document(PageSize.A6,
                 10f, 10f, 7f, 7f);
 
 
-        //Ordonnance Title
-        Paragraph title = new Paragraph(o.getPdfTitle(), ttlFont);
-        title.setAlignment(Paragraph.ALIGN_CENTER);
-        title.setSpacingAfter(18f);
+//        //Ordonnance Title
+//        Paragraph title = new Paragraph("", ttlFont);
+//        title.setAlignment(Paragraph.ALIGN_CENTER);
+//        title.setSpacingAfter(18f);
 
-        //Dentist Header
-        Paragraph dentHeader = new Paragraph("Dentist :", hdrFont);
-        dentHeader.setAlignment(Paragraph.ALIGN_LEFT);
-        dentHeader.setSpacingBefore(8f);
-        dentHeader.setSpacingAfter(2f);
+//        Dentist Header
+//        Paragraph dentHeader = new Paragraph("Dentist :", hdrFont);
+//        dentHeader.setAlignment(Paragraph.ALIGN_RIGHT);
+//        dentHeader.setSpacingBefore(8f);
+//        dentHeader.setSpacingAfter(2f);
 
         //Dentist Body
-        Paragraph dentInfos = new Paragraph(d.showInfos(), infosFont);
+        Paragraph dentInfos = new Paragraph("Docteur :  xxxxxxx xxxxxxxx\nAdresse : 97 Rue Boumdiane el gheouti hay dakhla" +
+                "\nCabinet Dentiste : 78 45 63 21"+"\nTéléphone : 06.41.85.36.14", infosFont);
         dentInfos.setAlignment(Element.ALIGN_LEFT);
         dentInfos.setSpacingAfter(16f);
-
-        //Client Header
-        Paragraph cliHeader = new Paragraph("Client :", hdrFont);
-        cliHeader.setAlignment(Paragraph.ALIGN_LEFT);
-        cliHeader.setSpacingBefore(8f);
-        cliHeader.setSpacingAfter(2f);
+        //image
+       Image img = Image.getInstance("src/resource/Icons/dentist.png");
+       img.scaleAbsolute(70f,50f);
+       img.setAbsolutePosition(220f, 370f);
+//        //Client Header
+//        Paragraph cliHeader = new Paragraph("Client :", hdrFont);
+//        cliHeader.setAlignment(Paragraph.ALIGN_LEFT);
+//        cliHeader.setSpacingBefore(8f);
+//        cliHeader.setSpacingAfter(2f);
 
         //Client Body
         Paragraph cliInfos = new Paragraph(c.showInfos(), infosFont);
-        cliInfos.setAlignment(Element.ALIGN_LEFT);
+        cliInfos.setAlignment(Element.ALIGN_CENTER);
         cliInfos.setSpacingAfter(16f);
 
 
         //Medics Header
         Paragraph medicsHeader = new Paragraph("Medicament : ", hdrFont);
-        cliInfos.setAlignment(Element.ALIGN_LEFT);
+        cliInfos.setAlignment(Element.ALIGN_CENTER);
         cliInfos.setSpacingBefore(15f);
         cliInfos.setSpacingAfter(2f);
 
@@ -67,10 +73,11 @@ public class PdfGenerator {
                     .getInstance(document,
                             new FileOutputStream(nomfile+".pdf"));
             document.open();
-            document.add(title);
-            document.add(dentHeader);
+//            document.add(title);
+//            document.add(dentHeader);
             document.add(dentInfos);
-            document.add(cliHeader);
+            document.add(img);
+           // document.add(cliHeader);
             document.add(cliInfos);
             if (!o.getMedics().isEmpty()) {
                 document.add(medicsHeader);
