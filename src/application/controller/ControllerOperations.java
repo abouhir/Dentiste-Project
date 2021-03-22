@@ -36,7 +36,7 @@ public class ControllerOperations implements Initializable {
     private Date dateRdv ;
     private String role=ControllerLogin.getRole();
     private boolean isAjout;
-
+    private static int i=0;
     @FXML
     private JFXButton btnAnnuler;
 
@@ -220,6 +220,6 @@ public class ControllerOperations implements Initializable {
         MedicsDao medicsDao=Main.getDaos().getMedicsDao();
         Ordonnance o = new Ordonnance(1L,2L,new Date(),medicsDao);
         Client c = ControllerOperationClient.getClient();
-        PdfGenerator.GeneratePdf(c,d,o);
+        PdfGenerator.GeneratePdf(c,d,o,"ord_"+c.getCin()+(++i));
     }
 }

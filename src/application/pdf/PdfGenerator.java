@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 
 
 public class PdfGenerator {
-    public static void GeneratePdf(Client c, Dentiste d, Ordonnance o) {
+    public static void GeneratePdf(Client c, Dentiste d, Ordonnance o,String nomfile) {
 
         Font ttlFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 10f);
         Font hdrFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 8f);
@@ -62,13 +62,10 @@ public class PdfGenerator {
         for (Medicament m: o.getMedics())
             medicsList.add(new ListItem(m.getNom(), lstFont));
 
-
-
-
         try {
             PdfWriter writer = PdfWriter
                     .getInstance(document,
-                            new FileOutputStream("facture.pdf"));
+                            new FileOutputStream(nomfile+".pdf"));
             document.open();
             document.add(title);
             document.add(dentHeader);
