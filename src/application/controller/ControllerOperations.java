@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.dal.dao.ClientDao;
+import application.dal.dao.MedicsDao;
 import application.dal.dao.VisiteDao;
 import application.dal.model.*;
 import application.main.Main;
@@ -216,7 +217,8 @@ public class ControllerOperations implements Initializable {
     }
     public void btnorOnAction(){
         Dentiste d = Main.getDaos().getDentistDao().find(1);
-        Ordonnance o = Main.getDaos().getOrdDao().find(1);
+        MedicsDao medicsDao=Main.getDaos().getMedicsDao();
+        Ordonnance o = new Ordonnance(1L,2L,new Date(),medicsDao);
         Client c = ControllerOperationClient.getClient();
         PdfGenerator.GeneratePdf(c,d,o);
     }
