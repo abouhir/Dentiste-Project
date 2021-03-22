@@ -2,11 +2,9 @@ package application.controller;
 
 import application.dal.dao.ClientDao;
 import application.dal.dao.VisiteDao;
-import application.dal.model.Client;
-import application.dal.model.RendezVous;
-import application.dal.model.TvVstClient;
-import application.dal.model.Visite;
+import application.dal.model.*;
 import application.main.Main;
+import application.pdf.PdfGenerator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -87,6 +85,8 @@ public class ControllerOperations implements Initializable {
 
     private Vector<Visite> visiteVector;
 
+    @FXML
+    private JFXButton btnOr;
 
     boolean isTrait;
     @Override
@@ -213,5 +213,11 @@ public class ControllerOperations implements Initializable {
         } else {
             b = false;
         }
+    }
+    public void btnorOnAction(){
+        Dentiste d = Main.getDaos().getDentistDao().find(1);
+        Ordonnance o = Main.getDaos().getOrdDao().find(1);
+        Client c = ControllerOperationClient.getClient();
+        PdfGenerator.GeneratePdf(c,d,o);
     }
 }

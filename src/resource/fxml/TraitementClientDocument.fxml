@@ -41,7 +41,7 @@
                   <TableColumn fx:id="coloneTraitement" prefWidth="447.20001220703125" text="Traitement" />
               </columns>
             </TableView>
-                <Label fx:id="lblName" layoutX="280.0" layoutY="14.0" prefHeight="34.0" prefWidth="20.0">
+                <Label fx:id="lblName" layoutX="242.0" layoutY="27.0">
                     <font>
                         <Font name="System Bold Italic" size="16.0" />
                     </font>
