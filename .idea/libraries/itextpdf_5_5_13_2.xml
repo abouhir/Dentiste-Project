@@ -2,8 +2,11 @@
   <library name="itextpdf-5.5.13.2">
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/itextpdf-5.5.13.2.jar!/" />
+      <root url="jar://D:/programmes/Jar Files/itextpdf-5.5.13.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/itextpdf-5.5.13.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

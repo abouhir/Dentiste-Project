@@ -13,13 +13,14 @@ import java.io.FileOutputStream;
 public class PdfGenerator {
     public static void GeneratePdf(Client c, Dentiste d, Ordonnance o) {
 
-        Font ttlFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.BOLD, 30);
-        Font hdrFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.BOLD, 25);
-        Font lstFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 16);
-        Font infosFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 18);
+        Font ttlFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 10f);
+        Font hdrFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 8f);
+        Font lstFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6f);
+        Font infosFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6f);
 
-        Document document = new Document(PageSize.A6);
-        document.setMargins(10, 10, 10, 10);
+
+        Document document = new Document(PageSize.A6,
+                10f, 10f, 7f, 7f);
 
 
         //Ordonnance Title
@@ -31,7 +32,7 @@ public class PdfGenerator {
         Paragraph dentHeader = new Paragraph("Dentist :", hdrFont);
         dentHeader.setAlignment(Paragraph.ALIGN_LEFT);
         dentHeader.setSpacingBefore(8f);
-        dentHeader.setSpacingAfter(8f);
+        dentHeader.setSpacingAfter(2f);
 
         //Dentist Body
         Paragraph dentInfos = new Paragraph(d.showInfos(), infosFont);
@@ -42,18 +43,19 @@ public class PdfGenerator {
         Paragraph cliHeader = new Paragraph("Client :", hdrFont);
         cliHeader.setAlignment(Paragraph.ALIGN_LEFT);
         cliHeader.setSpacingBefore(8f);
-        cliHeader.setSpacingAfter(8f);
+        cliHeader.setSpacingAfter(2f);
 
         //Client Body
         Paragraph cliInfos = new Paragraph(c.showInfos(), infosFont);
         cliInfos.setAlignment(Element.ALIGN_LEFT);
         cliInfos.setSpacingAfter(16f);
 
+
         //Medics Header
         Paragraph medicsHeader = new Paragraph("Medicament : ", hdrFont);
         cliInfos.setAlignment(Element.ALIGN_LEFT);
         cliInfos.setSpacingBefore(15f);
-        cliInfos.setSpacingAfter(6f);
+        cliInfos.setSpacingAfter(2f);
 
         //Medics List
         List medicsList = new List(List.UNORDERED);
@@ -73,7 +75,10 @@ public class PdfGenerator {
             document.add(dentInfos);
             document.add(cliHeader);
             document.add(cliInfos);
-            document.add(medicsList);
+            if (!o.getMedics().isEmpty()) {
+                document.add(medicsHeader);
+                document.add(medicsList);
+            }
 
             document.close();
             writer.close();
