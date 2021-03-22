@@ -25,10 +25,10 @@ import java.util.Vector;
 public class ControllerAccueile implements Initializable {
 
     private Vector<TvRdvClient> vectorTvRdClients;
-    private String role=ControllerLogin.getRole();
+    private String role;
     private  Vector<TvVstClient> vstClientVector;
-    private ClientDao clientDao=Main.getDaos().getClientDao();
-    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
+    private ClientDao clientDao;
+    private VisiteDao visiteDao;
     private TvRdvClient clientRdv;
     private Client client;
     private RendezVous rdv;
@@ -62,6 +62,12 @@ public class ControllerAccueile implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        clientDao = Main.getDaos().getClientDao();
+        visiteDao = Main.getDaos().getVisiteDao();
+
+
+        role = ControllerLogin.getRole();
+
         vectorTvRdClients=Main.getDaos().getRdvDao().findRdvClientOfToday();
        //int size;
         if(role.equals("dentiste")){

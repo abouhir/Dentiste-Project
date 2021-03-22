@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.dal.dao.ClientDao;
+import application.dal.dao.RdvDao;
 import application.dal.dao.VisiteDao;
 import application.dal.model.Client;
 import application.dal.model.RendezVous;
@@ -27,8 +28,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ControllerOperations implements Initializable {
-    private ClientDao clientDao=Main.getDaos().getClientDao();
-    private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
+    private ClientDao clientDao;
+    private VisiteDao visiteDao;
+    private RdvDao rdvDao;
     private Client client;
     private Visite visite;
     private RendezVous rdv;
@@ -58,7 +60,6 @@ public class ControllerOperations implements Initializable {
 
     @FXML
     private JFXButton btnAjouter;
-
 
 
     @FXML
@@ -97,6 +98,11 @@ public class ControllerOperations implements Initializable {
     boolean isTrait;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        visiteDao=Main.getDaos().getVisiteDao();
+        clientDao=Main.getDaos().getClientDao();
+        rdvDao = Main.getDaos().getRdvDao();
+
+
         client=ControllerOperationClient.getClient();
         isAjout = btnAjouter != null;
         isTrait=tableVisite!=null;
@@ -179,15 +185,13 @@ public class ControllerOperations implements Initializable {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
             dateRdv = sdf.parse(txtRdv.getValue().toString());
             rdv = new RendezVous(null, 1, ControllerOperationClient.getClient().getId(), dateRdv);
-            b = Main.getDaos().getRdvDao().insert(rdv);
+            b = rdvDao.insert(rdv);
             if (b) {
                 message("/resource/Icons/success.png","SUCCESS","Le Client  "+txtFullName.getText()+" est prend un rendez-vous");
                 close();
             }
-            else{
+            else
                 message("/resource/Icons/failed.png","ERROR","Echec !!!!");
-        }
-
     }
 
     public void remplirTable(Vector<Visite> visiteVector) {
