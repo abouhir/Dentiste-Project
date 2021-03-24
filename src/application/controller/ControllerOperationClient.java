@@ -144,8 +144,8 @@ public class ControllerOperationClient implements Initializable {
         }
     }
     public void supprimerOnAction(ActionEvent event) throws IOException {
+        client = ControllerOperationClient.getClient();
         if(role.equals("infermier")) {
-            client = ControllerOperationClient.getClient();
             alertConfirmation("Voulez vous vraiment supprimer le client : ");
             if (b) {
                 message("/resource/Icons/success.png", "SUCCESS", "Le Cient " + client.getFullName() + " Est supprimer");
@@ -190,7 +190,8 @@ public class ControllerOperationClient implements Initializable {
             if(role.equals("infermier"))
                 b = cliDao.delete(client.getId());
             else
-                b=visiteDao.delete(3);
+                b=visiteDao.delete(client.getId());
+            System.out.println();
         } else {
             b = false;
         }

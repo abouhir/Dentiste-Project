@@ -1,6 +1,7 @@
 package application.main;
 
 import application.DbConnection.DbConnection;
+import com.itextpdf.text.Paragraph;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main extends Application {
 
@@ -29,6 +32,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate= formatter.format(date);
+
+        System.out.println(strDate);
+
         launch(args);
     }
 

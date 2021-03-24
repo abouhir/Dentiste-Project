@@ -147,13 +147,14 @@ public class ControllerOperations implements Initializable {
         if(role.equals("infermier")) {
         client =new Client(ControllerOperationClient.getClient().getId(),txtFullName.getText()+"",txtCin.getText()+"",txtTele.getText()+"",txtAdresse.getText()+"",txtEmail.getText()+"");
         alertConfirmation("Voulez vous vraiment Modifier le client : ");
-        if(b){
+            if(b){
             message("/resource/Icons/success.png","SUCCESS","Le Cient "+txtFullName.getText()+" Est Modifier");
             close();
-        }
-        else{
+            }
+            else{
             message("/resource/Icons/failed.png","ERROR","Le Cient "+txtFullName.getText()+" n\'est pas  Modifier");
-        }}
+            }
+        }
         else{
             visite=new Visite(2L,client.getId(),1,null,txtTraitement.getText(),txtRemarque.getText());
             b=visiteDao.update(visite);
