@@ -65,6 +65,8 @@ public interface IDaoQuery {
                     "WHERE id = ?" ;
     String INSERT_ORDONNANCES =
             "INSERT INTO ordonnance VALUES (null, ?, null)";
+    String INSERT_MEDICS_ORD =
+            "INSERT INTO contenir VALUES (?, ?)";
     String DELETE_ORDONNANCES = "DELETE FROM ordonnance WHERE id = ?";
 
 

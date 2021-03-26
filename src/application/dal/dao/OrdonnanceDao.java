@@ -1,8 +1,7 @@
 package application.dal.dao;
 
-import application.DbConnection.DbConnection;
-import application.dal.model.Dentiste;
 import application.dal.model.Ordonnance;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +11,7 @@ import java.util.Vector;
 
 public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     private final PreparedStatement preStmInsert;
+    private final PreparedStatement preStmInsertInContenir;
     private final PreparedStatement preStmUpdate;
     private final PreparedStatement preStmDelete;
     private final PreparedStatement stmSelectAll;
@@ -24,6 +24,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     public OrdonnanceDao(Connection conn) throws SQLException {
         stmSelectAll = conn.prepareStatement(SELECT_ALL_ORDONNANCES);
         preStmInsert = conn.prepareStatement(INSERT_ORDONNANCES);
+        preStmInsertInContenir = conn.prepareStatement(INSERT_MEDICS_ORD);
         preStmUpdate = conn.prepareStatement(UPDATE_ORDONNANCES);
         preStmDelete = conn.prepareStatement(DELETE_ORDONNANCES);
 
@@ -108,6 +109,28 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
             return false;
         }
+    }
+
+    public boolean insertMedicsToOrd( long ord, long ...medics) {
+        try {
+            preStmInsertInContenir.getConnection().setAutoCommit(false);
+            for (long medic : medics)
+                insertMedicToOrd(medic, ord);
+            preStmInsertInContenir.getConnection().commit();
+            preStmInsertInContenir.getConnection().setAutoCommit(true);
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+
+
+    }
+
+    private void insertMedicToOrd(long medic, long ord) throws SQLException {
+            preStmInsertInContenir.setLong(1, medic);
+            preStmInsertInContenir.setLong(2, ord);
+            preStmInsertInContenir.execute();
     }
 
     @Override
