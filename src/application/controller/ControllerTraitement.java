@@ -87,11 +87,14 @@ public class ControllerTraitement implements Initializable {
         tableVisite.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Visite>() {
             @Override
             public void changed(ObservableValue<? extends Visite> observableValue, Visite visite, Visite t1) {
-
+                btnAjouter.setDisable(t1==null);
                 btnDelete.setDisable(t1 == null);
             }
         });
     }
+
+
+
     @FXML
     void ajouterOnAction(ActionEvent event) throws IOException {
         switchStage("/resource/fxml/AjouterVisiteDocument.fxml");

@@ -46,6 +46,7 @@ public class ControllerAjouterVisite implements Initializable {
     private Medicament medicament;
     private Ordonnance ordonnance;
 
+
     private static Medicament medicamentSelected;
 
 
@@ -95,7 +96,7 @@ public class ControllerAjouterVisite implements Initializable {
 
 
     public void btnajouterOnAction(ActionEvent event) {
-        visite=new Visite(2L,client.getId(),1,null,txtTraitement.getText(),"txtRemarque.getText()");
+        visite=new Visite(20,client.getId(),1,null,txtTraitement.getText(),"txtRemarque.getText()");
         b=visiteDao.insert(visite);
         if (b) {
             message("/resource/Icons/success.png","SUCCESS","Traitement ajouter avec success");
@@ -126,8 +127,9 @@ public class ControllerAjouterVisite implements Initializable {
     }
 
     public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
-
-        PdfGenerator.GeneratePdf(client,d,ordonnance);
+        Ordonnance o = new Ordonnance(1L,20L,null,medicsDao);
+        ordonnanceDao.insertMedicsToOrd(o.getId(),medicamentSelected.getId());
+        //PdfGenerator.GeneratePdf(client,d,ordonnance);
     }
     public void btnannulerOnAction(ActionEvent event) {
         close();
