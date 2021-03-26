@@ -3,14 +3,18 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerOperations">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerAjouterVisite">
     <top>
         <AnchorPane prefHeight="145.0" prefWidth="600.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
             <children>
@@ -27,45 +31,67 @@
             </children>
         </AnchorPane>
     </top>
-    <bottom>
-        <AnchorPane prefHeight="462.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="68.0" layoutY="62.0" text="Traitement : ">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <JFXTextArea fx:id="txtTraitement" focusColor="DODGERBLUE" layoutX="63.0" layoutY="99.0" prefHeight="175.0" prefWidth="477.0" promptText="Traitement">
-               <font>
-                  <Font size="18.0" />
-               </font></JFXTextArea>
-            <Label layoutX="68.0" layoutY="316.0" text="Remarque : ">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <JFXTextField fx:id="txtRemarque" focusColor="DODGERBLUE" layoutX="165.0" layoutY="313.0" prefHeight="30.0" prefWidth="323.0" promptText="Remarque">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXButton fx:id="btnAjouter" layoutX="165.0" layoutY="366.0" onAction="#btnajouterOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #4CAF50;" text="Ajouter Traitement" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnAnnuler" layoutX="165.0" layoutY="409.0" onAction="#btnannulerOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXButton>
-            <Label fx:id="lblName" layoutX="242.0" layoutY="27.0">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="btnOr" layoutX="42.0" layoutY="365.0" onAction="#btnorOnAction" prefHeight="82.0" prefWidth="87.0" text="Ordonnance" />
-         </children>
-        </AnchorPane>
-    </bottom>
+    <center>
+        <ScrollPane prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Label layoutX="64.0" layoutY="53.0" text="Traitement : ">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <JFXTextArea fx:id="txtTraitement" focusColor="DODGERBLUE" layoutX="68.0" layoutY="79.0" prefHeight="175.0" prefWidth="477.0" promptText="Traitement">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </JFXTextArea>
+                        <Label fx:id="lblRecherche" layoutX="60.0" layoutY="422.0" text="Recherche : ">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <JFXTextField fx:id="txtRechercheMedica" focusColor="DODGERBLUE" layoutX="164.0" layoutY="419.0" prefHeight="30.0" prefWidth="315.0" promptText="Rechecher ou Ajouter(Medicament)">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </JFXTextField>
+                        <JFXButton fx:id="btnAjouter" layoutX="164.0" layoutY="303.0" onAction="#btnajouterOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #4CAF50;" text="Ajouter Traitement" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnAnnuler" layoutX="164.0" layoutY="350.0" onAction="#btnannulerOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </JFXButton>
+                        <Label fx:id="lblName" layoutX="242.0" layoutY="27.0">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="tableMedicament" layoutX="2.0" layoutY="464.0" prefHeight="212.0" prefWidth="600.0" stylesheets="@../css/style.css">
+                            <columns>
+                                <TableColumn fx:id="coloneNom" prefWidth="151.2000126838684" text="Nom" />
+                                <TableColumn fx:id="coloneDesc" prefWidth="446.4000549316406" text="Description" />
+                            </columns>
+                        </TableView>
+
+                        <Label layoutX="60.0" layoutY="393.0" text="Ordonnance : ">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <CheckBox fx:id="ordennace" layoutX="214.0" layoutY="397.0" mnemonicParsing="false" onAction="#checkordonnance" />
+                  <ImageView fx:id="imgAjouterMedicament" fitHeight="25.0" fitWidth="28.0" layoutX="454.0" layoutY="422.0" onMousePressed="#btnajoutermedicamentOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Icons/addmed.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
 </BorderPane>

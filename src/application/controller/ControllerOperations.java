@@ -10,13 +10,10 @@ import com.itextpdf.text.BadElementException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -38,6 +35,7 @@ public class ControllerOperations implements Initializable {
     private String role=ControllerLogin.getRole();
     private boolean isAjout;
     private static int i=0;
+
     @FXML
     private JFXButton btnAnnuler;
 
@@ -59,8 +57,6 @@ public class ControllerOperations implements Initializable {
     @FXML
     private JFXButton btnAjouter;
 
-
-
     @FXML
     private DatePicker txtRdv;
 
@@ -75,29 +71,14 @@ public class ControllerOperations implements Initializable {
     private Label lblName;
 
     @FXML
-    private TableView<Visite> tableVisite;
-
-    @FXML
-    private TableColumn<Visite, Date> coloneDateVisite;
-
-    @FXML
-    private TableColumn<Visite, String> coloneTraitement;
-
-    private ObservableList<Visite> list;
-
-    private Vector<Visite> visiteVector;
-
-    @FXML
     private JFXButton btnOr;
 
-    boolean isTrait;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client=ControllerOperationClient.getClient();
         isAjout = btnAjouter != null;
-        isTrait=tableVisite!=null;
-        if(role.equals("infermier")) {
-            if (!isAjout && !isTrait) {
+            if (!isAjout) {
                 txtFullName.setText(client.getFullName());
                 txtTele.setText(client.getTele());
                 txtAdresse.setText(client.getAddress());
@@ -105,15 +86,8 @@ public class ControllerOperations implements Initializable {
                 txtEmail.setText(client.getEmail());
 
             }
-        }
-        if(lblName!=null ){
-            lblName.setText(client.getCin() + " " + client.getFullName());
-        }
-        if(isTrait){
-          visiteVector=visiteDao.findByCli(client.getId());
-          remplirTable(visiteVector);
+       if(lblName!=null )
           lblName.setText(client.getCin() + " " + client.getFullName());
-        }
     }
 
     public void btnannulerOnAction(ActionEvent event){
@@ -182,14 +156,6 @@ public class ControllerOperations implements Initializable {
         }
 
     }
-
-    public void remplirTable(Vector<Visite> visiteVector) {
-        list = FXCollections.observableArrayList(visiteVector);
-        coloneDateVisite.setCellValueFactory(new PropertyValueFactory<>("dateVisite"));
-        coloneTraitement.setCellValueFactory(new PropertyValueFactory<>("trait"));
-        tableVisite.setItems(list);
-    }
-
     public void close(){
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
         stage.close();

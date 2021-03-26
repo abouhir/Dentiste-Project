@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerOperations">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerTraitement">
     <top>
         <AnchorPane prefHeight="145.0" prefWidth="600.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
             <children>
@@ -28,24 +28,34 @@
         </AnchorPane>
     </top>
     <bottom>
-        <AnchorPane prefHeight="462.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="608.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton fx:id="btnAnnuler" layoutX="165.0" layoutY="409.0" onAction="#btnannulerOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
+                <JFXButton fx:id="btnAnnuler" layoutX="175.0" layoutY="500.0" onAction="#btnannulerOnAction" prefHeight="39.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                     </font>
                 </JFXButton>
-            <TableView fx:id="tableVisite" layoutY="53.0" prefHeight="343.0" prefWidth="600.0" stylesheets="@../css/style.css">
+            <TableView fx:id="tableVisite" layoutY="62.0" onMousePressed="#visitetableOnMousePresseed" prefHeight="343.0" prefWidth="600.0" stylesheets="@../css/style.css">
               <columns>
                   <TableColumn fx:id="coloneDateVisite" prefWidth="152.0" text="Date Visite" />
                   <TableColumn fx:id="coloneTraitement" prefWidth="447.20001220703125" text="Traitement" />
               </columns>
             </TableView>
-                <Label fx:id="lblName" layoutX="242.0" layoutY="27.0">
+                <Label fx:id="lblName" layoutX="227.0" layoutY="21.0" prefHeight="26.0" prefWidth="146.0" text="................................" textAlignment="RIGHT">
                     <font>
                         <Font name="System Bold Italic" size="16.0" />
                     </font>
                 </Label>
+            <JFXButton fx:id="btnAjouter" layoutX="46.0" layoutY="440.0" onAction="#ajouterOnAction" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #4CAF50;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnDelete" layoutX="352.0" layoutY="440.0" onAction="#supprimerOnAction" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #f44336 #f44336;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
             </children>
         </AnchorPane>
     </bottom>

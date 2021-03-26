@@ -23,7 +23,11 @@ public class Medicament {
 
     }
 
-
+    public Medicament(long id, String nom, String description) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+    }
 
     public long getId() {
         return id;
