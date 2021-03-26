@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerAjouterVisite">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerAjouterVisite">
     <top>
         <AnchorPane prefHeight="145.0" prefWidth="600.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
             <children>
@@ -71,7 +71,7 @@
                                 <Font name="System Bold Italic" size="16.0" />
                             </font>
                         </Label>
-                        <TableView fx:id="tableMedicament" layoutX="2.0" layoutY="464.0" prefHeight="212.0" prefWidth="600.0" stylesheets="@../css/style.css">
+                        <TableView fx:id="tableMedicament" layoutX="2.0" layoutY="464.0" onMouseClicked="#visitetableOnMousePresseed" onMousePressed="#visitetableOnMousePresseed" prefHeight="212.0" prefWidth="580.0" stylesheets="@../css/style.css">
                             <columns>
                                 <TableColumn fx:id="coloneNom" prefWidth="151.2000126838684" text="Nom" />
                                 <TableColumn fx:id="coloneDesc" prefWidth="446.4000549316406" text="Description" />
@@ -89,7 +89,7 @@
                         <Image url="@../Icons/addmed.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="imgPrint" fitHeight="80.0" fitWidth="158.0" layoutX="249.0" layoutY="704.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPrint" fitHeight="78.0" fitWidth="85.0" layoutX="249.0" layoutY="704.0" onMousePressed="#btnprintOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Icons/printer.png" />
                      </image>

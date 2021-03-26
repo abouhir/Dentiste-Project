@@ -34,7 +34,7 @@ public class ControllerOperations implements Initializable {
     private Date dateRdv ;
     private String role=ControllerLogin.getRole();
     private boolean isAjout;
-    private static int i=0;
+
 
     @FXML
     private JFXButton btnAnnuler;

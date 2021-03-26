@@ -2,11 +2,12 @@ package application.controller;
 
 import application.dal.dao.ClientDao;
 import application.dal.dao.MedicsDao;
+import application.dal.dao.OrdonnanceDao;
 import application.dal.dao.VisiteDao;
-import application.dal.model.Client;
-import application.dal.model.Medicament;
-import application.dal.model.Visite;
+import application.dal.model.*;
 import application.main.Main;
+import application.pdf.PdfGenerator;
+import com.itextpdf.text.BadElementException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -24,7 +25,9 @@ import javafx.stage.Stage;
 
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -33,11 +36,18 @@ public class ControllerAjouterVisite implements Initializable {
     private MedicsDao medicsDao= Main.getDaos().getMedicsDao();
     private ClientDao clientDao=Main.getDaos().getClientDao();
     private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
+    private OrdonnanceDao ordonnanceDao=Main.getDaos().getOrdDao();
+    private Dentiste d = Main.getDaos().getDentistDao().find(1);
+
     private Alert message;
 
     private Client client;
     private Visite visite;
     private Medicament medicament;
+    private Ordonnance ordonnance;
+
+    private static Medicament medicamentSelected;
+
 
     @FXML
     private ImageView imgAjouterMedicament;
@@ -110,8 +120,14 @@ public class ControllerAjouterVisite implements Initializable {
             message("/resource/Icons/failed.png","ERROR","Echec !!!!");
         }
     }
-    public void btnprintOnMouseEvent(MouseEvent event){
 
+    public void visitetableOnMousePresseed(MouseEvent event) throws IOException {
+        medicamentSelected=tableMedicament.getSelectionModel().getSelectedItem();
+    }
+
+    public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
+
+        PdfGenerator.GeneratePdf(client,d,ordonnance);
     }
     public void btnannulerOnAction(ActionEvent event) {
         close();

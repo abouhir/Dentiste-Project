@@ -53,7 +53,7 @@ public class PdfGenerator {
         try {
             PdfWriter writer = PdfWriter
                     .getInstance(document,
-                            new FileOutputStream("Ord_"+nomfile+"_.pdf"));
+                            new FileOutputStream("Ord__.pdf"));
             document.open();
             document.add(dentInfos);
             document.add(img);
