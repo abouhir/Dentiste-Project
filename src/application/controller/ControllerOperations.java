@@ -188,6 +188,6 @@ public class ControllerOperations implements Initializable {
         MedicsDao medicsDao=Main.getDaos().getMedicsDao();
         Ordonnance o = new Ordonnance(1L,2L,new Date(),medicsDao);
         Client c = ControllerOperationClient.getClient();
-        PdfGenerator.GeneratePdf(c,d,o,"ord_"+c.getCin()+(++i));
+        PdfGenerator.GeneratePdf(c,d,o);
     }
 }

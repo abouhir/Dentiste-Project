@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class PdfGenerator {
-    public static void GeneratePdf(Client c, Dentiste d, Ordonnance o,String nomfile) throws IOException, BadElementException {
+    public static void GeneratePdf(Client c, Dentiste d, Ordonnance o) throws IOException, BadElementException {
 
         Font ttlFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 10f);
         Font hdrFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 8f);

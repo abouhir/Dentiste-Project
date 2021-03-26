@@ -71,6 +71,8 @@ public class ControllerAjouterVisite implements Initializable {
 
     @FXML
     private CheckBox ordennace;
+    @FXML
+    private ImageView imgPrint;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -108,7 +110,9 @@ public class ControllerAjouterVisite implements Initializable {
             message("/resource/Icons/failed.png","ERROR","Echec !!!!");
         }
     }
+    public void btnprintOnMouseEvent(MouseEvent event){
 
+    }
     public void btnannulerOnAction(ActionEvent event) {
         close();
     }
@@ -150,5 +154,6 @@ public class ControllerAjouterVisite implements Initializable {
         txtRechercheMedica.setVisible(b);
         lblRecherche.setVisible(b);
         imgAjouterMedicament.setVisible(b);
+        imgPrint.setVisible(b);
     }
 }
