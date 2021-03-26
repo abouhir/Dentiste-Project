@@ -87,7 +87,6 @@ public class VisiteDao extends DefaultDao<Visite> {
     }
 
 
-
     @Override
     public boolean delete(long id) {
         try {

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.Vector;
 
@@ -67,6 +68,11 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
                 .findFirst();
         return (c.orElse(null));
 
+    }
+
+    @Override
+    public Ordonnance findLast() {
+        return Collections.max(findAll());
     }
 
     @Override

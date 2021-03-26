@@ -1,6 +1,7 @@
 package application.dal.model;
 
 import application.dal.dao.MedicsDao;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -14,7 +15,7 @@ import java.util.Vector;
 
 
 
-public class Ordonnance {
+public class Ordonnance implements Comparable<Ordonnance> {
 
    private Long id;
    private Long visId;
@@ -80,4 +81,10 @@ public class Ordonnance {
    public String getPdfTitle() {
         return "Ordonnance -" +getId()+"- :";
    }
+
+
+    @Override
+    public int compareTo(Ordonnance o) {
+        return (int) (this.id - o.getId());
+    }
 }
