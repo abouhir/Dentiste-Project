@@ -133,9 +133,9 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
     }
 
-    private void insertMedicToOrd(long medic, long ord) throws SQLException {
-            preStmInsertInContenir.setLong(1, medic);
-            preStmInsertInContenir.setLong(2, ord);
+    private void insertMedicToOrd(long ord, long medic) throws SQLException {
+            preStmInsertInContenir.setLong(1, ord);
+            preStmInsertInContenir.setLong(2, medic);
             preStmInsertInContenir.execute();
     }
 
