@@ -1,9 +1,5 @@
 package application.dal.model;
 
-import application.DbConnection.DbConnection;
-import application.dal.dao.OrdonnanceDao;
-import application.main.Main;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -15,7 +11,7 @@ import java.util.Date;
  ***********************************************************************/
 
 
-public class Visite {
+public class Visite implements Comparable<Visite>{
    private long id;
    private long cliId;
    private long dentId;
@@ -109,5 +105,10 @@ public class Visite {
               ", dentId=" + dentId +
               ", dateVisite=" + dateVisite +
               '}';
+   }
+
+   @Override
+   public int compareTo(Visite o) {
+      return (int) (this.id - o.getId());
    }
 }

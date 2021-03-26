@@ -1,19 +1,16 @@
 package application.dal.dao;
 
-import application.DbConnection.DbConnection;
-import application.dal.model.*;
+import application.dal.model.TvVstClient;
 import application.dal.model.Visite;
-import application.main.Main;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Vector;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class VisiteDao extends DefaultDao<Visite> {
@@ -78,7 +75,10 @@ public class VisiteDao extends DefaultDao<Visite> {
         throw new NoSuchElementException();
     }
 
-
+    @Override
+    public Visite findLast() {
+        return Collections.max(findAll());
+    }
 
     public Vector<Visite> findByCli(long id) {
         return findAll().stream()

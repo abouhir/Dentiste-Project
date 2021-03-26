@@ -31,6 +31,11 @@ public class DefaultDao<T> implements IDao<T>, IDaoQuery {
     }
 
     @Override
+    public T findLast() {
+        return null;
+    }
+
+    @Override
     public Vector<T> findThatContains(String key) {
         return null;
     }
