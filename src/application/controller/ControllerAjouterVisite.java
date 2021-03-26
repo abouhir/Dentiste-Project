@@ -27,10 +27,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.*;
 
 public class ControllerAjouterVisite implements Initializable {
     private MedicsDao medicsDao= Main.getDaos().getMedicsDao();
@@ -45,7 +42,7 @@ public class ControllerAjouterVisite implements Initializable {
     private Visite visite;
     private Medicament medicament;
     private Ordonnance ordonnance;
-
+    private Visite visiteSelected;
 
     private static Medicament medicamentSelected;
 
@@ -127,13 +124,16 @@ public class ControllerAjouterVisite implements Initializable {
     }
 
     public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
-        Ordonnance o = new Ordonnance(1L,20L,null,medicsDao);
-        ordonnanceDao.insertMedicsToOrd(o.getId(),medicamentSelected.getId());
+        Ordonnance o = new Ordonnance(null,20L,null,medicsDao);
+        System.out.println(visiteSelected.getId());
+       // ordonnanceDao.insertMedicsToOrd(o.getId(),medicamentSelected.getId());
         //PdfGenerator.GeneratePdf(client,d,ordonnance);
     }
+
     public void btnannulerOnAction(ActionEvent event) {
         close();
     }
+
     public void checkordonnance(){
         if(ordennace.isSelected()){
             etat(true);
