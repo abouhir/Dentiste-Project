@@ -132,7 +132,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     @Override
     public void assignParams(PreparedStatement preStm, Ordonnance o) throws SQLException {
        // preStmInsert.setLong(1, o.getCliId());
-        preStm.setLong(2, o.getVisId());
+        preStm.setLong(1, o.getVisId());
     }
 
 
