@@ -148,7 +148,7 @@ public class ControllerAjouterVisite implements Initializable {
         ordonnanceDao.insert(o);
         ordonnanceLast=ordonnanceDao.findLast();
         ordonnanceLast.setMedics(medicsDao);
-        System.out.println(ordonnanceLast.getMedics());
+
         for(Medicament m : vectorMedicamentSelect)
             ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),m.getId());
         PdfGenerator.GeneratePdf(client,d,ordonnanceLast);
