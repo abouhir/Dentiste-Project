@@ -23,7 +23,11 @@ public class Medicament {
 
     }
 
-
+    public Medicament(long id, String nom, String description) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+    }
 
     public long getId() {
         return id;
@@ -45,10 +49,13 @@ public class Medicament {
       return nom;
    }
 
-   public void setNom(String nom) {
+    public void setNom(String nom) {
       this.nom = nom;
    }
 
+    public boolean containsInProps(String key) {
+        return getNom().contains(key) || getDescription().contains(key);
+    }
 
 
 }

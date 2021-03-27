@@ -95,27 +95,27 @@ public class ControllerOperationClient implements Initializable {
             remplirTable(clientVector);
             ControllerOperationClient.clientSelected = tableClient.getSelectionModel().getSelectedItem();
 
-            btnAction.setDisable(true);
+
             btnUpdate.setDisable(true);
             btnDelete.setDisable(true);
-            if(role.equals("dentiste"))
-                btnAjouter.setDisable(true);
+            if(role.equals("dentiste")){
+                btnAjouter.setVisible(false);
+                btnAction.setVisible(false);
+                btnUpdate.setVisible(false);
+                btnDelete.setVisible(false);
+            }
 
             tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
             @Override
             public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
-
                 btnAction.setDisable(t1 == null);
                 btnUpdate.setDisable(t1 == null);
                 btnDelete.setDisable(t1 == null);
-                if(role.equals("dentiste"))
-                    btnAjouter.setDisable(t1 == null);
             }
         });
 
             if(role.equals("dentiste")){
-               lblAction.setText("Visite du client");
-               btnAction.setText("Traitement");
+               lblAction.setText("\t    Visite du client");
             }
 
     }
@@ -123,29 +123,21 @@ public class ControllerOperationClient implements Initializable {
 
     public void ajouterOnAction(ActionEvent event) throws IOException {
         if(role.equals("infermier"))
-             switchStage("/resource/fxml/AjouterClientDocument.fxml");
-        else
-            switchStage("/resource/fxml/AjouterVisiteDocument.fxml");
+             switchStage("/resource/fxml/AjouterClientDocument.fxml",600,607);
+
         }
 
     public void modifierOnAction(ActionEvent event) throws IOException {
-        if(role.equals("infermier"))
-            switchStage("/resource/fxml/ModifierClientDcument.fxml");
-        else
-            switchStage("/resource/fxml/ModifierVisiteDocument.fxml");
+            switchStage("/resource/fxml/ModifierClientDcument.fxml",600,607);
     }
 
     public void actionOnAction(ActionEvent event) throws IOException {
-        if(role.equals("infermier")) {
-            switchStage("/resource/fxml/RendezVousClientDocument.fxml");
+            switchStage("/resource/fxml/RendezVousClientDocument.fxml",600,607);
         }
-            else {
-            switchStage("/fxml/TraitementClientDocument.fxml");
-        }
-    }
+
     public void supprimerOnAction(ActionEvent event) throws IOException {
-        if(role.equals("infermier")) {
-            client = ControllerOperationClient.getClient();
+        client = ControllerOperationClient.getClient();
+
             alertConfirmation("Voulez vous vraiment supprimer le client : ");
             if (b) {
                 message("/resource/Icons/success.png", "SUCCESS", "Le Cient " + client.getFullName() + " Est supprimer");
@@ -154,18 +146,6 @@ public class ControllerOperationClient implements Initializable {
             else {
                 message("/resource/Icons/failed.png", "ERROR", "Le Cient " + client.getFullName() + " n\'est pas  supprimer");
             }
-        }
-        else{
-            alertConfirmation("Voulez vous vraiment supprimer le Traitement : ");
-            if (b) {
-                message("/resource/Icons/success.png","SUCCESS","Traitement Supprimer avec success");
-            }
-            else{
-                message("/resource/Icons/failed.png","ERROR","Echec !!!!");
-
-            }
-
-        }
     }
 
     public void  message(String img,String alertType,String msg){
@@ -190,7 +170,8 @@ public class ControllerOperationClient implements Initializable {
             if(role.equals("infermier"))
                 b = cliDao.delete(client.getId());
             else
-                b=visiteDao.delete(3);
+                b=visiteDao.delete(client.getId());
+            System.out.println();
         } else {
             b = false;
         }
@@ -228,17 +209,20 @@ public class ControllerOperationClient implements Initializable {
     public void refreshTable(Vector<Client> clientVector){
         tableClient.getItems().setAll(clientVector);
     }
-    public void tableOnMousePresseed(MouseEvent event){
+    public void tableOnMousePresseed(MouseEvent event) throws IOException {
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
+        if(role.equals("dentiste"))
+            switchStage("/resource/fxml/TraitementClientDocument.fxml",600,712);
     }
+
     public static Client getClient(){
         return clientSelected;
     }
-    public void switchStage(String name ) throws IOException {
+    public void switchStage(String name ,double width , double height ) throws IOException {
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(name));
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 600, 607));
+        primaryStage.setScene(new Scene(root, width, height));
 
         primaryStage.addEventHandler(WindowEvent.WINDOW_HIDDEN, windowEvent -> {
             cliDao.refresh();
