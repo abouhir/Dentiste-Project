@@ -40,8 +40,9 @@ public class Ordonnance implements Comparable<Ordonnance> {
         this.id = id;
         this.visId = visId;
         this.date = date;
-
     }
+
+
 
     public Ordonnance(Long id, Long visId, Date date, MedicsDao medDao) {
         this.id = id;
@@ -57,6 +58,12 @@ public class Ordonnance implements Comparable<Ordonnance> {
     public void setMedics(Vector<Medicament> medics) {
         this.medics = medics;
     }
+
+
+    public void setMedics(MedicsDao medDao) {
+        setMedics(medDao.findByOrd(this.id));
+    }
+
 
     public Date getDate() {
         return date;

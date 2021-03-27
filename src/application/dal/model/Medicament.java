@@ -31,8 +31,9 @@ public class Medicament {
         setId(rst.getLong("medic_id"));
         setNom(rst.getString("medic_nom"));
         setDescription(rst.getString("medic_description"));
-
     }
+
+
 
     public Medicament(long id, String nom, String description) {
         this.id = id;
