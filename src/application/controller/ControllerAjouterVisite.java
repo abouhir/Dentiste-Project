@@ -142,10 +142,8 @@ public class ControllerAjouterVisite implements Initializable {
         Ordonnance o = new Ordonnance(null,20L,null);
         ordonnanceDao.insert(o);
         ordonnanceLast=ordonnanceDao.findLast();
-
         vectorMedicamentSelect.forEach(vm-> ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),vm.getId())
         );
-
         PdfGenerator.GeneratePdf(client,d,ordonnanceLast);
     }
 
