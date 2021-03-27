@@ -111,11 +111,8 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
     public boolean insertMedicsToOrd( long ord, long ...medics) {
         try {
-            preStmInsertInContenir.getConnection().setAutoCommit(false);
             for (long medic : medics)
                 insertMedicToOrd(medic, ord);
-            preStmInsertInContenir.getConnection().commit();
-            preStmInsertInContenir.getConnection().setAutoCommit(true);
             refresh();
             return true;
         } catch (SQLException throwables) {
