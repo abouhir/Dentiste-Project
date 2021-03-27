@@ -49,10 +49,13 @@ public class Medicament {
       return nom;
    }
 
-   public void setNom(String nom) {
+    public void setNom(String nom) {
       this.nom = nom;
    }
 
+    public boolean containsInProps(String key) {
+        return getNom().contains(key) || getDescription().contains(key);
+    }
 
 
 }

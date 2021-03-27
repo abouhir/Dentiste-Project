@@ -108,11 +108,9 @@ public class ControllerOperationClient implements Initializable {
             tableClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
             @Override
             public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
-
                 btnAction.setDisable(t1 == null);
                 btnUpdate.setDisable(t1 == null);
                 btnDelete.setDisable(t1 == null);
-
             }
         });
 
@@ -148,8 +146,6 @@ public class ControllerOperationClient implements Initializable {
             else {
                 message("/resource/Icons/failed.png", "ERROR", "Le Cient " + client.getFullName() + " n\'est pas  supprimer");
             }
-
-
     }
 
     public void  message(String img,String alertType,String msg){

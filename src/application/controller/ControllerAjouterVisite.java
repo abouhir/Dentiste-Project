@@ -118,7 +118,18 @@ public class ControllerAjouterVisite implements Initializable {
             message("/resource/Icons/failed.png","ERROR","Echec !!!!");
         }
     }
+    @FXML
+    void searchEvent() {
+        String key = txtRechercheMedica.getText();
+        Vector<Medicament> medicaments = new Vector<>();
+        try {
+             medicaments= medicsDao.findThatContains(key);
+        } catch (Exception e) {
+            e.printStackTrace();
 
+        }
+        refreshTable(medicaments);
+    }
     public void visitetableOnMousePresseed(MouseEvent event) throws IOException {
         medicamentSelected=tableMedicament.getSelectionModel().getSelectedItem();
     }

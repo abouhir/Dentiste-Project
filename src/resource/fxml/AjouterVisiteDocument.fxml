@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerAjouterVisite">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ControllerAjouterVisite">
     <top>
         <AnchorPane prefHeight="145.0" prefWidth="600.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
             <children>
@@ -51,7 +51,7 @@
                                 <Font name="System Bold Italic" size="16.0" />
                             </font>
                         </Label>
-                        <JFXTextField fx:id="txtRechercheMedica" focusColor="DODGERBLUE" layoutX="164.0" layoutY="419.0" prefHeight="30.0" prefWidth="315.0" promptText="Rechecher ou Ajouter(Medicament)">
+                        <JFXTextField fx:id="txtRechercheMedica" focusColor="DODGERBLUE" layoutX="164.0" layoutY="419.0" onInputMethodTextChanged="#searchEvent" onKeyTyped="#searchEvent" prefHeight="30.0" prefWidth="315.0" promptText="Rechecher ou Ajouter(Medicament)">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -89,7 +89,7 @@
                         <Image url="@../Icons/addmed.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="107.0" fitWidth="95.0" layoutX="242.0" layoutY="718.0" onMousePressed="#btnprintOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPrint" fitHeight="107.0" fitWidth="95.0" layoutX="242.0" layoutY="718.0" onMousePressed="#btnprintOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Icons/printer.png" />
                      </image>

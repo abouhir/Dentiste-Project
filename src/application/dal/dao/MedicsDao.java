@@ -1,6 +1,7 @@
 package application.dal.dao;
 
 import application.DbConnection.DbConnection;
+import application.dal.model.Client;
 import application.dal.model.Dentiste;
 import application.dal.model.Medicament;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class MedicsDao extends DefaultDao<Medicament> {
 
@@ -137,7 +139,12 @@ public class MedicsDao extends DefaultDao<Medicament> {
             return false;
         }
     }
-
+    @Override
+    public Vector<Medicament> findThatContains(String key) {
+        return findAll().stream()
+                .filter(c -> c.containsInProps(key))
+                .collect(Collectors.toCollection(Vector::new));
+    }
     @Override
     public void assignParams(PreparedStatement preStm, Medicament o) throws SQLException {
         preStm.setString(1, o.getNom());
