@@ -44,7 +44,7 @@ public class ControllerAjouterVisite implements Initializable {
 
     private static Medicament medicamentSelected;
 
-
+    private Visite visiteLast;
     @FXML
     private ImageView imgAjouterMedicament;
 
@@ -85,7 +85,7 @@ public class ControllerAjouterVisite implements Initializable {
         txtTraitement.setDisable(false);
         btnAjouter.setDisable(false);
         client=ControllerOperationClient.getClient();
-        medicamentVector=medicsDao.selectAll();
+        medicamentVector=medicsDao.findAll();
         medicamentVector.forEach(m->m.setSelect(new CheckBox()));
         remplirTable(medicamentVector);
         lblName.setText( client.getCin() + " " + client.getFullName());
@@ -96,6 +96,7 @@ public class ControllerAjouterVisite implements Initializable {
         b=visiteDao.insert(visite);
         if (b) {
             message("/resource/Icons/success.png","SUCCESS","Traitement ajouter avec success");
+            visiteLast=visiteDao.findLast();
             txtTraitement.setDisable(true);
             btnAjouter.setDisable(true);
         }
@@ -109,8 +110,9 @@ public class ControllerAjouterVisite implements Initializable {
         b=medicsDao.insert(medicament);
         if (b) {
             message("/resource/Icons/success.png","SUCCESS","Medicament"+medicament.getNom()+" ajouter avec success");
+
             medicsDao.refresh();
-            medicamentVector = medicsDao.selectAll();
+            medicamentVector = medicsDao.findAll();
             refreshTable(medicamentVector);
             }
 
@@ -139,9 +141,11 @@ public class ControllerAjouterVisite implements Initializable {
                 vectorMedicamentSelect.add(m);
             }
         }
-        Ordonnance o = new Ordonnance(null,20L,null);
+
+        Ordonnance o = new Ordonnance(null,visiteLast.getId(),null);
         ordonnanceDao.insert(o);
         ordonnanceLast=ordonnanceDao.findLast();
+        ordonnanceLast.setMedics(medicsDao);
         vectorMedicamentSelect.forEach(vm-> ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),vm.getId())
         );
         PdfGenerator.GeneratePdf(client,d,ordonnanceLast);
