@@ -109,23 +109,20 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
         }
     }
 
-    public boolean insertMedicsToOrd( long ord, long ...medics) {
+    public boolean insertMedicsToOrd( long ord, long medic) {
         try {
-            for (long medic : medics)
-                insertMedicToOrd(medic, ord);
-            refresh();
+            System.out.println("ord :  "+ord);
+            System.out.println("medic :  "+medic);
+            preStmInsertInContenir.setLong(1, ord);
+            preStmInsertInContenir.setLong(2, medic);
+            preStmInsertInContenir.execute();
             return true;
         } catch (SQLException throwables) {
-            //throwables.printStackTrace();
+            throwables.printStackTrace();
             return false;
         }
     }
 
-    private void insertMedicToOrd(long ord, long medic) throws SQLException {
-            preStmInsertInContenir.setLong(1, ord);
-            preStmInsertInContenir.setLong(2, medic);
-            preStmInsertInContenir.execute();
-    }
 
     @Override
     public void assignParams(PreparedStatement preStm, Ordonnance o) throws SQLException {

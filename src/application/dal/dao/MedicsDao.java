@@ -88,6 +88,7 @@ public class MedicsDao extends DefaultDao<Medicament> {
     public Vector<Medicament> findByOrd(long ordID) {
         Vector<Medicament> medics = new Vector<>();
         try {
+            System.out.println(ordID);
             preStmSelectByOrd.setLong(1, ordID);
             ResultSet rst = preStmSelectByOrd.executeQuery();
             while (rst.next()){
