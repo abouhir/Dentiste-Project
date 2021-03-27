@@ -69,5 +69,13 @@ public class Medicament {
         return getNom().contains(key) || getDescription().contains(key);
     }
 
-
+    @Override
+    public String toString() {
+        return "Medicament{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
+                ", select=" + select +
+                '}';
+    }
 }

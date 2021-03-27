@@ -90,8 +90,11 @@ public class MedicsDao extends DefaultDao<Medicament> {
         try {
             preStmSelectByOrd.setLong(1, ordID);
             ResultSet rst = preStmSelectByOrd.executeQuery();
-            while (rst.next())
-                medics.add(new Medicament(rst));
+            while (rst.next()){
+                Medicament m = new Medicament(rst);
+                medics.add(m);
+                System.out.println(m);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

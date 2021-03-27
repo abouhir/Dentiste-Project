@@ -61,7 +61,7 @@ public class Ordonnance implements Comparable<Ordonnance> {
 
 
     public void setMedics(MedicsDao medDao) {
-        medics=medDao.findByOrd(this.id);
+        setMedics(medDao.findByOrd(this.getId()));
     }
 
 
