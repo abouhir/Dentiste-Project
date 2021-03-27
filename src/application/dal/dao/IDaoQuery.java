@@ -75,7 +75,10 @@ public interface IDaoQuery {
      *   Medicaments needed Queries
      */
     String SELECT_MEDICS_BY_ORDONNANCE =
-            "SELECT m.* FROM medicament m, contenir c " +
+            "SELECT m.medic_id as medic_id, " +
+                    "m.medic_nom as medic_nom, " +
+                    "m.medic_description as medic_description  " +
+                    "FROM medicament m, contenir c " +
             "WHERE c.ford_id = ? AND m.medic_id = c.fmedic_id";
 
     String SELECT_ALL_MEDICS = "SELECT * FROM medicament;";

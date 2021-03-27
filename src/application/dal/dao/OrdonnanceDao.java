@@ -116,6 +116,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
                 insertMedicToOrd(medic, ord);
             preStmInsertInContenir.getConnection().commit();
             preStmInsertInContenir.getConnection().setAutoCommit(true);
+            refresh();
             return true;
         } catch (SQLException throwables) {
             //throwables.printStackTrace();

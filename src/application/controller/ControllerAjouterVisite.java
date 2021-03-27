@@ -25,7 +25,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
+import java.util.Vector;
 
 public class ControllerAjouterVisite implements Initializable {
     private MedicsDao medicsDao= Main.getDaos().getMedicsDao();
@@ -138,11 +139,10 @@ public class ControllerAjouterVisite implements Initializable {
     public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
         Vector<Long> ids = new Vector<>();
 
-        for(Medicament m : list){
-            if(m.getSelect().isSelected()){
+        for(Medicament m : list)
+            if(m.getSelect().isSelected())
                 ids.add(m.getId());
-            }
-        }
+
 
         Ordonnance o = new Ordonnance(null,visiteLast.getId(),null);
         ordonnanceDao.insert(o);
