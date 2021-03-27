@@ -136,9 +136,11 @@ public class ControllerAjouterVisite implements Initializable {
         medicamentSelected=tableMedicament.getSelectionModel().getSelectedItem();
     }
     public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
+        Vector<Long> ids = new Vector<>();
+
         for(Medicament m : list){
             if(m.getSelect().isSelected()){
-                vectorMedicamentSelect.add(m);
+                ids.add(m.getId());
             }
         }
 
@@ -146,8 +148,9 @@ public class ControllerAjouterVisite implements Initializable {
         ordonnanceDao.insert(o);
         ordonnanceLast=ordonnanceDao.findLast();
         ordonnanceLast.setMedics(medicsDao);
-        vectorMedicamentSelect.forEach(vm-> ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),vm.getId())
-        );
+        System.out.println(ordonnanceLast.getMedics());
+        for(Medicament m : vectorMedicamentSelect)
+            ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),m.getId());
         PdfGenerator.GeneratePdf(client,d,ordonnanceLast);
     }
 
