@@ -49,8 +49,6 @@ public class ControllerTraitement implements Initializable {
 
     private static Visite visiteSelected;
 
-
-
     @FXML
     private JFXButton btnAnnuler;
 

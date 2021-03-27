@@ -124,10 +124,10 @@ public class ControllerAjouterVisite implements Initializable {
     }
 
     public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
-        Ordonnance o = new Ordonnance(null,20L,null,medicsDao);
-        System.out.println(visiteSelected.getId());
+        Ordonnance o = new Ordonnance(1L,20L,null,medicsDao);
+        //System.out.println(visiteSelected.getId());
        // ordonnanceDao.insertMedicsToOrd(o.getId(),medicamentSelected.getId());
-        //PdfGenerator.GeneratePdf(client,d,ordonnance);
+        PdfGenerator.GeneratePdf(client,d,o);
     }
 
     public void btnannulerOnAction(ActionEvent event) {

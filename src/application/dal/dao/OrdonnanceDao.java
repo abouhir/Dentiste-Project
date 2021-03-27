@@ -17,10 +17,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
     private final PreparedStatement preStmDelete;
     private final PreparedStatement stmSelectAll;
 
-
     private Vector<Ordonnance> ordonnances;
-
-
 
     public OrdonnanceDao(Connection conn) throws SQLException {
         stmSelectAll = conn.prepareStatement(SELECT_ALL_ORDONNANCES);
@@ -28,12 +25,7 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
         preStmInsertInContenir = conn.prepareStatement(INSERT_MEDICS_ORD);
         preStmUpdate = conn.prepareStatement(UPDATE_ORDONNANCES);
         preStmDelete = conn.prepareStatement(DELETE_ORDONNANCES);
-
-
     }
-
-
-
     @Override
     public Vector<Ordonnance> findAll() {
         if (ordonnances == null)

@@ -6,7 +6,9 @@ import application.dal.model.Medicament;
 import application.dal.model.Ordonnance;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import javafx.stage.FileChooser;
 
+import javax.swing.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -51,9 +53,10 @@ public class PdfGenerator {
             medicsList.add(new ListItem(m.getNom(), lstFont));
 
         try {
+            FileChooser fc = new FileChooser();
             PdfWriter writer = PdfWriter
                     .getInstance(document,
-                            new FileOutputStream("Ord__.pdf"));
+                            new FileOutputStream(fc.showSaveDialog(null)+".pdf"));
             document.open();
             document.add(dentInfos);
             document.add(img);
