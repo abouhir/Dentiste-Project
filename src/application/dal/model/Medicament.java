@@ -1,5 +1,7 @@
 package application.dal.model;
 
+import javafx.scene.control.CheckBox;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -15,6 +17,15 @@ public class Medicament {
     private long id;
     private String nom;
     private String description;
+    private CheckBox select;
+
+    public CheckBox getSelect() {
+        return select;
+    }
+
+    public void setSelect(CheckBox select) {
+        this.select = select;
+    }
 
     public Medicament(ResultSet rst) throws SQLException {
         setId(rst.getLong("medic_id"));

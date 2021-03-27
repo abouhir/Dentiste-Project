@@ -23,8 +23,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -41,8 +39,8 @@ public class ControllerAjouterVisite implements Initializable {
     private Client client;
     private Visite visite;
     private Medicament medicament;
-    private Ordonnance ordonnance;
-    private Visite visiteSelected;
+    private Ordonnance ordonnanceLast=ordonnanceDao.findLast();
+    private Vector<Medicament> vectorMedicamentSelect =new Vector<>();
 
     private static Medicament medicamentSelected;
 
@@ -73,7 +71,7 @@ public class ControllerAjouterVisite implements Initializable {
     @FXML
     private TableColumn<Medicament, String> coloneNom;
     @FXML
-    private TableColumn<Medicament, String> coloneDesc;
+    private TableColumn<Medicament,CheckBox> coloneSelect;
     private ObservableList<Medicament> list;
     private Vector<Medicament> medicamentVector;
 
@@ -84,20 +82,22 @@ public class ControllerAjouterVisite implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtTraitement.setDisable(false);
+        btnAjouter.setDisable(false);
         client=ControllerOperationClient.getClient();
         medicamentVector=medicsDao.selectAll();
+        medicamentVector.forEach(m->m.setSelect(new CheckBox()));
         remplirTable(medicamentVector);
         lblName.setText( client.getCin() + " " + client.getFullName());
         etat(false);
     }
-
-
     public void btnajouterOnAction(ActionEvent event) {
         visite=new Visite(20,client.getId(),1,null,txtTraitement.getText(),"txtRemarque.getText()");
         b=visiteDao.insert(visite);
         if (b) {
             message("/resource/Icons/success.png","SUCCESS","Traitement ajouter avec success");
-            close();
+            txtTraitement.setDisable(true);
+            btnAjouter.setDisable(true);
         }
         else{
             message("/resource/Icons/failed.png","ERROR","Echec !!!!");
@@ -133,12 +133,20 @@ public class ControllerAjouterVisite implements Initializable {
     public void visitetableOnMousePresseed(MouseEvent event) throws IOException {
         medicamentSelected=tableMedicament.getSelectionModel().getSelectedItem();
     }
+    public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
+        for(Medicament m : list){
+            if(m.getSelect().isSelected()){
+                vectorMedicamentSelect.add(m);
+            }
+        }
+        Ordonnance o = new Ordonnance(null,20L,null);
+        ordonnanceDao.insert(o);
+        ordonnanceLast=ordonnanceDao.findLast();
 
-        public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
-        Ordonnance o = new Ordonnance(1L,20L,null,medicsDao);
-        //System.out.println(visiteSelected.getId());
-       // ordonnanceDao.insertMedicsToOrd(o.getId(),medicamentSelected.getId());
-        PdfGenerator.GeneratePdf(client,d,o);
+        vectorMedicamentSelect.forEach(vm-> ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),vm.getId())
+        );
+
+        PdfGenerator.GeneratePdf(client,d,ordonnanceLast);
     }
 
     public void btnannulerOnAction(ActionEvent event) {
@@ -158,7 +166,7 @@ public class ControllerAjouterVisite implements Initializable {
     public void remplirTable(Vector<Medicament> medicamentVector) {
         list = FXCollections.observableArrayList(medicamentVector);
         coloneNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        coloneDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        coloneSelect.setCellValueFactory(new PropertyValueFactory<>("select"));
         tableMedicament.setItems(list);
     }
     public void refreshTable(Vector<Medicament> medicamentVector){

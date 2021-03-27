@@ -32,9 +32,9 @@
         </AnchorPane>
     </top>
     <center>
-        <ScrollPane prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <ScrollPane prefHeight="855.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="840.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="839.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                     <children>
                         <Label layoutX="64.0" layoutY="53.0" text="Traitement : ">
                             <font>
@@ -71,10 +71,10 @@
                                 <Font name="System Bold Italic" size="16.0" />
                             </font>
                         </Label>
-                        <TableView fx:id="tableMedicament" layoutX="2.0" layoutY="464.0" onMousePressed="#visitetableOnMousePresseed" prefHeight="212.0" prefWidth="600.0" stylesheets="@../css/style.css">
+                        <TableView fx:id="tableMedicament" layoutX="2.0" layoutY="464.0" onMousePressed="#visitetableOnMousePresseed" prefHeight="212.0" prefWidth="579.0" stylesheets="@../css/style.css">
                             <columns>
-                                <TableColumn fx:id="coloneNom" prefWidth="151.2000126838684" text="Nom" />
-                                <TableColumn fx:id="coloneDesc" prefWidth="446.4000549316406" text="Description" />
+                                <TableColumn fx:id="coloneNom" prefWidth="436.7999882698059" text="Nom" />
+                                <TableColumn fx:id="coloneSelect" prefWidth="137.5999755859375" text="Select" />
                             </columns>
                         </TableView>
 
