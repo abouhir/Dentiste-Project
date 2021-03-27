@@ -123,7 +123,7 @@ public class ControllerAjouterVisite implements Initializable {
         medicamentSelected=tableMedicament.getSelectionModel().getSelectedItem();
     }
 
-    public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
+        public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
         Ordonnance o = new Ordonnance(1L,20L,null,medicsDao);
         //System.out.println(visiteSelected.getId());
        // ordonnanceDao.insertMedicsToOrd(o.getId(),medicamentSelected.getId());
