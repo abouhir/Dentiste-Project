@@ -94,8 +94,7 @@ public class ControllerOperationClient implements Initializable {
             clientVector = cliDao.selectAll();
             remplirTable(clientVector);
             ControllerOperationClient.clientSelected = tableClient.getSelectionModel().getSelectedItem();
-
-
+            btnAction.setDisable(true);
             btnUpdate.setDisable(true);
             btnDelete.setDisable(true);
             if(role.equals("dentiste")){
