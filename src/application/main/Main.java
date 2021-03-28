@@ -36,7 +36,7 @@ public class Main extends Application {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String strDate= formatter.format(date);
 
-        System.out.println(strDate);
+
 
         launch(args);
     }

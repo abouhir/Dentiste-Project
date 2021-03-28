@@ -28,13 +28,18 @@
                         <Image url="@../Icons/traitement.png" />
                     </image>
                 </ImageView>
+            <ImageView fx:id="close" fitHeight="25.0" fitWidth="35.0" layoutX="565.0" layoutY="7.0" onMouseClicked="#btncloseOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/close_white.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
     </top>
     <center>
-        <ScrollPane prefHeight="855.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <ScrollPane prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="839.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="723.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                     <children>
                         <Label layoutX="64.0" layoutY="53.0" text="Traitement : ">
                             <font>
@@ -46,22 +51,17 @@
                                 <Font size="18.0" />
                             </font>
                         </JFXTextArea>
-                        <Label fx:id="lblRecherche" layoutX="60.0" layoutY="422.0" text="Recherche : ">
+                        <Label fx:id="lblRecherche" layoutX="60.0" layoutY="386.0" text="Recherche : ">
                             <font>
                                 <Font name="System Bold Italic" size="16.0" />
                             </font>
                         </Label>
-                        <JFXTextField fx:id="txtRechercheMedica" focusColor="DODGERBLUE" layoutX="164.0" layoutY="419.0" onInputMethodTextChanged="#searchEvent" onKeyTyped="#searchEvent" prefHeight="30.0" prefWidth="315.0" promptText="Rechecher ou Ajouter(Medicament)">
+                        <JFXTextField fx:id="txtRechercheMedica" focusColor="DODGERBLUE" layoutX="162.0" layoutY="383.0" onInputMethodTextChanged="#searchEvent" onKeyTyped="#searchEvent" prefHeight="30.0" prefWidth="315.0" promptText="Rechecher ou Ajouter(Medicament)">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </JFXTextField>
-                        <JFXButton fx:id="btnAjouter" layoutX="164.0" layoutY="303.0" onAction="#btnajouterOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #4CAF50;" text="Ajouter Traitement" textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
-                        <JFXButton fx:id="btnAnnuler" layoutX="164.0" layoutY="350.0" onAction="#btnannulerOnAction" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #1E90FF;" text="Annuler" textFill="WHITE">
+                        <JFXButton fx:id="btnAjouter" layoutX="163.0" layoutY="278.0" onAction="#btnajouterOnAction" prefHeight="38.0" prefWidth="286.0" style="-fx-background-color: #4CAF50;" text="Ajouter Traitement " textFill="WHITE">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -71,25 +71,25 @@
                                 <Font name="System Bold Italic" size="16.0" />
                             </font>
                         </Label>
-                        <TableView fx:id="tableMedicament" layoutX="2.0" layoutY="464.0" onMousePressed="#visitetableOnMousePresseed" prefHeight="212.0" prefWidth="579.0" stylesheets="@../css/style.css">
+                        <TableView fx:id="tableMedicament" layoutY="419.0" onMousePressed="#visitetableOnMousePresseed" prefHeight="212.0" prefWidth="579.0" stylesheets="@../css/style.css">
                             <columns>
                                 <TableColumn fx:id="coloneNom" prefWidth="436.7999882698059" text="Nom" />
                                 <TableColumn fx:id="coloneSelect" prefWidth="137.5999755859375" text="Select" />
                             </columns>
                         </TableView>
 
-                        <Label layoutX="60.0" layoutY="393.0" text="Ordonnance : ">
+                        <Label fx:id="lblOr" layoutX="60.0" layoutY="336.0" text="Ordonnance : ">
                             <font>
                                 <Font name="System Bold Italic" size="16.0" />
                             </font>
                         </Label>
-                        <CheckBox fx:id="ordennace" layoutX="214.0" layoutY="397.0" mnemonicParsing="false" onAction="#checkordonnance" />
-                  <ImageView fx:id="imgAjouterMedicament" fitHeight="25.0" fitWidth="28.0" layoutX="454.0" layoutY="422.0" onMousePressed="#btnajoutermedicamentOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+                        <CheckBox fx:id="checkOrdonnace" layoutX="208.0" layoutY="340.0" mnemonicParsing="false" onAction="#checkordonnance" />
+                  <ImageView fx:id="imgAjouterMedicament" fitHeight="25.0" fitWidth="28.0" layoutX="452.0" layoutY="386.0" onMousePressed="#btnajoutermedicamentOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Icons/addmed.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="imgPrint" fitHeight="107.0" fitWidth="95.0" layoutX="242.0" layoutY="718.0" onMousePressed="#btnprintOnMouseEvent" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPrint" fitHeight="78.0" fitWidth="95.0" layoutX="242.0" layoutY="631.0" onMousePressed="#btnprintOnMouseEvent" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Icons/printer.png" />
                      </image>

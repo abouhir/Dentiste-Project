@@ -11,6 +11,8 @@ import javafx.stage.FileChooser;
 import javax.swing.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PdfGenerator {
     public static void GeneratePdf(Client c, Dentiste d, Ordonnance o) throws IOException, BadElementException {
@@ -34,6 +36,13 @@ public class PdfGenerator {
         img.scaleAbsolute(70f,50f);
         img.setAbsolutePosition(220f, 370f);
 
+        //date
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate= formatter.format(date);
+        Paragraph dateP = new Paragraph("Le "+strDate, lstFont);
+        dateP.setAlignment(Element.ALIGN_RIGHT);
+        dateP.setSpacingAfter(16f);
 
         //Client Body
         Paragraph cliInfos = new Paragraph(c.showInfos(), infosFont);
@@ -60,6 +69,7 @@ public class PdfGenerator {
             document.open();
             document.add(dentInfos);
             document.add(img);
+            document.add(dateP);
             document.add(cliInfos);
             if (!o.getMedics().isEmpty()) {
                 document.add(medicsHeader);

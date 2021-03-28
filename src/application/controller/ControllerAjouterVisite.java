@@ -63,21 +63,26 @@ public class ControllerAjouterVisite implements Initializable {
     private JFXButton btnAjouter;
 
     @FXML
-    private JFXButton btnAnnuler;
+    private ImageView close;
 
     @FXML
     private Label lblName;
+
     @FXML
     private TableView<Medicament> tableMedicament;
+
     @FXML
     private TableColumn<Medicament, String> coloneNom;
+
     @FXML
     private TableColumn<Medicament,CheckBox> coloneSelect;
     private ObservableList<Medicament> list;
     private Vector<Medicament> medicamentVector;
 
     @FXML
-    private CheckBox ordennace;
+    private CheckBox checkOrdonnace;
+    @FXML
+    private Label lblOr;
     @FXML
     private ImageView imgPrint;
 
@@ -90,6 +95,9 @@ public class ControllerAjouterVisite implements Initializable {
         medicamentVector.forEach(m->m.setSelect(new CheckBox()));
         remplirTable(medicamentVector);
         lblName.setText( client.getCin() + " " + client.getFullName());
+        lblOr.setVisible(false);
+        checkOrdonnace.setVisible(false);
+        checkordonnance();
         etat(false);
     }
     public void btnajouterOnAction(ActionEvent event) {
@@ -100,6 +108,8 @@ public class ControllerAjouterVisite implements Initializable {
             visiteLast=visiteDao.findLast();
             txtTraitement.setDisable(true);
             btnAjouter.setDisable(true);
+            lblOr.setVisible(true);
+            checkOrdonnace.setVisible(true);
         }
         else{
             message("/resource/Icons/failed.png","ERROR","Echec !!!!");
@@ -111,7 +121,6 @@ public class ControllerAjouterVisite implements Initializable {
         b=medicsDao.insert(medicament);
         if (b) {
             message("/resource/Icons/success.png","SUCCESS","Medicament"+medicament.getNom()+" ajouter avec success");
-
             medicsDao.refresh();
             medicamentVector = medicsDao.findAll();
             refreshTable(medicamentVector);
@@ -138,27 +147,29 @@ public class ControllerAjouterVisite implements Initializable {
     }
     public void btnprintOnMouseEvent(MouseEvent event) throws IOException, BadElementException {
         Vector<Long> ids = new Vector<>();
-
         for(Medicament m : list)
             if(m.getSelect().isSelected())
                 ids.add(m.getId());
-
-
         Ordonnance o = new Ordonnance(null,visiteLast.getId(),null);
         ordonnanceDao.insert(o);
         ordonnanceLast=ordonnanceDao.findLast();
         for(long m : ids)
-            ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),m);
+            b=ordonnanceDao.insertMedicsToOrd(ordonnanceLast.getId(),m);
         ordonnanceLast.setMedics(medicsDao);
         PdfGenerator.GeneratePdf(client,d,ordonnanceLast);
+        if (b){
+            message("/resource/Icons/success.png","SUCCESS","Ordonnance Enregistrer");
+            close();
+        }
+        else message("/resource/Icons/failed.png","ERROR","Echec de l\'enregistrement ");
     }
 
-    public void btnannulerOnAction(ActionEvent event) {
+    public void btncloseOnMouseEvent(MouseEvent event) {
         close();
     }
 
     public void checkordonnance(){
-        if(ordennace.isSelected()){
+        if(checkOrdonnace.isSelected()){
             etat(true);
         }
         else {
@@ -177,7 +188,7 @@ public class ControllerAjouterVisite implements Initializable {
         tableMedicament.getItems().setAll(medicamentVector);
     }
     public void close(){
-        Stage stage =(Stage)btnAnnuler.getScene().getWindow();
+        Stage stage =(Stage)close.getScene().getWindow();
         stage.close();
     }
     public void  message(String img,String alertType,String msg){
