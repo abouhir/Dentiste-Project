@@ -90,8 +90,6 @@ public class ControllerTraitement implements Initializable {
         });
     }
 
-
-
     @FXML
     void ajouterOnAction(ActionEvent event) throws IOException {
         switchStage("/resource/fxml/AjouterVisiteDocument.fxml");
