@@ -30,7 +30,6 @@ import java.util.Vector;
 
 public class ControllerAjouterVisite implements Initializable {
     private MedicsDao medicsDao= Main.getDaos().getMedicsDao();
-    private ClientDao clientDao=Main.getDaos().getClientDao();
     private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
     private OrdonnanceDao ordonnanceDao=Main.getDaos().getOrdDao();
     private Dentiste d = Main.getDaos().getDentistDao().find(1);
@@ -41,7 +40,6 @@ public class ControllerAjouterVisite implements Initializable {
     private Visite visite;
     private Medicament medicament;
     private Ordonnance ordonnanceLast=ordonnanceDao.findLast();
-    private Vector<Medicament> vectorMedicamentSelect =new Vector<>();
 
     private static Medicament medicamentSelected;
 
