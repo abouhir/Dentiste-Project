@@ -5,12 +5,6 @@ import javafx.scene.control.CheckBox;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/***********************************************************************
- * Module:  Medicament.java
- * Author:  W0L1D
- * Purpose: Defines the Class Medicament
- ***********************************************************************/
-
 
 public class Medicament {
 

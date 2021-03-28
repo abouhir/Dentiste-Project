@@ -4,12 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-/***********************************************************************
- * Module:  Visite.java
- * Author:  W0L1D
- * Purpose: Defines the Class Visite
- ***********************************************************************/
-
 
 public class Visite implements Comparable<Visite>{
    private long id;

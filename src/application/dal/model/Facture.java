@@ -3,12 +3,6 @@ package application.dal.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/***********************************************************************
- * Module:  Facture.java
- * Author:  W0L1D
- * Purpose: Defines the Class Facture
- ***********************************************************************/
-
 
 
 public class Facture {

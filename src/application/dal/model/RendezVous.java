@@ -4,12 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-/***********************************************************************
- * Module:  RendezVous.java
- * Author:  W0L1D
- * Purpose: Defines the Class RendezVous
- ***********************************************************************/
-
 
 public class RendezVous {
    private Long id;

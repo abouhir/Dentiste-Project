@@ -4,11 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-/***********************************************************************
- * Module:  Certificat.java
- * Author:  W0L1D
- * Purpose: Defines the Class Certificate
- ***********************************************************************/
+
 
 
 public class Certificate {

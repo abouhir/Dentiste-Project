@@ -3,12 +3,6 @@ package application.dal.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/***********************************************************************
- * Module:  Person.java
- * Author:  W0L1D
- * Purpose: Defines the Class Person
- ***********************************************************************/
-
 
 public class Person {
    private Long id;

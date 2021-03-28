@@ -7,12 +7,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 
-/***********************************************************************
- * Module:  Ordonnance.java
- * Author:  W0L1D
- * Purpose: Defines the Class Ordonnance
- ***********************************************************************/
-
 
 
 public class Ordonnance implements Comparable<Ordonnance> {
