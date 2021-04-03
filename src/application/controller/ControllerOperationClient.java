@@ -89,7 +89,6 @@ public class ControllerOperationClient implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
             cliDao = Main.getDaos().getClientDao();
             clientVector = cliDao.selectAll();
             remplirTable(clientVector);
