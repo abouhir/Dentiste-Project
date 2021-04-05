@@ -8,11 +8,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="javafx-sdk-15.0" level="application" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.19" level="application" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.22" level="project" />
-    <orderEntry type="library" name="javafx15" level="project" />
-    <orderEntry type="library" name="jfoenix-9.0.1" level="project" />
-    <orderEntry type="library" name="itextpdf-5.5.13.2" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.22" level="application" />
+    <orderEntry type="library" name="javafx15 new" level="application" />
+    <orderEntry type="library" exported="" name="jfoenix-9.0.1" level="project" />
+    <orderEntry type="library" name="jfoenix-9.0.1 new" level="application" />
+    <orderEntry type="library" name="controlsfx-11.1.0" level="application" />
+    <orderEntry type="library" name="itextpdf-5.5.13.2" level="application" />
+    <orderEntry type="library" name="lib" level="application" />
   </component>
 </module>

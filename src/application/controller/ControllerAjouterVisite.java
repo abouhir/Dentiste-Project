@@ -32,14 +32,14 @@ public class ControllerAjouterVisite implements Initializable {
     private MedicsDao medicsDao= Main.getDaos().getMedicsDao();
     private VisiteDao visiteDao=Main.getDaos().getVisiteDao();
     private OrdonnanceDao ordonnanceDao=Main.getDaos().getOrdDao();
-    private Dentiste d = Main.getDaos().getDentistDao().find(1);
+    private Dentiste d;
 
     private Alert message;
 
     private Client client;
     private Visite visite;
     private Medicament medicament;
-    private Ordonnance ordonnanceLast=ordonnanceDao.findLast();
+    private Ordonnance ordonnanceLast;
 
     private static Medicament medicamentSelected;
 
@@ -86,6 +86,8 @@ public class ControllerAjouterVisite implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        d = Main.getDaos().getDentistDao().find(1);
+
         txtTraitement.setDisable(false);
         btnAjouter.setDisable(false);
         client=ControllerOperationClient.getClient();
