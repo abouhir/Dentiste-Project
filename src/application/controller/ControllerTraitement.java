@@ -139,7 +139,7 @@ public class ControllerTraitement implements Initializable {
             refreshTable(visiteVector);
             }
         });
-        primaryStage.showAndWait();
+        primaryStage.show();
     }
     public void alertConfirmation(String information)
     {

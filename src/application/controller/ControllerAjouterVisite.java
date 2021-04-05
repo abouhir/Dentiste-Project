@@ -183,7 +183,9 @@ public class ControllerAjouterVisite implements Initializable {
         tableMedicament.setItems(list);
     }
     public void refreshTable(Vector<Medicament> medicamentVector){
+        medicamentVector.forEach(m->m.setSelect(new CheckBox()));
         tableMedicament.getItems().setAll(medicamentVector);
+
     }
     public void close(){
         Stage stage =(Stage)close.getScene().getWindow();

@@ -216,6 +216,7 @@ public class ControllerOperationClient implements Initializable {
     public static Client getClient(){
         return clientSelected;
     }
+
     public void switchStage(String name ,double width , double height ) throws IOException {
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(name));
@@ -227,7 +228,7 @@ public class ControllerOperationClient implements Initializable {
             clientVector = cliDao.findAll();
             refreshTable(clientVector);
         });
-        primaryStage.showAndWait();
+        primaryStage.show();
     }
     public void close(Event event){
         Stage stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
