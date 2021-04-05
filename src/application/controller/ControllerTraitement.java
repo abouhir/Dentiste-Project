@@ -11,9 +11,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -92,7 +95,7 @@ public class ControllerTraitement implements Initializable {
 
     @FXML
     void ajouterOnAction(ActionEvent event) throws IOException {
-        switchStage("/resource/fxml/AjouterVisiteDocument.fxml");
+        switchStage("/resource/fxml/AjouterVisiteDocument.fxml",event);
     }
     public void supprimerOnAction(ActionEvent event) throws IOException{
         alertConfirmation("Voulez vous vraiment supprimer le Traitement : ");
@@ -103,7 +106,7 @@ public class ControllerTraitement implements Initializable {
             visiteSelected=tableVisite.getSelectionModel().getSelectedItem();
         }
         else{
-            message("/resource/Icons/failed.png","ERROR","Echec !!!!");
+            message("/resource/Icons/failed.png","ERROR","Impossible de supprimer traitement contient une ordonnace");
 
         }
     }
@@ -126,20 +129,23 @@ public class ControllerTraitement implements Initializable {
         Stage stage =(Stage)btnAnnuler.getScene().getWindow();
         stage.close();
     }
-    public void switchStage(String name ) throws IOException {
-        Stage primaryStage = new Stage();
+    public void switchStage(String name, Event event) throws IOException {
+        Stage primaryStage=(Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(name));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 600, 550));
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(root, 600, 550));
 
-        primaryStage.addEventHandler(WindowEvent.WINDOW_HIDDEN, windowEvent -> {
+        stage.addEventHandler(WindowEvent.WINDOW_HIDDEN, windowEvent -> {
             visiteDao.refresh();
             if(client!=null){
             visiteVector = visiteDao.findByCli(client.getId());
             refreshTable(visiteVector);
             }
         });
-        primaryStage.show();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(primaryStage);
+        stage.showAndWait();
     }
     public void alertConfirmation(String information)
     {

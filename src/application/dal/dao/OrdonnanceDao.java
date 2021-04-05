@@ -111,8 +111,6 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
     public boolean insertMedicsToOrd( long ord, long medic) {
         try {
-            System.out.println("ord :  "+ord);
-            System.out.println("medic :  "+medic);
             preStmInsertInContenir.setLong(1, ord);
             preStmInsertInContenir.setLong(2, medic);
             preStmInsertInContenir.execute();
@@ -126,7 +124,6 @@ public class OrdonnanceDao extends DefaultDao<Ordonnance> {
 
     @Override
     public void assignParams(PreparedStatement preStm, Ordonnance o) throws SQLException {
-       // preStmInsert.setLong(1, o.getCliId());
         preStm.setLong(1, o.getVisId());
     }
 

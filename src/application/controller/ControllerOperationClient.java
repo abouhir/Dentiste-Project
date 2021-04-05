@@ -23,6 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -121,16 +122,16 @@ public class ControllerOperationClient implements Initializable {
 
     public void ajouterOnAction(ActionEvent event) throws IOException {
         if(role.equals("infermier"))
-             switchStage("/resource/fxml/AjouterClientDocument.fxml",600,607);
+             switchStage("/resource/fxml/AjouterClientDocument.fxml",600,607,event);
 
         }
 
     public void modifierOnAction(ActionEvent event) throws IOException {
-            switchStage("/resource/fxml/ModifierClientDcument.fxml",600,607);
+            switchStage("/resource/fxml/ModifierClientDcument.fxml",600,607,event);
     }
 
     public void actionOnAction(ActionEvent event) throws IOException {
-            switchStage("/resource/fxml/RendezVousClientDocument.fxml",600,607);
+            switchStage("/resource/fxml/RendezVousClientDocument.fxml",600,607,event);
         }
 
     public void supprimerOnAction(ActionEvent event) throws IOException {
@@ -210,25 +211,29 @@ public class ControllerOperationClient implements Initializable {
     public void tableOnMousePresseed(MouseEvent event) throws IOException {
         ControllerOperationClient.clientSelected=tableClient.getSelectionModel().getSelectedItem();
         if(role.equals("dentiste"))
-            switchStage("/resource/fxml/TraitementClientDocument.fxml",600,712);
+            switchStage("/resource/fxml/TraitementClientDocument.fxml",600,712,event);
     }
 
     public static Client getClient(){
         return clientSelected;
     }
 
-    public void switchStage(String name ,double width , double height ) throws IOException {
-        Stage primaryStage = new Stage();
+    public void switchStage(String name ,double width , double height , Event event ) throws IOException {
+        Stage primaryStage=(Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(name));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, width, height));
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(root, width, height));
 
-        primaryStage.addEventHandler(WindowEvent.WINDOW_HIDDEN, windowEvent -> {
+        stage.addEventHandler(WindowEvent.WINDOW_HIDDEN, windowEvent -> {
             cliDao.refresh();
             clientVector = cliDao.findAll();
             refreshTable(clientVector);
         });
-        primaryStage.show();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(primaryStage);
+        stage.showAndWait();
+
     }
     public void close(Event event){
         Stage stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
