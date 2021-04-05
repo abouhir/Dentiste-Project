@@ -126,7 +126,7 @@ public class ControllerOperations implements Initializable {
             close();
             }
             else{
-            message("/resource/Icons/failed.png","ERROR","Le Cient "+txtFullName.getText()+" n\'est pas  Modifier");
+            message("/resource/Icons/failed.png","ERROR","Le Cient "+txtFullName.getText()+" n\'est pas  Modifier (Il a un rendez-vous)");
             }
         }
         else{

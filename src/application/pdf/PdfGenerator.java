@@ -8,7 +8,6 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.stage.FileChooser;
 
-import javax.swing.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;

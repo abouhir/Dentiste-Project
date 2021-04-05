@@ -46,17 +46,16 @@ public class DbConnection {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 cnx= DriverManager.getConnection("jdbc:mysql://localhost:3306/lp_java_mini_project","root","") ;
-                System.out.println("Successful connection to database ...");
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Error :: Enable to connect to the Server...");
-                alert.setContentText("Check your Connection or the stat of the server.");
+                alert.setContentText("Virifier la connexion au serveur.");
                 alert.showAndWait();
                 alert.close();
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Reconnexion :");
-                alert.setHeaderText("Voulez vous reconnecter au server ?");
-                alert.setContentText("Verifier votre connexion internet.");
+                alert.setHeaderText("Voulez vous reconnecter au serveur ?");
+                alert.setContentText("Verifier votre connexion au serveur.");
                 alert.showAndWait().ifPresent(buttonType -> {
                     if (buttonType == ButtonType.OK)
                         getConnection();

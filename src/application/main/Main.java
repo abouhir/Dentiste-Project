@@ -19,10 +19,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        daos = new DbConnection();
+
 
         if (DbConnection.getConnection() == null)
             return;
+        else  daos = new DbConnection();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginDocument.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 777, 559));
@@ -35,8 +36,6 @@ public class Main extends Application {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String strDate= formatter.format(date);
-
-
 
         launch(args);
     }
