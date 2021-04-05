@@ -27,7 +27,7 @@ public class PdfGenerator {
                 10f, 10f, 7f, 7f);
 
         //Dentist Body
-        Paragraph dentInfos = new Paragraph("Docteur :  xxxxxxx xxxxxxxx\nAdresse : 97 Rue Boumdiane el gheouti hay dakhla" +
+        Paragraph dentInfos = new Paragraph("Docteur :xxxxxxx xxxxxxxx\nAdresse : 97 Rue Boumdiane el gheouti hay dakhla Casablanca" +
                 "\nCabinet Dentiste : 78 45 63 21"+"\nTéléphone : 06.41.85.36.14", infosFont);
         dentInfos.setAlignment(Element.ALIGN_LEFT);
         dentInfos.setSpacingAfter(16f);
